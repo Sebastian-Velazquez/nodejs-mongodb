@@ -16,8 +16,10 @@ app.set('views', path.join(__dirname, '/views'));
 
 
 const homeRouter = require('./routes/homeRouter.js')
+const productsRouter = require('./routes/productsRouter.js')
 
 
 app.use("/", homeRouter);
+app.use("/product", productsRouter);
 
 app.listen(3030,()=> console.log('Servidor corriendo en http://localhost:3030'));

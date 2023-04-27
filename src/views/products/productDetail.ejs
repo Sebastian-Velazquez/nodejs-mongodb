@@ -7,9 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Bienvenidos al proyecto de node JS con MongoDB</h1>
-    <a href="/product/list">Lista de Producto</a>
-    <a href="/product/create">Crear nuevo Producto</a>
-
+    <h1>Vista de detalle de producto</h1>
+    <a href="/product/edit/1">Editar Producto</a>
+    
+    <form action="/product/delete/1?_method=DELETE" method="POST">
+        <button type="submit">Eliminar Producto</button>
+    </form>
 </body>
 </html>
