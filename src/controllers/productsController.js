@@ -1,12 +1,22 @@
+const dbProducto = require('../database/models/Producto')
+
 const controlador ={
-    list: (req,res)=>{
-        res.render("./products/productsList")
+    list: async (req,res)=>{
+        try {
+            let productos = await dbProducto.find()
+            console.log(productos)
+            res.send("hola")
+            //res.render("./products/productsList")
+        } catch (e) {
+            console.log(e)
+        }
     },
     detail:(req,res)=>{
         res.render("./products/productDetail")
     },
     create: (req, res)=>{ 
-        res.render("./products/productCreate")
+        //res.send(dbProducto);
+        //res.render("./products/productCreate")
     },
     processCreate: (req, res)=>{ 
         res.send("Creado")
