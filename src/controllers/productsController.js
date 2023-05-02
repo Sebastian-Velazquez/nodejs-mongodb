@@ -5,7 +5,7 @@ const controlador ={
         try {
             let productos = await dbProducto.find()
             console.log(productos)
-            res.send("hola")
+            res.json(productos)
             //res.render("./products/productsList")
         } catch (e) {
             console.log(e)
@@ -15,8 +15,7 @@ const controlador ={
         res.render("./products/productDetail")
     },
     create: (req, res)=>{ 
-        //res.send(dbProducto);
-        //res.render("./products/productCreate")
+        res.render("./products/productCreate")
     },
     processCreate: (req, res)=>{ 
         res.send("Creado")
