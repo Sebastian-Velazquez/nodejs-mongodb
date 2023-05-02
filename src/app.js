@@ -21,10 +21,12 @@ app.set('views', path.join(__dirname, '/views'));
 
 const homeRouter = require('./routes/homeRouter.js')
 const productsRouter = require('./routes/productsRouter.js')
+const usersRouter = require('./routes/usersRouter.js')
 
 
 app.use("/", homeRouter);
 app.use("/product", productsRouter);
+app.use("/user", usersRouter);
 
 const port = process.env.PORT || 3030;
 app.listen(port,()=> console.log('Servidor corriendo en http://localhost:' + port));

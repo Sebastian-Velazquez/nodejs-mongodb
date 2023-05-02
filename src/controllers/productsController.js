@@ -15,8 +15,7 @@ const controlador ={
         res.render("./products/productDetail")
     },
     create: (req, res)=>{ 
-        //res.send(dbProducto);
-        //res.render("./products/productCreate")
+        res.render("./products/productCreate")
     },
     processCreate: (req, res)=>{ 
         res.send("Creado")
