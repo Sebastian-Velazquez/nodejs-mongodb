@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const productoSchema = new Schema({
+const orderSchema = new Schema({
   marca: String,
   name: String,
   type: String,
 });
 
 //crear modelo
-const Producto = mongoose.model('Producto', productoSchema);
+const Order = mongoose.model('Order', orderSchema);
 
-module.exports = Producto;
+module.exports = Order;
