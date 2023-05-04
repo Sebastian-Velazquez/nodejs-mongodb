@@ -1,9 +1,12 @@
-const dbProducto = require('../database/models/Producto')
+
+
+
 
 const controlador ={
     list: async (req,res)=>{
         try {
-            let productos = await dbProducto.find()
+            const dbProducto = require('../database/models/Product');
+            let productos = await dbProducto.find();
             console.log(productos)
             res.json(productos)
             //res.render("./products/productsList")
