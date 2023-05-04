@@ -7,18 +7,18 @@ const controlador ={
     list: async (req,res)=>{
         try {
             let productos = await Product.find();
-            console.log(productos)
-            res.json(productos)
-            //res.render("./products/productsList")
+            res.render("./products/productsList",{
+                productos:productos
+            })
         } catch (e) {
             console.log(e)
         }
     },
     detail: async(req,res)=>{
         try {
-            let producto = await Product.findOne({_id: req.params.id});
+            let productoDetail = await Product.findOne({_id: req.params.id});
             res.render("./products/productDetail",{
-                producto:prducto
+                producto:productoDetail
             })
         } catch (error) {
                 res.json({
@@ -34,7 +34,9 @@ const controlador ={
     processCreate: async (req, res)=>{ 
         try {
             await Product.create(req.body)
-            res.redirect('list')
+            res.render("./products/productCreate",{
+                oldData: req.body
+            })
         } catch (error) {
             console.log(error)
         }
@@ -45,7 +47,10 @@ const controlador ={
     processEdit: async(req, res)=>{ 
         try {
             let productoEditado=await Product.findByIdAndUpdate( req.params.id, req.body, { useFindAndModify: false});//viene del documento oficial de mogoose
-            res.json(productoEditado)
+            res.render("./products/productEdit",{
+                producto:productoEditado,
+                oldData: req.body
+            })
         } catch (error) {
             console.log(error)
         }
@@ -55,10 +60,7 @@ const controlador ={
         try {
             let producto =  await Product.findByIdAndDelete({_id: req.params.id})
             if (producto){
-                res.json({
-                    estado: TreeWalker,
-                    mesaje:'eliminado!'
-                })
+                res.render("./products/productsList")
             }
         } catch (error) {
             console.log(error)
