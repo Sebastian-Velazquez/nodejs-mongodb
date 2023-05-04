@@ -1,2 +1,35 @@
+$violeta-dark: #130415;
+$violeta: #391a3d;
+$lima:#c7ff8f;
+$verde: #6fa33b;
+$theme-colors: (
+  "primary": $violeta-dark,
+  "secondary": $violeta,
+  "success": $verde,
+  "info":$lima
+);
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './sass/header';
+main{
+    background-color: #ebebeb!important;
+}
 
-@import '../../node_modules/bootstrap/scss/bootstrap.scss'
+.carousel-item{
+    height: 200px !important;
+    img{
+        object-fit: cover!important ;
+        object-position: center!important ;
+    }
+}
+@media (min-width: 993px) {
+    .carousel-item{
+        height: 450px !important;
+    }
+}
