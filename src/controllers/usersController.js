@@ -1,9 +1,31 @@
+const Customer = require('../database/models/Customers');
+
+
 const controlador ={
     register: (req, res)=>{
         res.render("./users/userRegister")
     },
-    processRegister:(req,res)=>{
-        res.send("Te Registraste")
+    processRegister:async (req, res)=>{ 
+        try {
+            let nuevoUsers = await Customer.create(
+                {
+                    firt_name: req.body.firt_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    password: req.body.password,
+                    perfil: {
+                        direccion: req.body.direccion,
+                        cp: req.body.cp
+                    }
+                }
+            )
+            console.log(nuevoUsers)
+            res.send('Usuario Creado')
+        } catch (error) {
+            console.log(error)
+        }
+
+        //res.send("Te Registraste")
     },
     login: (req, res)=>{
         res.render("./users/userLogin")
