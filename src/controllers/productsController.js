@@ -1,6 +1,7 @@
 
 
-const Product = require('../database/models/Product');
+const Product = require('../database/models/Products');
+
 
 
 const controlador ={

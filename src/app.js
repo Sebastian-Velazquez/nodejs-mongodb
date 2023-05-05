@@ -23,11 +23,13 @@ app.use(express.json()); // Para capturar el body
 const homeRouter = require('./routes/homeRouter.js')
 const productsRouter = require('./routes/productsRouter.js')
 const usersRouter = require('./routes/usersRouter.js')
+const pruebasRouter = require('./routes/pruebasRouter.js')
 
 
 app.use("/", homeRouter);
 app.use("/product", productsRouter);
 app.use("/user", usersRouter);
+app.use("/prueba", pruebasRouter);
 
 const port = process.env.PORT || 3030;
 app.listen(port,()=> console.log('Servidor corriendo en http://localhost:' + port));
