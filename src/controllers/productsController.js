@@ -33,7 +33,8 @@ const controlador ={
     },
     processCreate: async (req, res)=>{ 
         try {
-            await Product.create(req.body)
+            let nuevoProducto = await Product.create(req.body)
+            console.log(nuevoProducto)
             res.render("./products/productCreate",{
                 oldData: req.body
             })

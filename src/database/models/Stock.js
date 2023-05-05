@@ -6,6 +6,6 @@ const stockSchema = new Schema({
 });
 
 //crear modelo
-const Stock = mongoose.model('Stock', rolesSchema);
+const Stock = mongoose.model('Stock', stockSchema);
 
 module.exports = Stock;
