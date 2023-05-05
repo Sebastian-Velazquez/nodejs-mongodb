@@ -38,3 +38,18 @@
         font-weight: 500;
     }
 }
+@media (min-width: 768px) {
+    .navbar-nav{
+        align-items: center!important;
+        li{
+            margin: 0 1.3rem;
+        }
+        form{
+            margin: 0!important;
+        }
+    }
+
+
+
+}
+

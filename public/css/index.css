@@ -11692,6 +11692,17 @@ textarea.form-control-lg {
   font-weight: 500;
 }
 
+@media (min-width: 768px) {
+  .navbar-nav {
+    align-items: center !important;
+  }
+  .navbar-nav li {
+    margin: 0 1.3rem;
+  }
+  .navbar-nav form {
+    margin: 0 !important;
+  }
+}
 .section__contacto a {
   text-decoration: none;
   color: #fff;
@@ -11708,6 +11719,11 @@ main {
   margin-top: 60px !important;
 }
 
+.carousel-indicators button {
+  margin: 0 !important;
+  background-color: #c7ff8f !important;
+}
+
 .carousel-item {
   height: 400px !important;
 }
@@ -11716,10 +11732,11 @@ main {
      object-fit: cover !important;
   -o-object-position: center !important;
      object-position: center !important;
+  height: 100%;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 768px) {
   .carousel-item {
-    height: 550px !important;
+    height: 700px !important;
   }
 }/*# sourceMappingURL=index.css.map */

@@ -10,30 +10,54 @@
 <body>
   <%- include("./partials/header") %>
     
-    <main>
-      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="true">
+    <main>     
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
         <div class="carousel-inner">
-          <div class="carousel-item active d-flex">
-            <img src="https://culturageek.com.ar/wp-content/uploads/2018/06/pc-gamer-arenas-games-www.culturageek.com-4.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-item active">
+            <img src="https://www.wowchakra.com/wp-content/uploads/2019/04/Ripsaw-2019-Studio-Console-Setup-Shoot-1.jpg" class="d-block w-100" alt="banner">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
           </div>
-          <div class="carousel-item d-flex">
-            <img src="https://www.infinitonline.com.ar/images/00000000000015731118042342.png" class="d-block w-100" alt="...">
+          <div class="carousel-item">
+            <img src="https://www.cablewholesale.com/blog/wp-content/uploads/CableWholesaleInc-211443-First-Gaming-PC-blogbanner1.jpg" class="d-block w-100" alt="banner">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
           </div>
-          <div class="carousel-item d-flex">
-            <img src="https://www.androidauthority.com/wp-content/uploads/2022/03/AMD-logo-scaled.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-item">
+            <img src="https://www.androidauthority.com/wp-content/uploads/2022/03/AMD-logo-scaled.jpg" class="d-block w-100" alt="banner">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://portalgeek.co/wp-content/uploads/2022/10/Monitor_ASRock_Phantom-Gaming_Flyer.jpg" class="d-block w-100" alt="banner">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      
-      
+      <!-- ///////////////////////////////cards////////////////////////////////////////////// -->
       <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
         <div class="card m-2" style="width: 18rem;">
           <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAANlBMVEXy8vK+vr6Ojo7n5+fHx8fb29utra26urqWlpalpaWdnZ3t7e3BwcHh4eHU1NTOzs6zs7PR0dE9iG/NAAAFFElEQVR4nO2bbdeyKhBGTcA3RLv//589gIhYDtCzTGmda39oVWrOlmFQsaoCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEUj+CMKF3dHmIeIaxh+wkSmPR4PeXeUGWQ0yG80SaKDLPC7o0yTlVm/kFtZmfULucXHHI+x+NzKzKzycyszs8rPrayaZSg8t7IbpLwmkWxDzfkej8esgk1v7jJszqpROYwzu01DTmdZLEx3NctHiZTDfI/Hye1hmO7wyBn6Rj4pJjVMTVlD/h3JlW4QrnZxSZUeZO5oklRU/KAKseRG13tU8UwZ1fFWKrHZtQ6WaEAzmezytdaNQgVZeqWBI+bxF9vwb+9hlFmhIokuO72v65vpgsBfoT2S41qYXWL/zdfDfof02FceyYRmf1Iog+JlraUvARcKrJAiYdndzofnsIyxoHZNuwJwtUVFiwQdZD9shANL2E3GcK3rPSiRYCRQr8uCRqGGk+s9KJHtwu/gajG6sCyR0ffqt/bYtYkkmqQYEV96jyPdPImLmWJE/CEnTo59KThssIJE1iNOpY5vEuJyphQRX7OIAx402bFpKSK+i/wdLn4E55PHnaQUER8meQXlT2COVUsR8X05LXJcDYoTIS8EfS/6EZFfb5FEV34ky0EpIv54k7fl/enWcZuVIuJ7ADtc/AiuVsoeR7Y4iU7im4wwLUbE93YiUC9KnIsVI7JdsB925u0+EdFixYhsh1wehMr9WTzVh8oR2e4FvZtsHmR5LkckuIkiX7Lrb/Mgi1pBIuFtrXAigYf3g8iB/2qLKnJfazfvzOwEz8in3SQDPYt9rYOFjOWRnJ4lE6swkTFhwiJzJNfEvoMOJmES8yhMhJyvMsTnrK6L3xMLJzJFkphDvdLAEQ/ocC40Yzb0aosqKaLH+DcVln5WokQR3Srh6KFHlIxNyhSxMvOkmXMfSLtB5LQHnELumGc//dkgwx3PB33w1F8+tzwf+IXcuiOzIjfc/53ICcE3Of3Js1ueOzMkHvX5kNgJ2reR4qzHTMdZlP6QOQAAAAAAAACA/w2s/oe7UcP7n5BkU9ffvP0gaktLXlJTInPstuGByDjs/9JA7/HfELW5pS6bgfpdSqRtP9tRs789x+qT//Mq3A921D/SThPZ7+BrIs9Wv1V9rXfXmlQz35m07ictwptlVf2iV6l7sWSk/pbpVbZjYD6ZX7Cp1XDuPmlmt75YNq/MiuYI8U5/fYrSKqJbXtS9ed/rV9b35rteVmrYiTAT9WxCsC3COhPcsGbNoD8p88mKDK3ZZm1P2yKTEeOm0y8tMnZ68bM7w8SJqFq4nc6d6S2ym90isRNp7bv26UTaJjwYS3B8cCJ22fMZiixFwKxh13Vp23yYpYRIa6jbNR63Zx3r2C/RhSJLGgnuRFxWuSIlfZJZERvesqkTUbVaflItIryzi+buPBFRrSL9Eow+au3zXWTr+UZEuo/rIRVD1/KIyFQv7+t5ERkbF8MJuRX8yJtI+6mIXrvtB1WGiEut8el2Y0X6VWSrUGFq9WFpHYdUasmX1JrOSa0Xka2zT7V5Z8rAZL/jvrOPx519yXVz2AmR73b2FxFbfqUtv31jxw1RSVNJ524rv9Ny4Jfyq9byyzq9GuuftIgtv3ZzWZtTHFt+2zPLb/h2PyAKsy8zDDbhgKgX9nX/OiCqxm1KifgB0Q6R05kDIgAAAAAAAAAAAAAAAAAAAAAAAAAAAADcyn/Q7yyZDZOHRgAAAABJRU5ErkJggg==" class="card-img-top" alt="...">

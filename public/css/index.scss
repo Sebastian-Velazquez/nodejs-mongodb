@@ -26,16 +26,22 @@ main{
     margin-top: 60px !important;
 }
 
-
+.carousel-indicators{
+    button{
+        margin: 0 !important;
+        background-color:#c7ff8f!important;
+    }
+}
 .carousel-item{
     height: 400px !important;
     img{
         object-fit: cover!important ;
         object-position: center!important ;
+        height: 100%;
     }
 }
-@media (min-width: 993px) {
+@media (min-width: 768px) {
     .carousel-item{
-        height: 550px !important;
+        height: 700px !important;
     }
 }
