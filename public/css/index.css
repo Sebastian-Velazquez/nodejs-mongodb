@@ -11710,12 +11710,46 @@ textarea.form-control-lg {
   margin-bottom: 5px;
 }
 
+.section__form {
+  margin: 100px auto 200px !important;
+  width: 85%;
+  border: 0.1rem solid var(--bs-secondary);
+  box-shadow: 0px 1px 8px rgba(57, 26, 61, 0.9215686275);
+}
+.section__form h3, .section__form .h3 {
+  width: 85%;
+  margin: auto;
+}
+.section__form .form__container {
+  margin: auto;
+  height: 90%;
+  width: 85%;
+}
+.section__form .form__container .form-floating {
+  width: 100%;
+}
+.section__form .form__container p {
+  width: 90%;
+}
+.section__form .form__container p a {
+  /* text-decoration: none; */
+  color: #130415;
+}
+.section__form .form__container p a:hover {
+  color: #6fa33b;
+}
+.section__form .register__container {
+  margin: 1.7rem auto;
+}
+.section__form .register__container a {
+  width: 85%;
+}
+
 body {
   font-family: "Franklin Gothic Medium" !important;
 }
 
 main {
-  background-color: #ebebeb !important;
   margin-top: 60px !important;
 }
 

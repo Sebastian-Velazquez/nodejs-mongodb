@@ -18,11 +18,11 @@ $container-max-widths: (
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './sass/header';
 @import './sass/footer';
+@import './sass/login';
 body{
     font-family: 'Franklin Gothic Medium'!important;
 }
 main{
-    background-color: #ebebeb !important;
     margin-top: 60px !important;
 }
 
