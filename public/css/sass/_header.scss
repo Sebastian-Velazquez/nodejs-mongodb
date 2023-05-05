@@ -1,3 +1,6 @@
+.navbar{
+    height: 70px!important;
+}
 .navbar-toggler{
     border: none !important;
     i{
@@ -11,11 +14,12 @@
 .form-control{
     border: var(--bs-border-width) solid var(--bs-secondary);
     border-radius: 0;
-    border-bottom: 2px solid #fff;
+    border-bottom: 3px solid #fff !important;
 }
 .form-control:focus{
     box-shadow: none !important;
-    border: none;
+    border: var(--bs-border-width) solid var(--bs-secondary);
+    
 }
 .btn__buscar{
     border: var(--bs-border-width) solid var(--bs-secondary);
@@ -27,4 +31,10 @@
 }
 .btn__buscar:hover{
     background-color: #fff!important;
+}
+.navbar-nav{
+    a{
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
 }

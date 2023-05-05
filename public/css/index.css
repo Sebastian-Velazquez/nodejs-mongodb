@@ -11648,6 +11648,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.navbar {
+  height: 70px !important;
+}
+
 .navbar-toggler {
   border: none !important;
 }
@@ -11662,12 +11666,12 @@ textarea.form-control-lg {
 .form-control {
   border: var(--bs-border-width) solid var(--bs-secondary);
   border-radius: 0;
-  border-bottom: 2px solid #fff;
+  border-bottom: 3px solid #fff !important;
 }
 
 .form-control:focus {
   box-shadow: none !important;
-  border: none;
+  border: var(--bs-border-width) solid var(--bs-secondary);
 }
 
 .btn__buscar {
@@ -11683,6 +11687,11 @@ textarea.form-control-lg {
   background-color: #fff !important;
 }
 
+.navbar-nav a {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
 .section__contacto a {
   text-decoration: none;
   color: #fff;
@@ -11696,7 +11705,7 @@ body {
 
 main {
   background-color: #ebebeb !important;
-  margin-top: 80px !important;
+  margin-top: 60px !important;
 }
 
 .carousel-item {
@@ -11711,6 +11720,6 @@ main {
 
 @media (min-width: 993px) {
   .carousel-item {
-    height: 450px !important;
+    height: 550px !important;
   }
 }/*# sourceMappingURL=index.css.map */
