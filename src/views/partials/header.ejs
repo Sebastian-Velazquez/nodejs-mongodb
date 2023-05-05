@@ -1,36 +1,43 @@
-<nav class="navbar bg-primary navbar-dark">
-    <div class="container-fluid">    
-    <a class="navbar-brand text-success" style="font-family: 'Franklin Gothic Medium';font-size: 1.6rem;" href="#">
-        InsumE
-    </a>
-      <form class="d-flex" role="search">
-        <input class="form-control " type="search" placeholder="Escribe nombre o categoria" aria-label="Search">
-        <button class="btn btn-info btn__buscar" type="submit">Buscar</button>
-      </form>
-    </div>
-  </nav>
-  
- 
-  <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
-    <div class="container-fluid justify-content-center">
-      <button class="navbar-toggler btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fa-solid fa-bars text-info"></i>
+
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav d-flex justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Ingresá</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Regístrate</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Todo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Nosotros</a>
-          </li>
-        </ul>
+      <a class="navbar-brand" href="#">InsumE</a>
+      </div>
+      
+      <ul class="navbar-nav flex-row justify-content-around pe-0.5">
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="#"><i class="fa-regular fa-user"></i></a>
+      </li>
+      <li class="nav-item mx-2">
+        <a class="nav-link" href="#"><i class="fa-brands fa-opencart"></i></a>
+      </li>
+      </ul>
+      
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">InsumE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Que buscas?" aria-label="Search">
+              <button class="btn btn-outline-success btn__buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Marcas</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
+ 
+  

@@ -11659,12 +11659,10 @@ textarea.form-control-lg {
   box-shadow: none !important;
 }
 
-.navbar-collapse ul a {
-  text-align: center;
-}
-
 .form-control {
-  border-radius: 0 0 0 20px;
+  border: var(--bs-border-width) solid var(--bs-secondary);
+  border-radius: 0;
+  border-bottom: 2px solid #fff;
 }
 
 .form-control:focus {
@@ -11673,15 +11671,36 @@ textarea.form-control-lg {
 }
 
 .btn__buscar {
-  border-radius: 0 20px 0 0;
+  border: var(--bs-border-width) solid var(--bs-secondary);
+  border-left: none;
+  border-bottom: none;
+  margin-left: -20px;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+.btn__buscar:hover {
+  background-color: #fff !important;
+}
+
+.section__contacto a {
+  text-decoration: none;
+  color: #fff;
+  outline: none;
+  margin-bottom: 5px;
+}
+
+body {
+  font-family: "Franklin Gothic Medium" !important;
 }
 
 main {
   background-color: #ebebeb !important;
+  margin-top: 80px !important;
 }
 
 .carousel-item {
-  height: 200px !important;
+  height: 400px !important;
 }
 .carousel-item img {
   -o-object-fit: cover !important;

@@ -17,12 +17,18 @@ $container-max-widths: (
 );
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './sass/header';
+@import './sass/footer';
+body{
+    font-family: 'Franklin Gothic Medium'!important;
+}
 main{
-    background-color: #ebebeb!important;
+    background-color: #ebebeb !important;
+    margin-top: 80px !important;
 }
 
+
 .carousel-item{
-    height: 200px !important;
+    height: 400px !important;
     img{
         object-fit: cover!important ;
         object-position: center!important ;
