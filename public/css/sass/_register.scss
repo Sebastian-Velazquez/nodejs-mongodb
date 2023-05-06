@@ -1,0 +1,19 @@
+.form__container{
+    margin: 100px auto 200px !important;
+    width: 85%;
+    border: 0.1rem solid var(--bs-secondary);
+    box-shadow: 0px 1px 8px #391a3deb;
+    h3{
+        width: 85%;
+        margin: auto;
+    }
+    .row{
+        margin: auto;
+        width: 85%;
+        .input__container{
+            width: 100%;
+            padding: 0 !important;
+        }
+    }
+
+}

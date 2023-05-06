@@ -11696,6 +11696,9 @@ textarea.form-control-lg {
   .navbar-nav {
     align-items: center !important;
   }
+  .navbar-nav .search__container {
+    width: 40%;
+  }
   .navbar-nav li {
     margin: 0 1.3rem;
   }
@@ -11720,29 +11723,48 @@ textarea.form-control-lg {
   width: 85%;
   margin: auto;
 }
-.section__form .form__container {
+.section__form .login__container {
   margin: auto;
   height: 90%;
   width: 85%;
 }
-.section__form .form__container .form-floating {
+.section__form .login__container .form-floating {
   width: 100%;
 }
-.section__form .form__container p {
-  width: 90%;
+.section__form .login__container p {
+  width: 100%;
 }
-.section__form .form__container p a {
+.section__form .login__container p a {
   /* text-decoration: none; */
   color: #130415;
 }
-.section__form .form__container p a:hover {
+.section__form .login__container p a:hover {
   color: #6fa33b;
 }
 .section__form .register__container {
-  margin: 1.7rem auto;
+  margin: 2.5rem auto;
 }
 .section__form .register__container a {
   width: 85%;
+}
+
+.form__container {
+  margin: 100px auto 200px !important;
+  width: 85%;
+  border: 0.1rem solid var(--bs-secondary);
+  box-shadow: 0px 1px 8px rgba(57, 26, 61, 0.9215686275);
+}
+.form__container h3, .form__container .h3 {
+  width: 85%;
+  margin: auto;
+}
+.form__container .row {
+  margin: auto;
+  width: 85%;
+}
+.form__container .row .input__container {
+  width: 100%;
+  padding: 0 !important;
 }
 
 body {

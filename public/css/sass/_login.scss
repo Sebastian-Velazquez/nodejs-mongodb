@@ -7,15 +7,16 @@
         width: 85%;
         margin: auto;
     }
-    .form__container{
+    .login__container{
         margin: auto;
         height: 90%;
         width: 85%;
         .form-floating{
             width: 100%;
         }
+        
         p{
-            width: 90%;
+            width: 100%;
             a{
                 /* text-decoration: none; */
                 color:$violeta-dark;
@@ -26,7 +27,7 @@
         }
     }
     .register__container{
-        margin: 1.7rem auto;
+        margin: 2.5rem auto;
         a{
             width: 85%;
         }

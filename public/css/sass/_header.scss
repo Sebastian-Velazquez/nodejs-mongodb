@@ -41,12 +41,16 @@
 @media (min-width: 768px) {
     .navbar-nav{
         align-items: center!important;
+        .search__container{
+            width: 40%;
+        }
         li{
             margin: 0 1.3rem;
         }
         form{
             margin: 0!important;
         }
+        
     }
 
 
