@@ -28,9 +28,30 @@ const controlador ={
                 })
             }
     },
-    create: (req, res)=>{ 
+    create:async (req, res)=>{ 
+        try {
+            let nuevoProducto = await producto.create(
+                {
+                    name: req.body.name,
+                    category: req.body.category,
+                    marca: req.body.marca,
+                    stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
+                    description:req.body.description,
+                    offer: req.body.offer,
+                    top_seller: req.body.top_seller,
+                    image:  'req.file.filename',
+                    caracteristicas:{
+                    capacity_ram: req.body.capacity_ram,
+                    },
+                    date:req.body.date,
+                }
+                )
+                res.render("./products/productCreate")
+            console.log(nuevoProducto)
+        } catch (error) {
+            console.log(error)
+        }
         
-        res.render("./products/productCreate")
     },
     processCreate: async (req, res)=>{ 
         try {

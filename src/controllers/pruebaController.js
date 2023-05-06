@@ -1,19 +1,15 @@
-const category = require('../database/models/Category')
+const producto = require('../database/models/Products')
 
 
 const controlador ={
-    prueba:(req, res)=>{
-/*         try {
-            let nuevocategoria = await Customer.create(
-                {
-                    name: req.body.name,
-                }
-            )
+    prueba:async (req, res)=>{
+        try {
+            const resultado = await producto.aggregateClientesPedidos();
+            res.send(resultado);
         } catch (error) {
             console.log(error)
         }
-    } */
-    
+    }
 }
-}
+
 module.exports = controlador;
