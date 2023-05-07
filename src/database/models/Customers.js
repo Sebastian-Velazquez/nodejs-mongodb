@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const customerSchema = new Schema({
   firt_name: {
     type: String,
-    requierd: true
+    requierd: true,
   },
   last_name: {
     type: String,
@@ -21,15 +21,15 @@ const customerSchema = new Schema({
   perfil:{
     direccion: {
       type: String,
-      default: 'No definido'
+      default: ''
     },
     cp:{
       type: String,
-      default: 'No definido'
+      default: ''
     },
     image: {
       type: String,
-      default: 'avatar.png'
+      default: ''
     }
   }
 });
