@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const rolesSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    requierd: true,
+  },
+  nivel_id: {
+    type: String,
+    requierd: true,
+    default: "suport"// va un ref
+  }
 });
 
 //crear modelo

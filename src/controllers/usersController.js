@@ -7,6 +7,8 @@ const controlador ={
     },
     processRegister:async (req, res)=>{ 
         try {
+            let productos = await Customer.findOne({email: req.params.email});
+            console.log(productos)
             let nuevoUsers = await Customer.create(
                 {
                     firt_name: req.body.firt_name,

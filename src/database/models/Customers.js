@@ -8,11 +8,13 @@ const customerSchema = new Schema({
   },
   last_name: {
     type: String,
+    default:''
   },
   email: {
     type:String,
     unique: true,
     required: true,
+    unique: true//quw va a ser unico
   },
   password: {
     type: String,

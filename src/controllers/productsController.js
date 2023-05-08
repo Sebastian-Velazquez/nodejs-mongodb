@@ -19,7 +19,7 @@ const controlador ={
     },
     detail: async(req,res)=>{
         try {
-            let productoDetail = await Product.findOne({_id: req.params.id});
+            let productoDetail = await Product.findOne({_id: req.params.id}).populate('category');
             res.send(productoDetail)
             /* res.render("./products/productDetail",{
                 producto:productoDetail

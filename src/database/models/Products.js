@@ -6,24 +6,21 @@ const productSchema = new Schema(
   {
     name: {
       type:String,
-      //required: true,
+      required: true,
       //unique: true//quw va a ser unico
-      default: ''
     },
     category:{
       type: mongoose.Schema.Types.ObjectId,
-      //required: true,
+      required: true,
       ref: 'Category' // Referencia al modelo "Category"
     },
     marca:{
       type: String,
-      //required: true
-      default: ''
+      required: true
     },
     stock:{
         type: String,
-        //required: true
-        default: ''
+        required: true
     },
     description:{
       type: String,
@@ -31,11 +28,11 @@ const productSchema = new Schema(
     },
     offer:{//oferta
       type: String,
-      default: ''
+      default: 'false'
     },
     top_seller: {
       type: String,
-      default: ''
+      default: 'false'
     },
     image: {
       type:String,
