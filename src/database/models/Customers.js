@@ -12,9 +12,8 @@ const customerSchema = new Schema({
   },
   email: {
     type:String,
-    unique: true,
     required: true,
-    unique: true//quw va a ser unico
+    unique: true,//no se puede repetir el mail
   },
   password: {
     type: String,
@@ -33,7 +32,10 @@ const customerSchema = new Schema({
       type: String,
       default: ''
     }
-  }
+  },
+},
+{ 
+  versionKey: false // set versionKey to false to remove __v
 });
 
 //crear modelo

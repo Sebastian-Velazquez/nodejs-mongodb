@@ -45,7 +45,11 @@ const productSchema = new Schema(
       type: Date,
       default: Date.now
     },
-  });
+  },
+  { 
+    versionKey: false // set versionKey to false to remove __v
+  }
+  );
  
 //crear modelo
 const Product = mongoose.model('Product', productSchema);

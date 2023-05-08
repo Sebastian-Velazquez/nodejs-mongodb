@@ -1,25 +1,26 @@
-const Product = require('../database/models/Products');
-
-
-
 
 
 
 const controlador ={
     list: async (req,res)=>{
+        const Product = require('../database/models/Products');
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
-            let productos = await Product.find();
+            const productos = await Product.find().populate('category');
             res.send(productos)
             /* res.render("./products/productsList",{
-                productos:productos
-            }) */
+                productos:productos*/
+            
         } catch (e) {
             console.log(e)
         }
     },
     detail: async(req,res)=>{
+        const Product = require('../database/models/Products');
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
-            let productoDetail = await Product.findOne({_id: req.params.id}).populate('category');
+            let productoDetail = await Product.findOne({_id: req.params.id}).populate('category');//noombre del campo
+            console.log(productoDetail.category.name)
             res.send(productoDetail)
             /* res.render("./products/productDetail",{
                 producto:productoDetail

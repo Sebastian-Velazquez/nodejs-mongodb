@@ -7,22 +7,32 @@ const controlador ={
     },
     processRegister:async (req, res)=>{ 
         try {
-            let productos = await Customer.findOne({email: req.params.email});
-            console.log(productos)
-            let nuevoUsers = await Customer.create(
-                {
-                    firt_name: req.body.firt_name,
-                    last_name: req.body.last_name,
-                    email: req.body.email,
-                    password: req.body.password,
-                    perfil: {
-                        direccion: req.body.direccion,
-                        cp: req.body.cp
+            let User = await Customer.findOne({email: req.body.email});
+            if (User){
+                return res.render('./users/userRegister', {
+                    errors: {
+                        email: {msg:'Este email ya esta registrado'}
+                    }, 
+                    oldData: req.body 
+                    }) ;
+                /* console.log(User)
+                res.send('el email ya existe') */
+            }else{
+                await Customer.create(
+                    {
+                        firt_name: req.body.firt_name,
+                        last_name: "",
+                        email: req.body.email,
+                        password: req.body.password,
+                        perfil: {
+                            direccion: "",
+                            cp: "",
+                            image: 'avatar.png'
+                        }
                     }
-                }
-            )
-            console.log(nuevoUsers)
-            res.send('Usuario Creado')
+                )
+                return res.render('./users/userLogin')
+            }
         } catch (error) {
             console.log(error)
         }
