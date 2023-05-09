@@ -18,6 +18,10 @@ app.set('views', path.join(__dirname, '/views'));
 /***Cappturar informacion que viene del body ***/
 app.use(express.urlencoded({ extended: false })); // Para capturar el body
 app.use(express.json()); // Para capturar el body
+const categoryHeader = require('./middlewares/global/headerCategory');
+app.use(categoryHeader);
+const marcaHeader = require('./middlewares/global/headerMarca');
+app.use(marcaHeader)
 /*** session Login ***/
 /* app.use(session({ //npm i express-session. Para bloquear a alguno usuarios que no estan loguados // const session = require('express-session');
     secret: "Shh, It's a secret",
@@ -29,13 +33,10 @@ app.use(express.json()); // Para capturar el body
 const homeRouter = require('./routes/homeRouter.js')
 const productsRouter = require('./routes/productsRouter.js')
 const usersRouter = require('./routes/usersRouter.js')
-const pruebasRouter = require('./routes/pruebasRouter.js')
-const categoryHeader = require('./middlewares/global/headerCategory')
-app.use(categoryHeader)
+
 app.use("/", /* categoryHeader, */ homeRouter);
 app.use("/product", productsRouter);
 app.use("/user", usersRouter);
-app.use("/prueba", pruebasRouter);
 
 /***Morgan ***/
 const morgan = require('morgan');
@@ -43,17 +44,7 @@ app.use(morgan('dev'));//muestra infomacion adicional en la consela si se esta e
 
 
 
-/* const Category = require('./database/models/Category')
-Category.find()
-    .then(function(categorias) {
-      global.categorias = categorias;
-      console.log(categorias)
-      
-    })
-    .catch(function(error) {
-      console.error('Error al cargar las categorías', error);
-      
-    }); */
+
 
 /*** Levantar Servidr ***/
 const port = process.env.PORT || 3030;

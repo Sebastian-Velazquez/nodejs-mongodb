@@ -18,4 +18,10 @@ router.get("/list", productsController.list);
 
 router.get("/detail/:id", productsController.detail);
 
+router.post("/createcategory", productsController.ProcessCreateCategory);
+router.delete("/deletecategory/:id", productsController.deleteCategory);
+
+router.post("/createmarca", productsController.ProcessCreateMarca);
+router.delete("/deletemarca/:id", productsController.deleteMarca);
+
 module.exports = router;
