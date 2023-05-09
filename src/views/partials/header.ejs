@@ -1,5 +1,5 @@
 
-  <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top">
+  <nav class="navbar navbar-expand-md bg-white fixed-top">
     
     <div class="container-fluid">
       <div>
@@ -17,12 +17,25 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link" href="#">CATEGORIAS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">MARCAS</a>
-            </li>
+            <div class="dropdown">
+              <a class="btn dropdown-toggle me-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                CATEGORIAS
+              </a>
+            
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="http://localhost:3030/product/list">TODO</a></li>
+              </ul>
+            </div>
+            
+            <div class="dropdown">
+              <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                MARCAS
+              </a>
+            
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+              </ul>
+            </div>
             <li class="search__container nav-item">
             <form class="d-flex mt-3" role="search">
               <input class="form-control me-2" type="search" placeholder="Que buscas?" aria-label="Search">
@@ -42,6 +55,10 @@
         </ul>
     </div>
   </nav>
+  <div id="add-product__container">
+    <a href="http://localhost:3030/product/create"><i class="fa-solid fa-plus"></i>  Agregar producto</a>
+  </div>
+ 
   
  
   

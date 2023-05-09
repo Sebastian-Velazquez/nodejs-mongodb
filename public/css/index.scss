@@ -15,11 +15,13 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px
 );
+
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 @import './sass/header';
 @import './sass/footer';
 @import './sass/login';
 @import './sass/register';
+@import './sass/create';
 body{
     font-family: 'Franklin Gothic Medium'!important;
 }
