@@ -11,6 +11,9 @@ const rolesSchema = new Schema({
     requierd: true,
     default: "suport"// va un ref
   }
+},
+{ 
+  versionKey: false // set versionKey to false to remove __v
 });
 
 //crear modelo

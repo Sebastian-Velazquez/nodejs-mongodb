@@ -35,29 +35,29 @@ const controlador ={
     create:async (req, res)=>{ 
         try {
             res.render("./products/productCreate")
-            console.log(nuevoProducto)
         } catch (error) {
             console.log(error)
         }
         
     },
     processCreate: async (req, res)=>{ 
+        const Product = require('../database/models/Products');
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
-            let nuevoProducto = await Product.create({
-                name: req.body.name,
-                category: req.body.category,
-                marca: req.body.marca,
-                stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
-                description:req.body.description,
-                offer: req.body.offer,
-                top_seller: req.body.top_seller,
-                image:  'req.file.filename',
-                caracteristicas:{
-                capacity_ram: req.body.capacity_ram,
-                },
-                date:req.body.date,
-            })
-            console.log(nuevoProducto)
+            if( req.body.name && req.body.category && req.body.marca && req.body.price && req.body.stock){//para que no se crashee
+                await Product.create({
+                    name: req.body.name,
+                    category: req.body.category,
+                    marca: req.body.marca,
+                    price: req.body.price,
+                    stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
+                    description:req.body.description,
+                    offer: req.body.offer,
+                    top_seller: req.body.top_seller,
+                    image:  'req.file.filename',
+                    date:req.body.date,
+                })
+            }
             res.render("./products/productCreate",{
                 oldData: req.body
             })
@@ -75,14 +75,12 @@ const controlador ={
                     name: req.body.name,
                     category: req.body.category,
                     marca: req.body.marca,
+                    category: req.body.category,
                     stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
                     description:req.body.description,
                     offer: req.body.offer,
                     top_seller: req.body.top_seller,
                     image:  'req.file.filename',
-                    caracteristicas:{
-                    capacity_ram: req.body.capacity_ram,
-                    },
                     date:req.body.date,
                 },
                 { useFindAndModify: false});//viene del documento oficial de mogoose

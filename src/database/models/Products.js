@@ -18,6 +18,10 @@ const productSchema = new Schema(
       type: String,
       required: true
     },
+    price:{
+      type: Number,
+      required: true
+    },
     stock:{
         type: String,
         required: true
@@ -37,9 +41,6 @@ const productSchema = new Schema(
     image: {
       type:String,
       default: "image.png"
-    },
-    caracteristicas:{
-      capacity_ram:{type:String,default:""},
     },
     date:{//para saber cuando fue creado
       type: Date,

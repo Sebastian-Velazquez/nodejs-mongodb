@@ -9,6 +9,9 @@ const categorySchema = new Schema({
     type: String,
     default: ""
   }
+},
+{ 
+  versionKey: false // set versionKey to false to remove __v
 });
 
 //crear modelo

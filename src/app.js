@@ -30,7 +30,9 @@ const homeRouter = require('./routes/homeRouter.js')
 const productsRouter = require('./routes/productsRouter.js')
 const usersRouter = require('./routes/usersRouter.js')
 const pruebasRouter = require('./routes/pruebasRouter.js')
-app.use("/", homeRouter);
+const categoryHeader = require('./middlewares/global/headerCategory')
+app.use(categoryHeader)
+app.use("/", /* categoryHeader, */ homeRouter);
 app.use("/product", productsRouter);
 app.use("/user", usersRouter);
 app.use("/prueba", pruebasRouter);
@@ -38,6 +40,20 @@ app.use("/prueba", pruebasRouter);
 /***Morgan ***/
 const morgan = require('morgan');
 app.use(morgan('dev'));//muestra infomacion adicional en la consela si se esta enviando informacion 
+
+
+
+/* const Category = require('./database/models/Category')
+Category.find()
+    .then(function(categorias) {
+      global.categorias = categorias;
+      console.log(categorias)
+      
+    })
+    .catch(function(error) {
+      console.error('Error al cargar las categorías', error);
+      
+    }); */
 
 /*** Levantar Servidr ***/
 const port = process.env.PORT || 3030;
