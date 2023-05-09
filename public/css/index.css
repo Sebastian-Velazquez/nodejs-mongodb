@@ -11650,6 +11650,7 @@ textarea.form-control-lg {
 }
 .navbar {
   height: 70px !important;
+  box-shadow: 0px 0px 7px #130415;
 }
 
 .navbar-toggler {

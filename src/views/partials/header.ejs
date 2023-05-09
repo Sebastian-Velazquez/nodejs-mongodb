@@ -21,10 +21,13 @@
               <a class="btn dropdown-toggle me-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 CATEGORIAS
               </a>
-            
+            <% if (locals.categorias){ %>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="http://localhost:3030/product/list">TODO</a></li>
+                <% locals.categorias.forEach(cat=>{ %>
+                  <li><a class="dropdown-item" href="http://localhost:3030/product/list"><%= cat.name %></a></li>
+                <% }) %>
               </ul>
+              <%}%>
             </div>
             
             <div class="dropdown">
