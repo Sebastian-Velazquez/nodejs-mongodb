@@ -7,9 +7,9 @@ const controlador ={
         const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
             const productos = await Product.find().populate('category');
-            res.send(productos)
-            /* res.render("./products/productsList",{
-                productos:productos*/
+           /*  res.send(productos) */
+            res.render("./products/productsList",{
+                productos:productos})
             
         } catch (e) {
             console.log(e)
