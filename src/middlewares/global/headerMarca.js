@@ -1,4 +1,4 @@
-const Category = require('../../database/models/marca')
+const Category = require('../../database/models/Marca')
 
 function headerMarca(req, res, next) {
     Category.find()
