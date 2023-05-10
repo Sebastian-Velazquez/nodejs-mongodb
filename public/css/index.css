@@ -11743,6 +11743,16 @@ textarea.form-control-lg {
   .navbar-nav form {
     margin: 0 !important;
   }
+  .navbar-nav .dropd-marcas {
+    width: 300px;
+  }
+  .navbar-nav .dropd-marcas .dropd-marcas__container {
+    height: 80vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
 }
 .section__contacto a {
   text-decoration: none;

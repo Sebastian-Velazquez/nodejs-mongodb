@@ -34,10 +34,15 @@
               <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 MARCAS
               </a>
-            
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-              </ul>
+              <% if (locals.marcas){ %>
+                <ul class="dropdown-menu dropd-marcas">
+                  <div class="dropd-marcas__container">
+                  <% locals.marcas.forEach(marc=>{ %>
+                    <li><a class="dropdown-item" href="http://localhost:3030/product/list"><%= marc.name %></a></li>
+                  <% }) %>
+                  </div>
+                </ul>
+                <%}%>
             </div>
             <li class="search__container nav-item">
             <form class="d-flex mt-3" role="search">

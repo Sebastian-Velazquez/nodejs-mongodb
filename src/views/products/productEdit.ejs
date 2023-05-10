@@ -11,11 +11,11 @@
     <%- include("../partials/header") %>
     <main>
     <section class="section__create">
-            <h3 class="my-5">Editar producto</h3>
+            <h3 class="my-5">Editar producto:</h3>
         <form class="create__container d-flex flex-column justify-content-center align-items-center" enctype="multipart/form-data" action="/product/create" method="POST">
             <div class="form-floating mb-3">
                 <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Nombre">
-                <label for="floatingInput">Nombre</label>
+                <label for="floatingInput"><%= product.name%></label>
             </div>
             <article>
                 <select name="category" class="form-select" aria-label="categoria">
@@ -34,11 +34,11 @@
             <article>
                 <div class="form-floating w-50">
                     <input type="number" name="stock" class="form-control" id="floatingInput" placeholder="stock">
-                    <label for="floatingInput">Stock</label>
+                    <label for="floatingInput"><%= product.stock%></label>
                 </div>
                 <div class="form-floating w-50">
                     <input type="number" name="price" class="form-control" id="floatingInput" placeholder="precio">
-                    <label for="floatingInput">Precio en $ ARS</label>
+                    <label for="floatingInput">$ <%= product.price%></label>
                 </div>
             </article>
             <article>
@@ -49,7 +49,7 @@
                 </select>
                 <div class="form-floating w-50">
                     <input type="number" name="offer" class="form-control" id="floatingInput" placeholder="oferta">
-                    <label for="floatingInput">Oferta en %</label>
+                    <label for="floatingInput"><%= product.offer%> %</label>
                 </div>            
             </article>
             <article>
@@ -58,7 +58,7 @@
             </article>
             <article class="form-floating">
                 <textarea class="form-control" name="description" placeholder="descripcion" id="floatingTextarea"></textarea>
-                <label for="floatingTextarea">Descripcion</label>
+                <label for="floatingTextarea"><%= product.description%></label>
             </article>
             <article class="w-75 d-flex justify-content-center">
                 <button class="btn btn-outline-success text-black w-100" type="submit">Continuar</button>

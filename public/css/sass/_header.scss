@@ -85,6 +85,16 @@
         form{
             margin: 0!important;
         }
+        .dropd-marcas{
+            width: 300px;
+            .dropd-marcas__container{
+                height: 80vh;
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+        }
         
     }
 

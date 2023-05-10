@@ -58,8 +58,22 @@ const controlador ={
             })
         }
     },
-    edit: (req, res)=>{ 
-        res.render("./products/productEdit")
+    edit: async(req,res)=>{
+        const Product = require('../database/models/Products');
+        /* const category = require('../database/models/Category');//llamar para hacer la relacion */ 
+        try {
+            let productEdit = await Product.findOne({_id: req.params.id})/* .populate('category') */;//noombre del campo
+            /* console.log(productEdit.category.name)
+            res.send(productEdit) */
+            res.render("./products/productEdit",{
+                product:productEdit
+            })
+        } catch (error) {
+                res.json({
+                    mesaje:'error al encontrar el id :',
+                    error: error
+                })
+            }
     },
     processEdit: async(req, res)=>{ 
         try {

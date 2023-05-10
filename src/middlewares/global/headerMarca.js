@@ -4,7 +4,7 @@ function headerMarca(req, res, next) {
     Category.find()
     .then(function(marcas) {
       res.locals.marcas = marcas;
-      console.log(res.locals.marcas)
+      /* console.log(res.locals.marcas) */
       next();
     })
     .catch(function(error) {
