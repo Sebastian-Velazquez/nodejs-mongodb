@@ -86,7 +86,7 @@ const controlador ={
                     description:req.body.description,
                     offer: req.body.offer,
                     top_seller: req.body.top_seller,
-                    image: 'imagen.png' //'req.file.filename'
+                    image: req.file ? req.file.filename : 'default.png'
                 })
             res.render('./products/productsList')
         } catch (error) {
@@ -123,7 +123,7 @@ const controlador ={
                     description:req.body.description,
                     offer: req.body.offer,
                     top_seller: req.body.top_seller,
-                    image:  'req.file.filename'
+                    image: req.file ? req.file.filename : 'default-placeholder.png'
                 },
                 { useFindAndModify: false});//viene del documento oficial de mogoose
             res.render("./products/productEdit",{
