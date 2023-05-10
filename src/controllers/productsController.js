@@ -15,6 +15,33 @@ const controlador ={
             res.send('error')
         }
     },
+    category: async (req,res)=>{
+        const Product = require('../database/models/Products');
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
+        try {
+            const productos = await Product.find().populate('category');
+
+            res.render("./products/category",{
+                productos:productos})
+            
+        } catch (error) {
+            res.send('error')
+        }
+    },
+    marc:async (req,res)=>{
+        const Product = require('../database/models/Products');
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
+        try {
+            const productos = await Product.find().populate('category');
+
+            res.render("./products/marca",{
+                productos:productos})
+            
+        } catch (error) {
+            res.send('error')
+        }
+    }
+    ,
     detail: async(req,res)=>{
         const Product = require('../database/models/Products');
         const category = require('../database/models/Category');//llamar para hacer la relacion 

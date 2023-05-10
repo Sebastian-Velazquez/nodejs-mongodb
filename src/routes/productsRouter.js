@@ -15,6 +15,8 @@ router.put("/edit/:id", productsController.processEdit);
 router.delete("/delete/:id", productsController.delete);
 
 router.get("/list", productsController.list);
+router.get("/category/:id", productsController.category)
+router.get("/marca/:id", productsController.marc)
 
 router.get("/detail/:id", productsController.detail);
 
