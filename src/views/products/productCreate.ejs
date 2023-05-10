@@ -12,7 +12,7 @@
     <main>
     <section class="section__create">
             <h3 class="my-5">Agregar producto</h3>
-        <form class="create__container d-flex flex-column justify-content-center align-items-center" action="/product/create" method="POST">
+        <form class="create__container d-flex flex-column justify-content-center align-items-center" enctype="multipart/form-data" action="/product/create" method="POST">
             <div class="form-floating mb-3">
                 <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Nombre">
                 <label for="floatingInput">Nombre</label>
