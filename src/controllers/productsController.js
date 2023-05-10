@@ -10,9 +10,8 @@ const controlador ={
 
             res.render("./products/productsList",{
                 productos:productos})
-            
         } catch (error) {
-            res.send('error')
+            req.render('./index')
         }
     },
     category: async (req,res)=>{
@@ -45,13 +44,14 @@ const controlador ={
     detail: async(req,res)=>{
         const Product = require('../database/models/Products');
         const category = require('../database/models/Category');//llamar para hacer la relacion 
+        const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
-            let productoDetail = await Product.findOne({_id: req.params.id}).populate('category');//noombre del campo
-            console.log(productoDetail.category.name)
-            res.send(productoDetail)
-            /* res.render("./products/productDetail",{
+            let productoDetail = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
+            //console.log(productoDetail)
+            //res.send(productoDetail)
+            res.render("./products/productDetail",{
                 producto:productoDetail
-            }) */
+            })
         } catch (error) {
             res.send('error')
             }
@@ -62,7 +62,6 @@ const controlador ={
         } catch (error) {
             res.send('error')
         }
-        
     },
     processCreate: async (req, res)=>{ 
         const Product = require('../database/models/Products');
@@ -76,9 +75,9 @@ const controlador ={
                     description:req.body.description,
                     offer: req.body.offer,
                     top_seller: req.body.top_seller,
-                    image:  'req.file.filename'
+                    image: 'imagen.png' //'req.file.filename'
                 })
-            
+            res.render('./products/productsList')
         } catch (error) {
             res.render("./products/productCreate",{
                 oldData: req.body
@@ -87,19 +86,18 @@ const controlador ={
     },
     edit: async(req,res)=>{
         const Product = require('../database/models/Products');
-        /* const category = require('../database/models/Category');//llamar para hacer la relacion */ 
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
+        const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
-            let productEdit = await Product.findOne({_id: req.params.id})/* .populate('category') */;//noombre del campo
-            /* console.log(productEdit.category.name)
-            res.send(productEdit) */
+            let productEdit = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo de la tabla Product
+            res.send(productEdit)
             res.render("./products/productEdit",{
                 product:productEdit
             })
         } catch (error) {
-                res.json({
-                    mesaje:'error al encontrar el id :',
-                    error: error
-                })
+            res.render("./products/productEdit",{
+                product:productEdit
+            })
             }
     },
     processEdit: async(req, res)=>{ 
@@ -122,7 +120,7 @@ const controlador ={
                 oldData: req.body
             })
         } catch (error) {
-            console.log(error)
+            res.sen('error')
         }
         //res.send("Producto editado")
     },
@@ -130,12 +128,11 @@ const controlador ={
         const Product = require('../database/models/Products');
         try {
             await Product.findByIdAndDelete({_id: req.params.id})
-                res.send('eliminado')
+            res.render('./products/list')
 
         } catch (error) {
-            console.log(error)
+            res.send('error')
         }
-        res.send("El Producto fue eliminado")
     },
     /*** Controladores para Adminisración */
     ProcessCreateCategory: async (req, res)=>{
@@ -162,7 +159,7 @@ const controlador ={
         }
     },
     ProcessCreateMarca: async (req, res)=>{
-        const Product = require('../database/models/marca');
+        const Product = require('../database/models/Marca');
         try {
             await Product.create({
                 name: req.body.name,
@@ -176,10 +173,10 @@ const controlador ={
         }
     },
     deleteMarca:async(req,res)=>{
-        const Category = require('../database/models/marca');
+        const Category = require('../database/models/Marca');
         try {
             await Category.findByIdAndDelete({_id: req.params.id})
-            res.send('eliminado')
+            res.render('./products/list')
         } catch (error) {
             res.send('No existe el producto')
         }

@@ -15,8 +15,9 @@ const productSchema = new Schema(
       ref: 'Category' // Referencia al modelo "Category"
     },
     marca:{
-      type: String,
-      required: true
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Marca' // Referencia al modelo "Marca"
     },
     price:{
       type: Number,
@@ -31,12 +32,12 @@ const productSchema = new Schema(
       default: ''
     },
     offer:{//oferta
-      type: String,
-      default: 'false'
+      type: Number,
+      default: 0
     },
     top_seller: {
-      type: String,
-      default: 'false'
+      type: Number,
+      default: 0
     },
     image: {
       type:String,
@@ -51,7 +52,7 @@ const productSchema = new Schema(
     versionKey: false // set versionKey to false to remove __v
   }
   );
- 
+
 //crear modelo
 const Product = mongoose.model('Product', productSchema);
 //const Category = mongoose.model('Category', categorySchema);
