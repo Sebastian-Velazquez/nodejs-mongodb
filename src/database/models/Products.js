@@ -24,7 +24,7 @@ const productSchema = new Schema(
       required: true
     },
     stock:{
-        type: String,
+        type: Number,
         required: true
     },
     description:{

@@ -1,3 +1,5 @@
+const Category = require('../database/models/Category');
+const Marca = require('../database/models/Marca');
 
 
 
@@ -18,8 +20,8 @@ const controlador ={
         const Product = require('../database/models/Products');
         const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
-            const productos = await Product.find().populate('category');
-
+            const productos = await Product.find({category: req.params.id}).populate('category');
+            console.log(productos);
             res.render("./products/category",{
                 productos:productos})
             
@@ -29,9 +31,9 @@ const controlador ={
     },
     marc:async (req,res)=>{
         const Product = require('../database/models/Products');
-        const category = require('../database/models/Category');//llamar para hacer la relacion 
+        /* const category = require('../database/models/Category'); */ //llamar para hacer la relacion 
         try {
-            const productos = await Product.find().populate('category');
+            const productos = await Product.find({marca: req.params.id}).populate('marca');
 
             res.render("./products/marca",{
                 productos:productos})
@@ -57,14 +59,23 @@ const controlador ={
             }
     },
     create:async (req, res)=>{ 
+        const category = require('../database/models/Category');
+        const marca = require('../database/models/Marca');
         try {
-            res.render("./products/productCreate")
+            let categorias = await Category.find();//noombre del campo
+            let marcas = await Marca.find();
+            //console.log(productoDetail)
+            //res.send(productoDetail)
+            res.render("./products/productCreate",{
+                categorias, marcas
+            })
         } catch (error) {
             res.send('error')
-        }
+            }
     },
     processCreate: async (req, res)=>{ 
         const Product = require('../database/models/Products');
+        console.log(req.body);
         try {
                 await Product.create({
                     name: req.body.name,
