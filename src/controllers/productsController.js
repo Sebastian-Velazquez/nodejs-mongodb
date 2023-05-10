@@ -43,8 +43,8 @@ const controlador ={
     ,
     detail: async(req,res)=>{
         const Product = require('../database/models/Products');
-        const category = require('../database/models/Category');//llamar para hacer la relacion 
-        const marca = require('../database/models/Marca');//llamar para hacer la relacion 
+        //const category = require('../database/models/Category');//llamar para hacer la relacion 
+        //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
             let productoDetail = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
             //console.log(productoDetail)
@@ -86,11 +86,11 @@ const controlador ={
     },
     edit: async(req,res)=>{
         const Product = require('../database/models/Products');
-        const category = require('../database/models/Category');//llamar para hacer la relacion 
-        const marca = require('../database/models/Marca');//llamar para hacer la relacion 
+        //const category = require('../database/models/Category');//llamar para hacer la relacion 
+        //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
             let productEdit = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo de la tabla Product
-            res.send(productEdit)
+            //res.send(productEdit)
             res.render("./products/productEdit",{
                 product:productEdit
             })
