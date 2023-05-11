@@ -1,5 +1,5 @@
 const Customer = require('../database/models/Customers');
-
+const bcryptjs = require("bcryptjs");
 
 const controlador ={
     register: (req, res)=>{
@@ -23,7 +23,7 @@ const controlador ={
                         firt_name: req.body.firt_name,
                         last_name: "",
                         email: req.body.email,
-                        password: req.body.password,
+                        password: bcryptjs.hashSync(req.body.password, 10),
                         perfil: {
                             direccion: "",
                             cp: "",
@@ -39,11 +39,45 @@ const controlador ={
 
         //res.send("Te Registraste")
     },
-    login: (req, res)=>{
+    login:(req, res)=>{
         res.render("./users/userLogin")
     },
-    processLogin:(req,res)=>{
-        res.send("Te logueaste")
+    processLogin:(req,res)=>{   
+            Customer.findOne({
+                email: req.body.email
+            }).then(userToLogin=>{
+                if(userToLogin){
+                    let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
+                    if(isOkThePassword){
+                        userToLogin.password = null; // Borrra el password para que no quede guardado.
+                        //Guardar el user logeado
+                        req.session.userLogged =  userToLogin
+
+                        //mantener session
+                        if(req.body.remember) {
+                            res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 2})
+                        }
+    
+                        return res.redirect('/users/userProfile')
+                    }else{
+                    //si el password no es valido
+                    return res.render('./users/userLogin', {
+                        errors: {
+                            email: {msg:'Las credenciales no son validas'}
+                        }
+                        })
+                    }
+                }else{
+                    return res.render('./users/userLogin', {
+                        errors: {
+                            email: {msg:'Las credenciales no son validas'}
+                        }
+                    })
+                }
+            }).catch(function(error){
+                res.send(error);
+            })
+
     },
     profile:(req,res)=>{
         res.render("./users/userProfile")
