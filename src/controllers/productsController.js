@@ -110,7 +110,7 @@ const controlador ={
         const Product = require('../database/models/Products');
         
         try {
-            let producto= findOne({_id: req.params.id});
+            let producto= Product.findOne({_id: req.params.id});
             await Product.findByIdAndUpdate( {_id: req.params.id}, 
             {
                     name: req.body.name,
@@ -126,7 +126,8 @@ const controlador ={
                 { useFindAndModify: false});//viene del documento oficial de mogoose
             res.render("./")
         } catch (error) {
-            res.send('error')
+            console.log(error)
+            res.send(error)
         }
         //res.send("Producto editado")
     },
