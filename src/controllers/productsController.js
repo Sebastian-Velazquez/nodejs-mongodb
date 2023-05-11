@@ -9,11 +9,10 @@ const controlador ={
         //const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
             const productos = await Product.find()//.populate('category');
-
             res.render("./products/productsList",{
                 productos:productos})
         } catch (error) {
-            req.render('./index')
+            res.send('error')
         }
     },
     category: async (req,res)=>{
@@ -48,11 +47,11 @@ const controlador ={
         //const category = require('../database/models/Category');//llamar para hacer la relacion 
         //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
-            let productoDetail = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
+            let product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
             //console.log(productoDetail)
             //res.send(productoDetail)
             res.render("./products/productDetail",{
-                producto:productoDetail
+                product
             })
         } catch (error) {
             res.send('error')
@@ -61,9 +60,9 @@ const controlador ={
     create:async (req, res)=>{ 
         const category = require('../database/models/Category');
         const marca = require('../database/models/Marca');
+        let categorias = await Category.find();//noombre del campo
+        let marcas = await Marca.find();
         try {
-            let categorias = await Category.find();//noombre del campo
-            let marcas = await Marca.find();
             //console.log(productoDetail)
             //res.send(productoDetail)
             res.render("./products/productCreate",{
@@ -71,7 +70,7 @@ const controlador ={
             })
         } catch (error) {
             res.send('error')
-            }
+        }
     },
     processCreate: async (req, res)=>{ 
         const Product = require('../database/models/Products');
@@ -90,48 +89,44 @@ const controlador ={
                 })
             res.render('./products/productsList')
         } catch (error) {
-            res.render("./products/productCreate",{
-                oldData: req.body
-            })
+            res.send('error')
         }
     },
     edit: async(req,res)=>{
         const Product = require('../database/models/Products');
         //const category = require('../database/models/Category');//llamar para hacer la relacion 
         //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
+        let product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo de la tabla Product
         try {
-            let productEdit = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo de la tabla Product
-            //res.send(productEdit)
+            //res.send(product)
             res.render("./products/productEdit",{
-                product:productEdit
+                product
             })
         } catch (error) {
-            res.render("./products/productEdit",{
-                product:productEdit
-            })
+            res.send("error")
             }
     },
     processEdit: async(req, res)=>{ 
+        const Product = require('../database/models/Products');
+        
         try {
-            let productoEditado=await Product.findByIdAndUpdate( req.params.id, 
-                {
+            let producto= findOne({_id: req.params.id});
+            await Product.findByIdAndUpdate( {_id: req.params.id}, 
+            {
                     name: req.body.name,
                     category: req.body.category,
                     marca: req.body.marca,
-                    category: req.body.category,
+                    price: req.body.price,
                     stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
                     description:req.body.description,
                     offer: req.body.offer,
                     top_seller: req.body.top_seller,
-                    image: req.file ? req.file.filename : 'default-placeholder.png'
+                    image: req.file ? req.file.filename : producto.image
                 },
                 { useFindAndModify: false});//viene del documento oficial de mogoose
-            res.render("./products/productEdit",{
-                producto:productoEditado,
-                oldData: req.body
-            })
+            res.render("./")
         } catch (error) {
-            res.sen('error')
+            res.send('error')
         }
         //res.send("Producto editado")
     },
@@ -153,9 +148,7 @@ const controlador ={
                 name: req.body.name,
                 description: req.body.description,
             })
-            res.render("./",{
-                oldData: req.body
-            })
+            res.render("./products/list")
         } catch (error) {
             res.send('error')
         }
@@ -166,7 +159,7 @@ const controlador ={
             await Category.findByIdAndDelete({_id: req.params.id})
             res.send('eliminado')
         } catch (error) {
-            res.send('No existe el producto')
+            res.send('error')
         }
     },
     ProcessCreateMarca: async (req, res)=>{
@@ -189,7 +182,7 @@ const controlador ={
             await Category.findByIdAndDelete({_id: req.params.id})
             res.render('./products/list')
         } catch (error) {
-            res.send('No existe el producto')
+            res.send('error')
         }
     }
 }
