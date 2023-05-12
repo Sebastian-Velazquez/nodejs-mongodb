@@ -43,7 +43,7 @@ const controlador ={
         res.render("./users/userLogin")
     },
     processLogin:(req,res)=>{   
-            Customer.findOne({
+                Customer.findOne({
                 email: req.body.email
             }).then(userToLogin=>{
                 if(userToLogin){
@@ -58,7 +58,7 @@ const controlador ={
                             res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 2})
                         }
     
-                        return res.redirect('/users/userProfile')
+                        return res.redirect('/user/profile')
                     }else{
                     //si el password no es valido
                     return res.render('./users/userLogin', {
@@ -75,7 +75,7 @@ const controlador ={
                     })
                 }
             }).catch(function(error){
-                res.send(error);
+                res.send("error");
             })
 
     },

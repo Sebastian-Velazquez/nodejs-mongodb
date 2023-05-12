@@ -5,13 +5,13 @@ let db = require("../../database/models/Customers");
 function userLoggedMiddleware(req, res, next) {
     res.locals.isLogged = false;//res.locals en es variable local.. se puede compartir en todas las vistas
 
-//console.log(req.cookies.userEmail)
     if (req.cookies.userEmail){
-        db.Usuarios.findOne({ //dindOne: busca y hay un dato que sea igual al madado por el body
-            where:{
-                email: req.cookies.userEmail //
-            }
-        }).then(dato =>{
+        console.log(req.cookies.userEmail)
+        db.findOne(
+            {
+                email: req.cookies.userEmail
+            })
+            .then(dato =>{
             if (dato){
                 //console.log(dato.email)
                 req.session.userLogged = dato;

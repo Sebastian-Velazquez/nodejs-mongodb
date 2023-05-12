@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
+const cookie = require('cookie-parser');
 
 /*** Conexion a MongoDB ***/
 require('dotenv').config()
@@ -23,11 +25,14 @@ app.use(categoryHeader);
 const marcaHeader = require('./middlewares/global/headerMarca');
 app.use(marcaHeader)
 /*** session Login ***/
-/* app.use(session({ //npm i express-session. Para bloquear a alguno usuarios que no estan loguados // const session = require('express-session');
+const userLoggedMiddleware = require("./middlewares/global/userLoggedMiddleware")
+app.use(session({ //npm i express-session. Para bloquear a alguno usuarios que no estan loguados // const session = require('express-session');
     secret: "Shh, It's a secret",
     resave: false,
     saveUninitialized: false,
-})); */
+}));
+app.use(cookie());
+app.use(userLoggedMiddleware);
 
 /*** Routers ***/
 const homeRouter = require('./routes/homeRouter.js')
