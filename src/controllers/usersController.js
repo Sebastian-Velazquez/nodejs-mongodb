@@ -31,7 +31,7 @@ const controlador ={
                         }
                     }
                 )
-                return res.render('./users/userLogin')
+                return res.redirect('/user/login')
             }
         } catch (error) {
             console.log(error)

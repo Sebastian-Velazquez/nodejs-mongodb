@@ -94,13 +94,15 @@ const controlador ={
     },
     edit: async(req,res)=>{
         const Product = require('../database/models/Products');
-        //const category = require('../database/models/Category');//llamar para hacer la relacion 
-        //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
+        const category = require('../database/models/Category');//llamar para hacer la relacion 
+        const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         let product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo de la tabla Product
+        let categorias = await Category.find();//noombre del campo
+        let marcas = await Marca.find();
         try {
             //res.send(product)
             res.render("./products/productEdit",{
-                product
+                product,categorias, marcas
             })
         } catch (error) {
             res.send("error")
@@ -124,7 +126,7 @@ const controlador ={
                     image: req.file ? req.file.filename : producto.image
                 },
                 { useFindAndModify: false});//viene del documento oficial de mogoose
-            res.render("./")
+            res.redirect("/product/list")
         } catch (error) {
             console.log(error)
             res.send(error)
