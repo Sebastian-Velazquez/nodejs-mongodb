@@ -10,7 +10,12 @@
 <body>
     <%- include("../partials/header") %>
     <main>
-        
+            <nav class="main__breadcrumb-container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="http://localhost:3030/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">TODO</li>
+                </ol>
+            </nav>
             <div class="main__list-container d-flex flex-wrap">
                 <% productos.forEach(producto=>{ %> 
                 <div class="card list__card-container m-2" >

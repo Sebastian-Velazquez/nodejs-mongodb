@@ -7,7 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Vista de detalle de producto</h1>
+    <nav class="main__breadcrumb-container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="http://localhost:3030/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">TODO</li>
+        </ol>
+    </nav>
+    <h1><%= product.name %></h1>
+
     <a href="/product/edit/1">Editar Producto</a>
     
     <form action="/product/delete/1?_method=DELETE" method="POST">

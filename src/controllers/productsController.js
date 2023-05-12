@@ -32,7 +32,7 @@ const controlador ={
         const Product = require('../database/models/Products');
         /* const category = require('../database/models/Category'); */ //llamar para hacer la relacion 
         try {
-            const productos = await Product.find({marca: req.params.id}).populate('marca');
+            const productos = await Product.find({marca: req.params.id}).populate(['category','marca']);
 
             res.render("./products/marca",{
                 productos:productos})

@@ -12,20 +12,32 @@
     <%- include("../partials/header") %>
 <%if(productos.length>0){ %>
     <main class="mt-5">
-    <h2 class="" style="margin-top: 110px;"><%=productos[0].category.name%></h2>
+        <nav class="main__breadcrumb-container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="http://localhost:3030/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><%=productos[0].category.name%></li>
+            </ol>
+        </nav>
+    <h2 class=" ms-4" style="margin-top: 90px;"><%=productos[0].category.name%></h2>
     
-    <% productos.forEach(producto=>{ %> 
-    <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
-        <div class="card m-2" style="width: 18rem;">
-          <img src="./img/product/<%=producto.image%>" class="card-img-top" alt="...">
+    
+    <div class="mt-2 main__list-container d-flex flex-wrap">
+        <% productos.forEach(producto=>{ %> 
+        <div class="card list__card-container m-2" >
+          <img src="/img/product/<%=producto.image%>" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%=producto.name%></h5>
-            <p class="card-text"><%=producto.price%></p>
-            <p class="card-text"><%=producto.offer%></p>
+                <% if (producto.offer > 0) {%> 
+                    <div class="card-text text-light-emphasis d-flex" ><p class="me-1" style="text-decoration: line-through;"><%=producto.price%> </p> <span class="text-success">  <%=producto.offer%> %</span></div>
+                    <p class="card-text"><%= producto.price - (producto.price  * producto.offer/100) %></p>
+                <%}else{%>  
+                    <p class="card-text"><%=producto.price%></p>
+                <%}%>
             <a href="http://localhost:3030/product/detail/<%=producto.id%>" class="btn btn-primary text-info">ver</a>
-          </div>
+            </div>
+        </div>
+        <%})%>
     </div>
-    <%})%>
 </main>
     <%}else{ %>
         <h2 style="margin-top: 110px;">Ningun producto en la categoria asignada</h2>
