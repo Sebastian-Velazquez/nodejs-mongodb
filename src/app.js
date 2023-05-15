@@ -21,9 +21,9 @@ app.set('views', path.join(__dirname, '/views'));
 app.use(express.urlencoded({ extended: false })); // Para capturar el body
 app.use(express.json()); // Para capturar el body
 
+const marcaHeader = require('./middlewares/global/headerMarca');
 const categoryHeader = require('./middlewares/global/headerCategory');
 app.use(categoryHeader);
-const marcaHeader = require('./middlewares/global/headerMarca');
 app.use(marcaHeader)
 /*** session Login ***/
 const userLoggedMiddleware = require("./middlewares/global/userLoggedMiddleware")
