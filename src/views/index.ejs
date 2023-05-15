@@ -75,7 +75,7 @@
              <%}else{%>  
                  <p class="card-text"><%=prod.price%></p>
              <%}%>
-               <a href="http://localhost:3030/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
+               <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
              </div>
            </div>
            <% }) %>
@@ -100,7 +100,7 @@
             <%}else{%>  
                 <p class="card-text"><%=prod.price%></p>
             <%}%>
-              <a href="http://localhost:3030/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
+              <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
             </div>
           </div>
           <% }) %>
@@ -113,7 +113,7 @@
         <% if (locals.categorias){ %>
           <ul>
             <% locals.categorias.forEach(cat=>{ %>
-              <li><a class="dropdown-item" href="http://localhost:3030/product/category/<%=cat.id%>"><%= cat.name %></a></li>
+              <li><a class="dropdown-item" href="/product/category/<%=cat.id%>"><%= cat.name %></a></li>
             <% }) %>
           </ul>
           <%}%>
@@ -137,7 +137,7 @@
              <%}else{%>  
                  <p class="card-text"><%=prod.price%></p>
              <%}%>
-               <a href="http://localhost:3030/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
+               <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
              </div>
            </div>
            <% }) %>

@@ -13,8 +13,8 @@
     <main class="mt-5">
         <nav class="main__breadcrumb-container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="http://localhost:3030/">Home</a></li>
-            <li class="breadcrumb-item"><a href="http://localhost:3030/product/category/<%=productos[0].category.id%>"><%=productos[0].category.name%></a></li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/product/category/<%=productos[0].category.id%>"><%=productos[0].category.name%></a></li>
             <li class="breadcrumb-item active" aria-current="page"><%=productos[0].marca.name%></li>
             </ol>
         </nav>
@@ -31,7 +31,7 @@
                     <%}else{%>  
                         <p class="card-text"><%=producto.price%></p>
                     <%}%>
-                <a href="http://localhost:3030/product/detail/<%=producto.id%>" class="btn btn-primary text-info">ver</a>
+                <a href="/product/detail/<%=producto.id%>" class="btn btn-primary text-info">ver</a>
                 </div>
             </div>
             <%})%>

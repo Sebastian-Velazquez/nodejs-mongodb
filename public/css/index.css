@@ -11920,6 +11920,18 @@ textarea.form-control-lg {
     height: 260px;
   }
 }
+.detail__breadcrumb-container {
+  display: none;
+}
+
+.img-product__container div {
+  text-align: center;
+}
+.img-product__container div img {
+  width: 80%;
+  height: auto !important;
+}
+
 body {
   font-family: "Franklin Gothic Medium" !important;
 }

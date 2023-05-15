@@ -47,11 +47,14 @@ const controlador ={
         //const category = require('../database/models/Category');//llamar para hacer la relacion 
         //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
-            let product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
-            //console.log(productoDetail)
+            const product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
+            const productsSimil = await Product.find({category: product.category}).populate(['category','marca']); //productos relacionados por marca y cat
+            
+            console.log(productsSimil)
             //res.send(productoDetail)
             res.render("./products/productDetail",{
-                product
+                product,
+                productsSimil
             })
         } catch (error) {
             res.send('error')
