@@ -40,7 +40,7 @@
                 <ul class="dropdown-menu dropd-marcas">
                   <div class="dropd-marcas__container">
                   <% locals.marcas.forEach(marc=>{ %>
-                    <li><a class="dropdown-item" href="http://localhost:3030/product/marca/<%=marc.id%>"><%= marc.name/* .toUpperCase()  */%></a></li>
+                    <li><a class="dropdown-item" href="http://localhost:3030/product/marca/<%=marc.id%>"><%= marc.name.toUpperCase() %></a></li>
                   <% }) %>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="http://localhost:3030/product/list">TODO</a></li>

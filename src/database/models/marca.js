@@ -11,7 +11,7 @@ const marcaSchema = new Schema({
   }
 },
 { 
-  versionKey: false // set versionKey to false to remove __v
+  versionKey: false // set versionKey to false to  remove __v
 });
 
 //crear modelo
