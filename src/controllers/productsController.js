@@ -20,7 +20,7 @@ const controlador ={
         const category = require('../database/models/Category');//llamar para hacer la relacion 
         try {
             const productos = await Product.find({category: req.params.id}).populate('category');
-            console.log(productos);
+            //console.log(productos);
             res.render("./products/category",{
                 productos:productos})
             
@@ -50,7 +50,7 @@ const controlador ={
             const product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
             const productsSimil = await Product.find({category: product.category}).populate(['category','marca']); //productos relacionados por marca y cat
             
-            console.log(productsSimil)
+            //console.log(productsSimil)
             //res.send(productoDetail)
             res.render("./products/productDetail",{
                 product,
@@ -77,13 +77,13 @@ const controlador ={
     },
     processCreate: async (req, res)=>{ 
         //validacion
-       // console.log(req.body.anio)
+        console.log(req.body)
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length > 0){
             res.send(resultValidation)
         }else{
             const Product = require('../database/models/Products');
-            console.log(req.body);
+            //console.log(req.body);
             try {
                     await Product.create({
                         name: req.body.name,
@@ -138,7 +138,7 @@ const controlador ={
                 { useFindAndModify: false});//viene del documento oficial de mogoose
             res.redirect("/product/list")
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             res.send(error)
         }
         //res.send("Producto editado")
