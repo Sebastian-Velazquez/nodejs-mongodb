@@ -87,7 +87,7 @@ const controlador ={
                     top_seller: req.body.top_seller,
                     image: req.file ? req.file.filename : 'default.png'
                 })
-            res.render('./products/productsList')
+            res.redirect('/product/list')
         } catch (error) {
             res.send('error')
         }

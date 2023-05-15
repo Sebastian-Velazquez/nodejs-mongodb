@@ -1,3 +1,5 @@
+const {validationResult} = require('express-validator');
+
 const controlador ={
     index: async (req,res)=>{
         const Product = require('../database/models/Products');
@@ -26,6 +28,24 @@ const controlador ={
         } catch (error) {
             res.send('error')
         }
-}
+},
+    search:async (req, res)=>{
+        const resultValidation = validationResult(req);//validacion
+        if (resultValidation.errors.length != 0){
+            res.send(resultValidation.mapped())
+        }else{
+        const Product = require('../database/models/Products');
+        try {
+            const resultado = await Product.find({ name: { $regex: req.query.search, $options: 'i' } });
+            if (resultado.length > 0){
+                res.send(resultado)
+            }else{
+                res.redirect('/')
+            }
+        } catch (error) {
+            res.send('error')
+        }
+        }
+    }
 }
 module.exports = controlador;

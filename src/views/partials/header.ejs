@@ -49,8 +49,8 @@
                 <%}%>
             </div>
             <li class="search__container nav-item">
-            <form class="d-flex mt-3" role="search">
-              <input class="form-control me-2" type="search" placeholder="Que buscas?" aria-label="Search">
+            <form action="/search" method="GET" class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search"  name="search"  placeholder="Que buscas?" aria-label="Search">
               <button class="btn btn-outline-success btn__buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             </li>

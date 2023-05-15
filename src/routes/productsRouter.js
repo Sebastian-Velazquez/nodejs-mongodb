@@ -5,8 +5,9 @@ const path = require ('path')
 // llamamos a la ruta de controlador
 const productsController = require("../controllers/productsController.js");
 
+const upload = require("../middlewares/multer");
 // creando el storage de las fotos de productos
-const storage = multer.diskStorage({
+/* const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
         cb(null, "public/img/product/");
     },
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer ({storage: storage});
+const upload = multer ({storage: storage}); */
 
 // procesa pedido de get. Ahora usamos router en MVC. son tutas 
 
