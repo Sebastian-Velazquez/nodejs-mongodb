@@ -1,6 +1,6 @@
 const Category = require('../database/models/Category');
 const Marca = require('../database/models/Marca');
-
+const {validationResult} = require('express-validator');
 
 
 const controlador ={
@@ -73,24 +73,31 @@ const controlador ={
         }
     },
     processCreate: async (req, res)=>{ 
-        const Product = require('../database/models/Products');
-        console.log(req.body);
-        try {
-                await Product.create({
-                    name: req.body.name,
-                    category: req.body.category,
-                    marca: req.body.marca,
-                    price: req.body.price,
-                    stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
-                    description:req.body.description,
-                    offer: req.body.offer,
-                    top_seller: req.body.top_seller,
-                    image: req.file ? req.file.filename : 'default.png'
-                })
-            res.redirect('/product/list')
-        } catch (error) {
-            res.send('error')
-        }
+        //validacion
+       // console.log(req.body.anio)
+        const resultValidation = validationResult(req);//validacion
+        if (resultValidation.errors.length > 0){
+            res.send(resultValidation)
+        }else{
+            const Product = require('../database/models/Products');
+            console.log(req.body);
+            try {
+                    await Product.create({
+                        name: req.body.name,
+                        category: req.body.category,
+                        marca: req.body.marca,
+                        price: req.body.price,
+                        stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
+                        description:req.body.description,
+                        offer: req.body.offer,
+                        top_seller: req.body.top_seller,
+                        image: req.file ? req.file.filename : 'default.png'
+                    })
+                res.redirect('/product/list')
+            } catch (error) {
+                res.send('error')
+            }
+    }
     },
     edit: async(req,res)=>{
         const Product = require('../database/models/Products');
