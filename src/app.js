@@ -21,10 +21,10 @@ app.set('views', path.join(__dirname, '/views'));
 app.use(express.urlencoded({ extended: false })); // Para capturar el body
 app.use(express.json()); // Para capturar el body
 
-/* const categoryHeader = require('./middlewares/global/headerCategory');
+const categoryHeader = require('./middlewares/global/headerCategory');
 app.use(categoryHeader);
 const marcaHeader = require('./middlewares/global/headerMarca');
-app.use(marcaHeader) */
+app.use(marcaHeader)
 /*** session Login ***/
 const userLoggedMiddleware = require("./middlewares/global/userLoggedMiddleware")
 app.use(session({ //npm i express-session. Para bloquear a alguno usuarios que no estan loguados // const session = require('express-session');
