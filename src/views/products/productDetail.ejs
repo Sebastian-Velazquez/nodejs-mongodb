@@ -20,20 +20,21 @@
         <button type="submit">Eliminar Producto</button>
     </form> -->
     </nav>
-    <main class="">
+    <main class="mt-4">
         <article class="article__product-container">
             <section class="section-img">
                 <div id="carouselExampleIndicators" class="carousel slide img-container">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                      </div>
                     <div class="carousel-inner img-product__container">
                         <div class="carousel-item active"><img src="/img/product/<%= product.image %>" alt="producto"></div>
                         <div class="carousel-item "><img src="/img/product/<%= product.image %>" alt="producto"></div>
                         <div class="carousel-item "><img src="/img/product/<%= product.image %>" alt="producto"></div>
                     </div>
+                    <div class="carousel-indicators img-mini__container">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image %>" alt="producto"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image %>" alt="producto"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image %>" alt="producto"></button>
+                      </div>
+                   
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
@@ -45,16 +46,23 @@
                 </div>
             </section>
             <section class="section-body">
-                <div class="product-desc">
-                    <p><%= product.marca.name %></p>
-                    <h2><%= product.name %></h2>
-                    <p><%= product.description %></p>
+                <div class="product-desc m-2">
+                    <p class="text-info bg-black p-1 d-inline"><%= product.marca.name %></p>
+                    <h2 class=""><%= product.name %></h2>
+                    <p class=""><%= product.description %></p>
                 </div>
-                <div class="product-buy">
-                    <p><%= product.price %></p>
-                    <p>¡stock disponible!<span><%= product.stock %></span></p>
-                    <button class="add-cart"> AGREGAR AL CARRITO</button>
-                    <button class="add-favorites"><i class="fa-regular fa-heart"></i> AGREGAR A FAVORITOS</button>
+                <div class="product-buy m-2">
+                    <% if (product.offer > 0) {%> 
+                        <div class="text-light-emphasis d-flex" ><p class="me-1 mb-0" style="text-decoration: line-through;">$ <%=product.price%> </p> <span class="text-success">  <%=product.offer%> %</span></div>
+                        <p style="font-size: 1.7rem;" class="text-secondary">$ <%= product.price - (product.price  * product.offer/100) %></p>
+                    <%}else{%>  
+                        <p style="font-size: 1.7rem;" class="text-secondary">$ <%=product.price%></p>
+                    <%}%>
+                    <p class="text-success mt-3">¡Stock disponible! <span class="text-light-emphasis"> <%= product.stock %> unidades</span></p>
+                    <div class="mx-auto d-flex justify-content-between">
+                    <button class="add-cart btn btn-secondary w-75">AGREGAR AL CARRITO</button>
+                    <button class="add-favorites btn btn-outline-success"><i class="fa-regular fa-heart"></i></button>
+                    </div>
                 </div>
             </section>
         </article>
