@@ -119,29 +119,35 @@ const controlador ={
             }
     },
     processEdit: async(req, res)=>{ 
-        const Product = require('../database/models/Products');
-        
-        try {
-            let producto= Product.findOne({_id: req.params.id});
-            await Product.findByIdAndUpdate( {_id: req.params.id}, 
-            {
-                    name: req.body.name,
-                    category: req.body.category,
-                    marca: req.body.marca,
-                    price: req.body.price,
-                    stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
-                    description:req.body.description,
-                    offer: req.body.offer,
-                    top_seller: req.body.top_seller,
-                    image: req.file ? req.file.filename : producto.image
-                },
-                { useFindAndModify: false});//viene del documento oficial de mogoose
-            res.redirect("/product/list")
-        } catch (error) {
-            //console.log(error)
-            res.send(error)
-        }
-        //res.send("Producto editado")
+        //validacion
+        console.log(req.body)
+        const resultValidation = validationResult(req);//validacion
+        if (resultValidation.errors.length > 0){
+            res.send(resultValidation)
+            }else{
+            const Product = require('../database/models/Products');
+            
+            try {
+                let producto= Product.findOne({_id: req.params.id});
+                await Product.findByIdAndUpdate( {_id: req.params.id}, 
+                {
+                        name: req.body.name,
+                        category: req.body.category,
+                        marca: req.body.marca,
+                        price: req.body.price,
+                        stock: req.body.stock,//hacer una funcion que traga de la bade de datos de la coleccion de de stock la cantidad y sume +1
+                        description:req.body.description,
+                        offer: req.body.offer,
+                        top_seller: req.body.top_seller,
+                        image: req.file ? req.file.filename : producto.image
+                    },
+                    { useFindAndModify: false});//viene del documento oficial de mogoose
+                res.redirect("/product/list")
+            } catch (error) {
+                //console.log(error)
+                res.send(error)
+            }
+        }   
     },
     delete: async(req, res)=>{ 
         const Product = require('../database/models/Products');
