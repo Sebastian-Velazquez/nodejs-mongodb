@@ -84,6 +84,31 @@ const controlador ={
     },
     logout:(req,res)=>{
         res.send('para salir de la session')
+    },
+    favoritePush:async(req,res)=>{
+        let userId= "" //traer el id user
+        const Customers =  require('../database/models/Customers');
+        try {
+        // Actualizar el usuario existente para agregar los nuevos IDs de productos
+        await Customers.findByIdAndUpdate(userId, { $push: { favorite: req.body.favorite } })
+        res.send('favorite agregado')
+        } catch (error) {
+            console.log(error)
+            res.send(error)
+        }
+        
+    },
+    favoritePull:async(req,res)=>{
+        let userId= "" //traer el id user
+        const Customers =  require('../database/models/Customers');
+        try {
+        // Actualizar el usuario existente para agregar los nuevos IDs de productos
+        await Customers.findByIdAndUpdate(userId, { $pull: { favorite: req.body.favorite } })
+        res.send('favorite eliminado')
+        } catch (error) {
+            res.send('error')
+        }
+        
     }
 }
 
