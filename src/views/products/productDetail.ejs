@@ -59,12 +59,39 @@
                         <p style="font-size: 1.7rem;" class="text-secondary">$ <%=product.price%></p>
                     <%}%>
                     <p class="text-success mt-3">¡Stock disponible! <span class="text-light-emphasis"> <%= product.stock %> unidades</span></p>
-                    <div class="mx-auto d-flex justify-content-between">
-                    <button class="add-cart btn btn-secondary w-75">AGREGAR AL CARRITO</button>
-                    <button class="add-favorites btn btn-outline-success"><i class="fa-regular fa-heart"></i></button>
+                    <div class="mx-auto">
+                    <button class="add-cart btn btn-secondary w-100 shadow">AGREGAR AL CARRITO</button>
+                    <button class="add-favorites btn btn-outline-success shadow">Agregar a favoritos <i class="fa-regular fa-heart"></i></button>
                     </div>
                 </div>
             </section>
+        </article>
+       
+        <h2 class="mt-5">PRODUCTOS SIMILARES</h2>
+        <article class="article__producto-relacionado  overflow-auto d-flex">
+            <% if (productsSimil) { %> 
+                
+                <div class="py-3 d-flex flex-row justify-content-around">
+                    <% productsSimil.forEach(prod=>{ %> 
+                     <div class="card m-2" style="width: 18rem;">
+                       <img src="/img/product/<%= prod.image%>" class="card-img-top p-2" alt="...">
+                       <div class="card-body">
+                         <h5 class="card-title"><%= prod.name%></h5>
+                         <% if (prod.offer > 0) {%> 
+                           <div class="card-text text-light-emphasis d-flex" >
+                             <p class="me-1" style="text-decoration: line-through;"><%=prod.price%> </p> <span class="text-success">  <%=prod.offer%> %</span>
+                           </div>
+                           <p class="card-text"><%= prod.price - (prod.price  * prod.offer/100) %></p>
+                       <%}else{%>  
+                           <p class="card-text"><%=prod.price%></p>
+                       <%}%>
+                         <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
+                       </div>
+                     </div>
+                     <% }) %>
+                </div>
+          
+            <%}%> 
         </article>
     </main>
     <%- include("../partials/footer") %>
