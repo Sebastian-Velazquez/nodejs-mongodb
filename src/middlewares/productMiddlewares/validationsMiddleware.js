@@ -2,35 +2,65 @@
 const path = require("path");
 const {body} = require("express-validator");
 
+
+
+
+/* let dato = async()=>  {
+    let dato = []
+    try {
+      const documentos = await Category.find();
+      documentos.forEach(element => {
+        dato.push(element._id.toString())
+    });
+    console.log(dato)
+    return dato
+    } catch (error) {
+      console.error(error);
+    }
+  } */
+
+
 const validations =[
     body('name').notEmpty().withMessage('Tienes que escribir el nombre del producto').bail()
                 .isLength({ min: 3, max: 40 }).withMessage('debe tener mas de 3 caracteres'),
-    body('category').isIn(['645a5695f5e94128e8c9c2f8', //TECLADO
-                            '645a569cf5e94128e8c9c2fc',//MOUSE
-                            '645a56a7f5e94128e8c9c300', //MEMORY RAM
-                            '645a56cff5e94128e8c9c304', //DISCOS RIGIDOS
-                            '645a56e6f5e94128e8c9c30c', //PLACA DE VIDEO
-                            '645a56edf5e94128e8c9c310' //PLACA MADRE
-                    ]).withMessage('Tienes que seleccionar una categoria'),
-    body('marca').isIn(['645a755875af0a6a54f1aa7b', //Intel
-                            '645a756075af0a6a54f1aa7f', //AMD
-                            '645a75a475af0a6a54f1aa83', //Gigabyte
-                            '645a75a975af0a6a54f1aa87', //Asus
-                            '645a75b175af0a6a54f1aa8b', //AsRock
-                            '645a75bb75af0a6a54f1aa8f', //Generica
-                            '645a75c075af0a6a54f1aa93',//Adata
-                            '645a75d175af0a6a54f1aa97',//Kingston
-                            '645a75d775af0a6a54f1aa9b',//Team
-                            '645a75e275af0a6a54f1aa9f',//WD
-                            '645a75ec75af0a6a54f1aaa3',//Toshiba
-                            '645a75fc75af0a6a54f1aaab',//Sentey
-                            '645a760f75af0a6a54f1aaaf',//Thermaltake
-                            '645a761a75af0a6a54f1aab3',//Deepcool
-                            '645a762975af0a6a54f1aab7',//Logitech
-                            '645a763275af0a6a54f1aabb',//Redragon
-                            '645a764075af0a6a54f1aabf',//HyperX
-                            '645a764a75af0a6a54f1aac3',//Genius
-                ]).withMessage('Tienes que seleccionar una marca'),
+    body('category').custom(async (value, {req})=> {
+        const Category = require('../../database/models/Category');
+            let category = req.body.category
+                let dato = false
+                const documentos = await Category.find();
+                for (let i = 0; i < documentos.length; i++) {
+                    if (documentos[i]._id.toString() == category){
+                            dato = true;
+                        break
+                    }
+                }
+                if (dato==true){
+                    //console.log('paso por true  :'+ dato)
+                    return true
+                }else{
+                    //console.log('paso por false  :'+ dato)
+                    throw new Error('Tienes que seleccionar una categoria')
+                }
+            }),
+    body('marca').custom(async (value, {req})=> {
+        const Marca = require('../../database/models/Marca');
+            let marca = req.body.marca
+                let dato = false
+                const documentos = await Marca.find();
+                for (let i = 0; i < documentos.length; i++) {
+                    if (documentos[i]._id.toString() == marca){
+                            dato = true;
+                        break
+                    }
+                }
+                if (dato==true){
+                    //console.log('paso por true  :'+ dato)
+                    return true
+                }else{
+                    //console.log('paso por false  :'+ dato)
+                    throw new Error('Tienes que seleccionar una marca')
+                }
+            }),
     body('stock').notEmpty().withMessage('Tienes que poner la cantidad de stock').bail()
                 .isInt({ min: 0 }).withMessage('El stock debe ser mayor a 0'),
     body('price').notEmpty().withMessage('Tienes que escribir un precio para el producto').bail()

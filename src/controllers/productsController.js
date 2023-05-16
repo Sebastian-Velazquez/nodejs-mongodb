@@ -77,7 +77,7 @@ const controlador ={
     },
     processCreate: async (req, res)=>{ 
         //validacion
-        console.log(req.body)
+        //console.log(req.body)
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length > 0){
             res.send(resultValidation)
