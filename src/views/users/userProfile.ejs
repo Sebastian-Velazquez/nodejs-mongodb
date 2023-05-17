@@ -10,7 +10,12 @@
 <body>
     <%- include("../partials/header") %>
     <main>
-        
+        <section class="datosUsuario">
+            <h2> <b>Datos Personales</b> </h2> <br>
+            <h3> Nombre:</h3> <%= user.first_name +' '+  user.last_name %> 
+            <h3> Correo Electrónico:</h3> <%= user.email %>  
+
+        </section>
     </main>
     <%- include("../partials/footer") %>
 </body>

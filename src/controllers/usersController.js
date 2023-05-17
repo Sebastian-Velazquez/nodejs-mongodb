@@ -20,7 +20,7 @@ const controlador ={
             }else{
                 await Customer.create(
                     {
-                        firt_name: req.body.firt_name,
+                        first_name: req.body.firt_name,
                         last_name: "",
                         email: req.body.email,
                         password: bcryptjs.hashSync(req.body.password, 10),
@@ -80,10 +80,16 @@ const controlador ={
 
     },
     profile:(req,res)=>{
-        res.render("./users/userProfile")
+        console.log(req.session.userLogged)
+        return res.render('./users/userProfile',{
+            user: req.session.userLogged
+        })
     },
     logout:(req,res)=>{
-        res.send('para salir de la session')
+        req.session.userLogged = null;//para destruir la session, osea salir del login del perfil
+        res.clearCookie('userEmail',);//destruir la cookie
+        //req.session = null;//para destruir la session, osea salir del login del perfil
+        return res.redirect('/')
     },
     favoritePush:async(req,res)=>{
         let userId= "" //traer el id user
