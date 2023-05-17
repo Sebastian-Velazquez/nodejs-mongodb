@@ -67,7 +67,7 @@ const validations =[
                 .isNumeric().withMessage('Tienes que escribir un numero correcto').bail()
                 .isLength({ min: 2, max: 9 }).withMessage('Debe tener entre 3 a 9 caracteres').bail()
                 .isInt({ min: 0 }).withMessage('El precio tiene que ser mayor a cero'),
-    body('top_seller').isIn(['1', '2']).withMessage('Tenes que elegir un opción'),
+    body('top_seller').isIn(['1', '2', 1, 2]).withMessage('Tenes que elegir un opción'),
     body('offer').isNumeric().withMessage('Tienes que escribir un numero correcto').bail()
         .isInt({ min: 0 }).withMessage('El stock debe ser mayor a 0'),
     body('description').isLength({ max: 500 }).withMessage('La descripción del producto no puede tener más de 500 caracteres'),

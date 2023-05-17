@@ -62,22 +62,29 @@
        
         <h2 class="m-3">NUEVOS PRODUCTOS</h2>
         <div class="py-5 nuevos-productos__container">
+          <input type="radio" name="carrusel3d" id="radio0" checked>
+          <input type="radio" name="carrusel3d" id="radio1">
+          <input type="radio" name="carrusel3d" id="radio2">
+          <input type="radio" name="carrusel3d" id="radio3">
+          <input type="radio" name="carrusel3d" id="radio4">
           <% ultimosPoducts.forEach((prod,i)=>{ %> 
-           <div class="card m-2" style="width: 18rem;">
-             <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
-             <div class="card-body">
-               <h5 class="card-title"><%= prod.name%></h5>
-               <% if (prod.offer > 0) {%> 
-                 <div class="card-text text-light-emphasis d-flex" >
-                   <p class="me-1" style="text-decoration: line-through;"><%=prod.price%> </p> <span class="text-success">  <%=prod.offer%> %</span>
-                 </div>
-                 <p class="card-text"><%= prod.price - (prod.price  * prod.offer/100) %></p>
-             <%}else{%>  
-                 <p class="card-text"><%=prod.price%></p>
-             <%}%>
-               <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
-             </div>
-           </div>
+            <label for="radio<%=i%>" id="img<%=i%>">
+            <div class="card nuevos-productos__card" style="width: 18rem;">
+              <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%= prod.name%></h5>
+                <% if (prod.offer > 0) {%> 
+                  <div class="card-text text-light-emphasis d-flex" >
+                    <p class="me-1" style="text-decoration: line-through;"><%=prod.price%> </p> <span class="text-success">  <%=prod.offer%> %</span>
+                  </div>
+                  <p class="card-text"><%= prod.price - (prod.price  * prod.offer/100) %></p>
+              <%}else{%>  
+                  <p class="card-text"><%=prod.price%></p>
+              <%}%>
+                <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
+              </div>
+            </div>
+          </label>
            <% }) %>
          </div>
 

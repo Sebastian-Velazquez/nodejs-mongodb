@@ -12071,6 +12071,69 @@ main {
   height: 100%;
 }
 
+.nuevos-productos__container {
+  width: 90%;
+  height: 580px;
+  margin: auto;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+.nuevos-productos__container input {
+  display: none;
+}
+.nuevos-productos__container .nuevos-productos__card {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  transition: all 0.5s;
+}
+.nuevos-productos__container #radio0:checked ~ #img0 .nuevos-productos__card,
+.nuevos-productos__container #radio1:checked ~ #img1 .nuevos-productos__card,
+.nuevos-productos__container #radio2:checked ~ #img2 .nuevos-productos__card,
+.nuevos-productos__container #radio3:checked ~ #img3 .nuevos-productos__card,
+.nuevos-productos__container #radio4:checked ~ #img4 .nuevos-productos__card {
+  transform: perspective(1000px) translate3d(0, 0, 150px);
+  z-index: 5;
+}
+.nuevos-productos__container #radio0:checked ~ #img1 .nuevos-productos__card,
+.nuevos-productos__container #radio1:checked ~ #img2 .nuevos-productos__card,
+.nuevos-productos__container #radio2:checked ~ #img3 .nuevos-productos__card,
+.nuevos-productos__container #radio3:checked ~ #img4 .nuevos-productos__card,
+.nuevos-productos__container #radio4:checked ~ #img0 .nuevos-productos__card {
+  transform: perspective(1200px) translate3d(80px, 0, 100px);
+  z-index: 4;
+  opacity: 0.8;
+}
+.nuevos-productos__container #radio0:checked ~ #img2 .nuevos-productos__card,
+.nuevos-productos__container #radio1:checked ~ #img3 .nuevos-productos__card,
+.nuevos-productos__container #radio2:checked ~ #img4 .nuevos-productos__card,
+.nuevos-productos__container #radio3:checked ~ #img0 .nuevos-productos__card,
+.nuevos-productos__container #radio4:checked ~ #img1 .nuevos-productos__card {
+  transform: translate3d(130px, 0, 0);
+  z-index: 0;
+  opacity: 0.5;
+}
+.nuevos-productos__container #radio0:checked ~ #img3 .nuevos-productos__card,
+.nuevos-productos__container #radio1:checked ~ #img4 .nuevos-productos__card,
+.nuevos-productos__container #radio2:checked ~ #img0 .nuevos-productos__card,
+.nuevos-productos__container #radio3:checked ~ #img1 .nuevos-productos__card,
+.nuevos-productos__container #radio4:checked ~ #img2 .nuevos-productos__card {
+  transform: translate3d(-130px, 0, 0);
+  z-index: 0;
+  opacity: 0.5;
+}
+.nuevos-productos__container #radio0:checked ~ #img4 .nuevos-productos__card,
+.nuevos-productos__container #radio1:checked ~ #img0 .nuevos-productos__card,
+.nuevos-productos__container #radio2:checked ~ #img1 .nuevos-productos__card,
+.nuevos-productos__container #radio3:checked ~ #img2 .nuevos-productos__card,
+.nuevos-productos__container #radio4:checked ~ #img3 .nuevos-productos__card {
+  transform: perspective(1200px) translate3d(-80px, 0, 100px);
+  z-index: 4;
+  opacity: 0.8;
+}
+
 @media (min-width: 768px) {
   .carousel-item {
     height: 700px !important;
