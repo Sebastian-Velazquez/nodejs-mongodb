@@ -68,12 +68,14 @@
         </article>
        
         <h2 class="mt-5">PRODUCTOS SIMILARES</h2>
-        <article class="article__producto-relacionado  overflow-auto d-flex">
+        <article class="article__producto-relacionado d-flex position-relative">
             <% if (productsSimil) { %> 
+                <button class="boton-carrusel-PS boton-izq-PS"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="boton-carrusel-PS boton-der-PS"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="producto-relacionado__container py-3 d-flex flex-row;">
                 
-                <div class="py-3 d-flex flex-row justify-content-around">
                     <% productsSimil.forEach(prod=>{ %> 
-                     <div class="card m-2" style="width: 18rem;">
+                     <div class="card m-2" style="width: 20rem;">
                        <img src="/img/product/<%= prod.image%>" class="card-img-top p-2" alt="...">
                        <div class="card-body">
                          <h5 class="card-title"><%= prod.name%></h5>
@@ -94,6 +96,7 @@
             <%}%> 
         </article>
     </main>
+    <script src="/js/detail.js"></script>
     <%- include("../partials/footer") %>
    
 </body>

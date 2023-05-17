@@ -61,10 +61,10 @@
       <section class="">
        
         <h2 class="m-3">NUEVOS PRODUCTOS</h2>
-        <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
-          <% ultimosPoducts.forEach(prod=>{ %> 
+        <div class="py-5 nuevos-productos__container">
+          <% ultimosPoducts.forEach((prod,i)=>{ %> 
            <div class="card m-2" style="width: 18rem;">
-             <img src="/img/product/<%= prod.image%>" class="card-img-top" alt="...">
+             <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
              <div class="card-body">
                <h5 class="card-title"><%= prod.name%></h5>
                <% if (prod.offer > 0) {%> 
@@ -89,7 +89,7 @@
         <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
          <% destacados.forEach(prod=>{ %> 
           <div class="card m-2" style="width: 18rem;">
-            <img src="/img/product/<%= prod.image%>" class="card-img-top" alt="...">
+            <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= prod.name%></h5>
               <% if (prod.offer > 0) {%> 
@@ -126,7 +126,7 @@
         <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
           <% ofertas.forEach(prod=>{ %> 
            <div class="card m-2" style="width: 18rem;">
-             <img src="/img/product/<%= prod.image%>" class="card-img-top" alt="...">
+             <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
              <div class="card-body">
                <h5 class="card-title"><%= prod.name%></h5>
                <% if (prod.offer > 0) {%> 

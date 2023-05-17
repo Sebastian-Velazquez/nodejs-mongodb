@@ -7,7 +7,7 @@ const controlador ={
         try {
             const productos = await Product.find().populate(['category','marca']);
             
-            const ultimosPoducts = productos.slice(productos.length -6);
+            const ultimosPoducts = productos.slice(productos.length -5);
             const destacados = productos.filter(producto=> producto.top_seller == 1)
             
             const promedioOfertas = ()=>{                                  //creando una funcion para sacar el promedio de los productos con mejor oferta
