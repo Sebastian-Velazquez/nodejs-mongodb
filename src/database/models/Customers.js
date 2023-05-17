@@ -34,8 +34,14 @@ const customerSchema = new Schema({
     },
     favorite:{
       name: String,
-    products: [{ type: Schema.Types.ObjectId, ref: 'Products' }]  // [] los corcetes hacen la relacion uno a muchos
-    }
+      products: [{ type: Schema.Types.ObjectId, ref: 'Products' }]  // [] los corcetes hacen la relacion uno a muchos
+    },
+    rol:{
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'Roles', // Referencia al modelo "Marca"
+      default: '646557ed213a86fd4266fb50'
+    },
   },
 },
 { 
