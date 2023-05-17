@@ -2,27 +2,9 @@
 const path = require("path");
 const {body} = require("express-validator");
 
-
-
-
-/* let dato = async()=>  {
-    let dato = []
-    try {
-      const documentos = await Category.find();
-      documentos.forEach(element => {
-        dato.push(element._id.toString())
-    });
-    console.log(dato)
-    return dato
-    } catch (error) {
-      console.error(error);
-    }
-  } */
-
-
 const validations =[
     body('name').notEmpty().withMessage('Tienes que escribir el nombre del producto').bail()
-                .isLength({ min: 3, max: 40 }).withMessage('debe tener mas de 3 caracteres'),
+                .isLength({ min: 3, max: 70 }).withMessage('debe tener mas de 3 caracteres'),
     body('category').custom(async (value, {req})=> {
         const Category = require('../../database/models/Category');
             let category = req.body.category
@@ -35,10 +17,8 @@ const validations =[
                     }
                 }
                 if (dato==true){
-                    //console.log('paso por true  :'+ dato)
                     return true
                 }else{
-                    //console.log('paso por false  :'+ dato)
                     throw new Error('Tienes que seleccionar una categoria')
                 }
             }),
@@ -54,10 +34,8 @@ const validations =[
                     }
                 }
                 if (dato==true){
-                    //console.log('paso por true  :'+ dato)
                     return true
                 }else{
-                    //console.log('paso por false  :'+ dato)
                     throw new Error('Tienes que seleccionar una marca')
                 }
             }),

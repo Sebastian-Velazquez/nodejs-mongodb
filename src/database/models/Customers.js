@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const customerSchema = new Schema({
-  firt_name: {
+  first_name: {
     type: String,
     requierd: true,
   },
