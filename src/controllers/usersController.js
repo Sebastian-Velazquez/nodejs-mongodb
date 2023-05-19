@@ -92,15 +92,20 @@ const controlador ={
         return res.redirect('/')
     },
     favoritePush:async(req,res)=>{
-        let userId= "" //traer el id user
+        let userId= req.params.id //traer el id user
         const Customers =  require('../database/models/Customers');
+        
         try {
         // Actualizar el usuario existente para agregar los nuevos IDs de productos
-        await Customers.findByIdAndUpdate(userId, { $push: { favorite: req.body.favorite } })
-        res.send('favorite agregado')
+        //let cliente = await Customers.findById(userId);
+        let cliente = await Customers.findByIdAndUpdate({_id: userId}, { $push: { 'perfil.favorite': req.body.favorite } }, { new: true })
+        //cliente.perfil.favorite.push(req.body.favorite);
+        //cliente.save();
+        console.log(cliente)
+        res.send(cliente)
         } catch (error) {
             console.log(error)
-            res.send(error)
+            res.send('error')
         }
         
     },

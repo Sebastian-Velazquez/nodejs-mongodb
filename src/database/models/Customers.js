@@ -33,8 +33,11 @@ const customerSchema = new Schema({
       default: ''
     },
     favorite:{
-      name: String,
-      products: [{ type: Schema.Types.ObjectId, ref: 'Products' }]  // [] los corcetes hacen la relacion uno a muchos
+      type: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Products'
+      }],
+     default:[] , // [] los corcetes hacen la relacion uno a muchos
     },
     rol:{
       type: mongoose.Schema.Types.ObjectId,
