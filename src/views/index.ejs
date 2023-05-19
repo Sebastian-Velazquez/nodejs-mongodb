@@ -58,13 +58,14 @@
         </button>
       </div>
       <!-- ///////////////////////////////main////////////////////////////////////////////// -->
-      <section class="">
+      <section class="position-relative">
        
-        <h2 class="mt-4 p-3 fw-semibold text-primary fs-1">NUEVOS PRODUCTOS</h2>
+        <h2 class="mt-4 p-3 fw-semibold text-primary  fs-1">NUEVOS PRODUCTOS </h2>
+        <i class="nuevos-productos__arrow fa-solid fa-chevron-left"></i>
         <div class="py-5 nuevos-productos__container">
           <% ultimosPoducts.forEach((prod,i)=>{ %> 
-           
-            <div class="card  nuevos-productos__card">
+            
+            <div class="card p-2 nuevos-productos__card">
               <img src="/img/product/<%= prod.image%>" class=" card-img-top p-3" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><%= prod.name%></h5>

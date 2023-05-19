@@ -8,8 +8,8 @@ const controlador ={
             const productos = await Product.find().populate(['category','marca']);
             
             const ultimosPoducts = productos.slice(productos.length -6);
-            const destacados = productos.filter(producto=> producto.top_seller == 1)
-            
+            const destacadosFiltro = productos.filter(producto=> producto.top_seller == 1)
+            const destacados = destacadosFiltro.slice(destacadosFiltro.length - 6)
             const promedioOfertas = ()=>{                                  //creando una funcion para sacar el promedio de los productos con mejor oferta
                 let productosO = productos.filter(prod=> prod.offer>0)
                 let total= 0;

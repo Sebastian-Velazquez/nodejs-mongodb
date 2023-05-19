@@ -12071,6 +12071,24 @@ main {
   height: 100%;
 }
 
+.nuevos-productos__arrow {
+  font-size: 2rem;
+  right: 1%;
+  top: 50%;
+  position: absolute;
+  color: #391a3d;
+  animation: arrow infinite 1s;
+}
+
+@keyframes arrow {
+  from {
+    right: 1%;
+    color: transparent;
+  }
+  to {
+    right: 4%;
+  }
+}
 .nuevos-productos__container {
   width: 80%;
   height: -moz-max-content;
@@ -12088,6 +12106,7 @@ main {
   scroll-snap-align: center;
   background: #fff;
   border: none;
+  border-right: 0.5px solid #391a3d;
 }
 .nuevos-productos__container .nuevos-productos__card img {
   border-bottom: 2px solid var(--bs-info);
@@ -12102,8 +12121,11 @@ main {
   .carousel-item {
     height: 700px !important;
   }
+  .nuevos-productos__arrow {
+    display: none !important;
+  }
   .nuevos-productos__container {
-    width: 80%;
+    width: 85%;
     height: -moz-max-content;
     height: max-content;
     height: max-content;
@@ -12113,6 +12135,7 @@ main {
     justify-content: space-around;
   }
   .nuevos-productos__container .nuevos-productos__card {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
     width: 30%;
     background: #fff;
     border: none;
