@@ -86,12 +86,13 @@
 
       </section>
 
-      <section class="">
+      <section class="position-relative">
        
-        <h2 class="m-3">DESTACADOS</h2>
-        <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
+        <h2 class="mt-4 p-3 fw-semibold text-primary  fs-1">DESTACADOS</h2>
+        <i class="nuevos-productos__arrow fa-solid fa-chevron-left"></i>
+        <div class="py-5 nuevos-productos__container">
          <% destacados.forEach(prod=>{ %> 
-          <div class="card m-2" style="width: 18rem;">
+          <div class="card p-2 nuevos-productos__card">
             <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= prod.name%></h5>
@@ -114,18 +115,26 @@
       <section>
         <h2>CATEGORIAS</h2>
         <% if (locals.categorias){ %>
-          <ul>
+          <article class="categorias__container d-grid ">
             <% locals.categorias.forEach(cat=>{ %>
-              <li><a class="dropdown-item" href="/product/category/<%=cat.id%>"><%= cat.name %></a></li>
+            <a class="article__categoria cat-<%=cat.name.replace(/ /g, '').toLowerCase()%>" href="/product/category/<%=cat.id%>">
+              <div class="card text-bg-dark">
+                <img src="https://img.freepik.com/fotos-premium/teclado-mecanico-palabra-gaming-iluminada-teclas-banner-teclado-jugador_162490-13.jpg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  <h5 class="card-title"><%= cat.name %></h5>
+                </div>
+              </div>
+            </a>
             <% }) %>
-          </ul>
+          </article>
+
           <%}%>
 
       </section>
 
       <section class="">
        
-        <h2 class="m-3">NUESTRAS MEJORES OFERTAS</h2>
+        <h2 class="mt-4 p-3 fw-semibold text-primary  fs-1">NUESTRAS MEJORES OFERTAS</h2>
         <div class="py-5 d-flex flex-wrap flex-row justify-content-around">
           <% ofertas.forEach(prod=>{ %> 
            <div class="card m-2" style="width: 18rem;">
