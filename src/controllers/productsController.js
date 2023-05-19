@@ -167,7 +167,7 @@ const controlador ={
                 name: req.body.name,
                 description: req.body.description,
             })
-            res.render("./products/list")
+            res.send('creado')
         } catch (error) {
             res.send('error')
         }

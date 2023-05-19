@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const customerSchema = new Schema({
   first_name: {
     type: String,
-    requierd: true,
+    required: true,
   },
   last_name: {
     type: String,
@@ -17,7 +17,7 @@ const customerSchema = new Schema({
   },
   password: {
     type: String,
-    requierd: true
+    required: true
   },
   perfil:{
     direccion: {
@@ -42,9 +42,13 @@ const customerSchema = new Schema({
     rol:{
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'Roles', // Referencia al modelo "Marca"
+      ref: 'Roles', 
       default: '646557ed213a86fd4266fb50'
     },
+  },
+  date:{//para saber cuando fue creado
+    type: Date,
+    default: Date.now
   },
 },
 { 

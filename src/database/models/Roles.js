@@ -6,7 +6,7 @@ const rolesSchema = new Schema({
     type: String,
     requierd: true,
     default: "Normal"// va un ref
-  }
+  },
 },
 { 
   versionKey: false // set versionKey to false to remove __v

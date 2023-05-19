@@ -17,7 +17,7 @@ router.get("/logout", usersController.logout);
 
 router.put("/favoritePush/:id", usersController.favoritePush);
 
-router.put("/favoritePull", usersController.favoritePull);
+router.put("/favoritePull/:id", usersController.favoritePull);
 
 
 module.exports = router;
