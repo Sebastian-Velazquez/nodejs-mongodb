@@ -4,7 +4,7 @@ const {body} = require("express-validator");
 
 const validations =[
     body('name').notEmpty().withMessage('Tienes que escribir el nombre del producto').bail()
-                .isLength({ min: 3, max: 70 }).withMessage('debe tener mas de 3 caracteres'),
+                .isLength({ min: 3}).withMessage('debe tener mas de 3 caracteres'),
     body('category').custom(async (value, {req})=> {
         const Category = require('../../database/models/Category');
             let category = req.body.category
@@ -47,7 +47,7 @@ const validations =[
                 .isInt({ min: 0 }).withMessage('El precio tiene que ser mayor a cero'),
     body('top_seller').isIn(['1', '2', 1, 2]).withMessage('Tenes que elegir un opción'),
     body('offer').isNumeric().withMessage('Tienes que escribir un numero correcto').bail()
-        .isInt({ min: 0 }).withMessage('El stock debe ser mayor a 0'),
+        .isInt({ min: 0 }).withMessage('El descuento debe ser mayor o igual a 0'),
     body('description').isLength({ max: 500 }).withMessage('La descripción del producto no puede tener más de 500 caracteres'),
 
     body('image').custom((value, {req})=> {
