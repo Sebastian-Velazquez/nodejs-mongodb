@@ -9,7 +9,8 @@ const controlador ={
             
             const ultimosPoducts = productos.slice(productos.length -6);
             const destacadosFiltro = productos.filter(producto=> producto.top_seller == 1)
-            const destacados = destacadosFiltro.slice(destacadosFiltro.length - 6)
+            const destacados = (destacadosFiltro.length< 5) ? destacadosFiltro.slice(destacadosFiltro.length - 6):destacadosFiltro.slice(destacadosFiltro.length - 3)
+        
             const promedioOfertas = ()=>{                                  //creando una funcion para sacar el promedio de los productos con mejor oferta
                 let productosO = productos.filter(prod=> prod.offer>0)
                 let total= 0;
@@ -18,6 +19,7 @@ const controlador ={
                 })
                 return total/productosO.length;
             }
+            
             const ofertas = productos.filter(producto=> producto.offer > promedioOfertas() )
            
            res.render("./index",{
