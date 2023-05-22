@@ -31,13 +31,13 @@ main{
     margin-top: 60px !important;
 }
 
-.carousel-indicators{
+.carousel-indicators__banner{
     button{
         margin: 0 !important;
         background-color:#c7ff8f!important;
     }
 }
-.carousel-item{
+.carrusel-banner{
     height: 400px !important;
     img{
         object-fit: cover!important ;
@@ -143,6 +143,12 @@ main{
     .section__carrusel-container{
         width: 90%;
         margin: auto;
+        .carousel-indicators{
+            bottom: -10px;
+            button{
+                background-color:#c7ff8f!important;
+            }
+        }
         article{
             a{
                 text-decoration: none;
@@ -153,29 +159,33 @@ main{
                 width: 98%;
                 }
                 .ofertas__body{
+                    justify-content: space-between;
                     flex-direction: column!important;
                     top:1.2rem!important;
                     h5{
                         font-size: 1.5rem!important;
-                        font-weight: 600;
-                        text-shadow: 0 0 5px #000;
+                        text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.90);
                     }
                     p{
                         font-size: 1.25rem;
                         
                     }
                     .card-body__precio{
-                        text-shadow: 0 0 5px #000!important;
+                        text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.90)!important;
                     }
                     }
             
+        }
+        .button__ofertas-iconos{
+            background-color: #000;
+            border-radius: 20px;
         }
         }
     
 
 
 @media (min-width: 768px) {
-    .carousel-item{
+    .carrusel-banner{
         height: 700px !important;
     }
     .nuevos-productos__arrow{
@@ -197,6 +207,19 @@ main{
             margin: 10px;
             min-width: 25%;
             
+        }
+    }
+    .section__carrusel-container{
+        article{
+            img{
+                width: 60%;
+            }
+        }
+        .button__ofertas-iconos{
+            width: 60px;
+            height: 60px;
+            background-color: $lima;
+            border-radius: 50px;
         }
     }
 }

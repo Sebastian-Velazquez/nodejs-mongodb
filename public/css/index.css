@@ -12055,15 +12055,15 @@ main {
   margin-top: 60px !important;
 }
 
-.carousel-indicators button {
+.carousel-indicators__banner button {
   margin: 0 !important;
   background-color: #c7ff8f !important;
 }
 
-.carousel-item {
+.carrusel-banner {
   height: 400px !important;
 }
-.carousel-item img {
+.carrusel-banner img {
   -o-object-fit: cover !important;
      object-fit: cover !important;
   -o-object-position: center !important;
@@ -12165,6 +12165,12 @@ main {
   width: 90%;
   margin: auto;
 }
+.section__carrusel-container .carousel-indicators {
+  bottom: -10px;
+}
+.section__carrusel-container .carousel-indicators button {
+  background-color: #c7ff8f !important;
+}
 .section__carrusel-container article a {
   text-decoration: none;
 }
@@ -12174,23 +12180,27 @@ main {
   width: 98%;
 }
 .section__carrusel-container article .ofertas__body {
+  justify-content: space-between;
   flex-direction: column !important;
   top: 1.2rem !important;
 }
 .section__carrusel-container article .ofertas__body h5, .section__carrusel-container article .ofertas__body .h5 {
   font-size: 1.5rem !important;
-  font-weight: 600;
-  text-shadow: 0 0 5px #000;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.9);
 }
 .section__carrusel-container article .ofertas__body p {
   font-size: 1.25rem;
 }
 .section__carrusel-container article .ofertas__body .card-body__precio {
-  text-shadow: 0 0 5px #000 !important;
+  text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.9) !important;
+}
+.section__carrusel-container .button__ofertas-iconos {
+  background-color: #000;
+  border-radius: 20px;
 }
 
 @media (min-width: 768px) {
-  .carousel-item {
+  .carrusel-banner {
     height: 700px !important;
   }
   .nuevos-productos__arrow {
@@ -12213,5 +12223,14 @@ main {
     border: none;
     margin: 10px;
     min-width: 25%;
+  }
+  .section__carrusel-container article img {
+    width: 60%;
+  }
+  .section__carrusel-container .button__ofertas-iconos {
+    width: 60px;
+    height: 60px;
+    background-color: #c7ff8f;
+    border-radius: 50px;
   }
 }/*# sourceMappingURL=index.css.map */
