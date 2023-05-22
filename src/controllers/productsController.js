@@ -50,7 +50,7 @@ const controlador ={
             const product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
             const productsSimil = await Product.find({category: product.category}).populate(['category','marca']); //productos relacionados por marca y cat
             
-            //console.log(productsSimil)
+            console.log(product)
             //res.send(productoDetail)
             res.render("./products/productDetail",{
                 product,
@@ -78,6 +78,7 @@ const controlador ={
     processCreate: async (req, res)=>{ 
         //validacion
         //console.log(req.body)
+        //console.log(req.files)
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length > 0){
             res.send(resultValidation)
@@ -85,6 +86,15 @@ const controlador ={
             const Product = require('../database/models/Products');
             //console.log(req.body);
             try {
+
+                const fileObjects = [];
+                    // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
+                    req.files.forEach(file => {
+                    fileObjects.push(file.filename);
+
+                });
+                console.log(fileObjects )
+                
                     await Product.create({
                         name: req.body.name,
                         category: req.body.category,
@@ -94,10 +104,12 @@ const controlador ={
                         description:req.body.description,
                         offer: req.body.offer,
                         top_seller: req.body.top_seller,
-                        image: req.file ? req.file.filename : 'default.png'
+                        image: fileObjects
+                        //image: req.files ? req.files.filename : 'default.png'
                     })
                 res.redirect('/product/list')
             } catch (error) {
+                console.log(error)
                 res.send('error')
             }
     }

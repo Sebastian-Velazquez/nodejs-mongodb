@@ -66,7 +66,7 @@
           <% ultimosPoducts.forEach((prod,i)=>{ %> 
             
             <div class="card p-2 nuevos-productos__card">
-              <img src="/img/product/<%= prod.image%>" class=" card-img-top p-3" alt="...">
+              <img src="/img/product/<%= prod.image[0]%>" class=" card-img-top p-3" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><%= prod.name%></h5>
                 <% if (prod.offer > 0) {%> 

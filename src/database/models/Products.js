@@ -40,12 +40,14 @@ const productSchema = new Schema(
       default: 0
     },
     image: {
-      type:String,
-      default: "image.png",
-      /* type: [{
-        type: String,
-      }],
-     default:[] , // [] los corcetes hacen la relacion uno a muchos */
+      type: Array,
+      required: true
+      //default: "image.png",
+      /* type:String,
+      default: "image.png", */
+      /* 1: {type: String, default: 'default.png'},
+      2: {type: String, default: 'default.png'},
+      3: {type: String, default: 'default.png'}, */
     },
     date:{//para saber cuando fue creado
       type: Date,

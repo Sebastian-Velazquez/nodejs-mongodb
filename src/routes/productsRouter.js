@@ -10,7 +10,7 @@ const validations = require("../middlewares/productMiddlewares/validationsMiddle
 // procesa pedido de get. Ahora usamos router en MVC. son tutas 
 
 router.get("/create", productsController.create);
-router.post("/create", upload.single('image'), validations, productsController.processCreate);
+router.post("/create", upload.array('image'), /* validations, */ productsController.processCreate);
 
 router.get("/edit/:id", productsController.edit);
 router.put("/edit/:id", upload.single('image'), validations, productsController.processEdit);

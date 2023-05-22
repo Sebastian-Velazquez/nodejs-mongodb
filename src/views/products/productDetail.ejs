@@ -25,14 +25,14 @@
             <section class="section-img">
                 <div id="carouselExampleIndicators" class="carousel slide img-container">
                     <div class="carousel-inner img-product__container">
-                        <div class="carousel-item active"><img src="/img/product/<%= product.image %>" alt="producto"></div>
-                        <div class="carousel-item "><img src="/img/product/<%= product.image %>" alt="producto"></div>
-                        <div class="carousel-item "><img src="/img/product/<%= product.image %>" alt="producto"></div>
+                        <div class="carousel-item active"><img src="/img/product/<%= product.image[0] %>" alt="producto"></div>
+                        <div class="carousel-item "><img src="/img/product/<%= product.image[1] %>" alt="producto"></div>
+                        <div class="carousel-item "><img src="/img/product/<%= product.image[2] %>" alt="producto"></div>
                     </div>
                     <div class="carousel-indicators img-mini__container">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image %>" alt="producto"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image %>" alt="producto"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image %>" alt="producto"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image[0] %>" alt="producto"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image[1] %>" alt="producto"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"><img class="w-100 img-thumbnail" src="/img/product/<%= product.image[2] %>" alt="producto"></button>
                       </div>
                    
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
