@@ -50,7 +50,7 @@ const controlador ={
             const product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
             const productsSimil = await Product.find({category: product.category}).populate(['category','marca']); //productos relacionados por marca y cat
             
-            console.log(product)
+            //console.log(product)
             //res.send(productoDetail)
             res.render("./products/productDetail",{
                 product,
@@ -77,8 +77,6 @@ const controlador ={
     },
     processCreate: async (req, res)=>{ 
         //validacion
-        //console.log(req.body)
-        //console.log(req.files)
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length > 0){
             res.send(resultValidation)
@@ -86,20 +84,16 @@ const controlador ={
             const Product = require('../database/models/Products');
             //console.log(req.body);
             try {
-                console.log(req.files)
+                // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
                 const fileObjects = [];
-                    // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
                     for (let i = 0; i < 3; i++) {
                         if(req.files[i]){
                             fileObjects.push(req.files[i].filename);
                         }else{
                             fileObjects.push('default.png');
                         }
-                        console.log(fileObjects + i)
                     }
-                    /* req.files.forEach(file => {
-                    fileObjects.push(file.filename);
-                }); */
+
                 const arrayDefault = ['default.png','default.png','default.png']
                 
                     await Product.create({
@@ -116,7 +110,7 @@ const controlador ={
                     })
                 res.redirect('/product/list')
             } catch (error) {
-                console.log(error)
+                //console.log(error)
                 res.send('error')
             }
     }
@@ -139,7 +133,7 @@ const controlador ={
     },
     processEdit: async(req, res)=>{ 
         //validacion
-        console.log(req.body)
+        //console.log(req.body)
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length > 0){
             res.send(resultValidation)
@@ -147,12 +141,15 @@ const controlador ={
             const Product = require('../database/models/Products');
 
             try {
-
+                // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
                 const fileObjects = [];
-                    // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
-                    req.files.forEach(file => {
-                    fileObjects.push(file.filename);
-                });
+                for (let i = 0; i < 3; i++) {
+                    if(req.files[i]){
+                        fileObjects.push(req.files[i].filename);
+                    }else{
+                        fileObjects.push('default.png');
+                    }
+                }
 
                 let producto= Product.findOne({_id: req.params.id});
                 await Product.findByIdAndUpdate( {_id: req.params.id}, 
