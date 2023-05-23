@@ -86,14 +86,21 @@ const controlador ={
             const Product = require('../database/models/Products');
             //console.log(req.body);
             try {
-
+                console.log(req.files)
                 const fileObjects = [];
                     // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
-                    req.files.forEach(file => {
+                    for (let i = 0; i < 3; i++) {
+                        if(req.files[i]){
+                            fileObjects.push(req.files[i].filename);
+                        }else{
+                            fileObjects.push('default.png');
+                        }
+                        console.log(fileObjects + i)
+                    }
+                    /* req.files.forEach(file => {
                     fileObjects.push(file.filename);
-
-                });
-                console.log(fileObjects )
+                }); */
+                const arrayDefault = ['default.png','default.png','default.png']
                 
                     await Product.create({
                         name: req.body.name,
@@ -104,7 +111,7 @@ const controlador ={
                         description:req.body.description,
                         offer: req.body.offer,
                         top_seller: req.body.top_seller,
-                        image: fileObjects
+                        image: req.files ?  fileObjects : arrayDefault
                         //image: req.files ? req.files.filename : 'default.png'
                     })
                 res.redirect('/product/list')
@@ -138,8 +145,15 @@ const controlador ={
             res.send(resultValidation)
             }else{
             const Product = require('../database/models/Products');
-            
+
             try {
+
+                const fileObjects = [];
+                    // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
+                    req.files.forEach(file => {
+                    fileObjects.push(file.filename);
+                });
+
                 let producto= Product.findOne({_id: req.params.id});
                 await Product.findByIdAndUpdate( {_id: req.params.id}, 
                 {
