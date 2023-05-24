@@ -93,7 +93,7 @@
         <div class="py-5 nuevos-productos__container">
          <% destacados.forEach(prod=>{ %> 
           <div class="card p-2 nuevos-productos__card">
-            <img src="/img/product/<%= prod.image%>" class="card-img-top p-3" alt="...">
+            <img src="/img/product/<%= prod.image[0]%>" class="card-img-top p-3" alt="...">
             <div class="card-body">
               <h5 class="card-title"><%= prod.name%></h5>
               <% if (prod.offer > 0) {%> 
@@ -150,7 +150,7 @@
             <a href="/product/detail/<%=prod.id%>">
             <% if (id==0) { %>
             <div class="carousel-item active"><%}else{%><div class="carousel-item"><%} %>
-            <img src="/img/product/<%= prod.image%>" class="d-block" alt="ofertas">
+            <img src="/img/product/<%=prod.image[0]%>" class="d-block" alt="ofertas">
             <div class="carousel-caption d-flex ofertas__body">
               <h5><%= prod.name%></h5>
               <% if (prod.offer > 0) {%> 
@@ -178,7 +178,16 @@
   </section>
   <section class="py-5 my-4">
     <h2 class="mt-4 p-3 fw-semibold text-primary  fs-1">MARCAS CON LAS QUE TRABAJAMOS</h2>
-
+    <article class="section__marcas">
+      <div class="marcas__container">
+        <% if (locals.marcas){ %>
+          <% locals.marcas.forEach(marc=>{ %>
+        <div class="marcas__element"><h1 class="text-info"><%= marc.name %></h1></div>
+          <% }) %>
+        <%}%>
+        
+      </div>
+    </article>
   </section>
      
       </main>

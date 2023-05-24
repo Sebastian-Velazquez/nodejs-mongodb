@@ -2,11 +2,13 @@ $violeta-dark: #130415;
 $violeta: #391a3d;
 $lima:#c7ff8f;
 $verde: #6fa33b;
+$rojo: #f00;
 $theme-colors: (
   "primary": $violeta-dark,
   "secondary": $violeta,
   "success": $verde,
-  "info":$lima
+  "info":$lima,
+  "danger":$rojo
 );
 $container-max-widths: (
   sm: 540px,
@@ -181,6 +183,26 @@ main{
             border-radius: 20px;
         }
         }
+        .section__marcas{
+            overflow: hidden;
+            width: 100%;
+            .marcas__container{
+                display: flex;
+                
+                animation: carruselMarcas 20s  infinite;
+                .marcas__element{
+                    margin: 5px;
+                }
+            }
+          }
+          @keyframes carruselMarcas {
+            from{
+                transform: translateX(80%)
+            }
+            to{
+                transform: translateX(-285%)
+            } 
+          }
     
 
 

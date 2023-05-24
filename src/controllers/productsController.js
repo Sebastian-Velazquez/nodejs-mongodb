@@ -165,7 +165,7 @@ const controlador ={
         const Product = require('../database/models/Products');
         try {
             await Product.findByIdAndDelete({_id: req.params.id})
-            return res.render('./products/productsList')
+            return res.redirect('/product/list')
 
         } catch (error) {
             res.send('error')

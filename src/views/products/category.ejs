@@ -24,7 +24,7 @@
     <div class="mt-2 main__list-container d-flex flex-wrap">
         <% productos.forEach(producto=>{ %> 
         <div class="card list__card-container m-2" >
-          <img src="/img/product/<%=producto.image%>" class="card-img-top" alt="...">
+          <img src="/img/product/<%=producto.image[0]%>" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%=producto.name%></h5>
                 <% if (producto.offer > 0) {%> 

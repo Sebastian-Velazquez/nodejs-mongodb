@@ -63,6 +63,10 @@
                     <button class="add-cart btn btn-secondary w-100 shadow">AGREGAR AL CARRITO</button>
                     <button class="add-favorites btn btn-outline-success shadow">Agregar a favoritos <i class="fa-regular fa-heart"></i></button>
                     </div>
+                    <div class="editar-eliminar__container d-flex justify-content-around">
+                        <a href="/product/edit/<%=product.id%>" class="btn btn-info w-25 shadow">Editar</a>
+                        <form class="w-25" action="/product/delete/<%=product.id%>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger w-100 shadow">Eliminar</button></form>
+                    </div>
                 </div>
             </section>
         </article>
