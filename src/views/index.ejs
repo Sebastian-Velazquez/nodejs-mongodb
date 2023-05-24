@@ -150,7 +150,7 @@
             <a href="/product/detail/<%=prod.id%>">
             <% if (id==0) { %>
             <div class="carousel-item active"><%}else{%><div class="carousel-item"><%} %>
-            <img src="/img/product/<%=prod.image[0]%>" class="d-block" alt="ofertas">
+            <img src="/img/product/<%= prod.image[0]%>" class="d-block" alt="ofertas">
             <div class="carousel-caption d-flex ofertas__body">
               <h5><%= prod.name%></h5>
               <% if (prod.offer > 0) {%> 

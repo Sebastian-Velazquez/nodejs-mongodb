@@ -41,13 +41,7 @@ const productSchema = new Schema(
     },
     image: {
       type: Array,
-      required: true
-      //default: "image.png",
-      /* type:String,
-      default: "image.png", */
-      /* 1: {type: String, default: 'default.png'},
-      2: {type: String, default: 'default.png'},
-      3: {type: String, default: 'default.png'}, */
+      //default: ['default.png', 'default.png', 'default.png'],
     },
     date:{//para saber cuando fue creado
       type: Date,

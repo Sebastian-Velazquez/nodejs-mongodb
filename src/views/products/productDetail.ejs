@@ -80,7 +80,7 @@
                 
                     <% productsSimil.forEach(prod=>{ %> 
                      <div class="card m-2" style="width: 20rem;">
-                       <img src="/img/product/<%= prod.image%>" class="card-img-top p-2" alt="...">
+                       <img src="/img/product/<%= prod.image[0]%>" class="card-img-top p-2" alt="...">
                        <div class="card-body">
                          <h5 class="card-title"><%= prod.name%></h5>
                          <% if (prod.offer > 0) {%> 
