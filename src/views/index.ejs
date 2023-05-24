@@ -178,7 +178,16 @@
   </section>
   <section class="py-5 my-4">
     <h2 class="mt-4 p-3 fw-semibold text-primary  fs-1">MARCAS CON LAS QUE TRABAJAMOS</h2>
-
+    <article class="section__marcas">
+      <div class="marcas__container">
+        <% if (locals.marcas){ %>
+          <% locals.marcas.forEach(marc=>{ %>
+        <div class="marcas__element"><h1 class="text-info"><%= marc.name %></h1></div>
+          <% }) %>
+        <%}%>
+        
+      </div>
+    </article>
   </section>
      
       </main>
