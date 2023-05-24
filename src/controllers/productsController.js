@@ -110,7 +110,7 @@ const controlador ={
                     })
                 res.redirect('/product/list')
             } catch (error) {
-                //console.log(error)
+                console.log(error)
                 res.send('error')
             }
     }

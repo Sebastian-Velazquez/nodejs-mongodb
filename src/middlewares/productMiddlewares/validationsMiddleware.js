@@ -51,15 +51,23 @@ const validations =[
     body('description').isLength({ max: 500 }).withMessage('La descripción del producto no puede tener más de 500 caracteres'),
 
     body('image').custom((value, {req})=> {
-        let file = req.file;
+        let file = req.files;
         let aceptedExtensions = ['.jpg', '.png', '.gif', '.jpeg'];
+        //console.log(file)
         
-        if (file){
-            let fileExtension = path.extname(file.originalname);
-            if (!aceptedExtensions.includes(fileExtension)){
-                throw new Error(`Las extensiones de archivo permitidos son ${aceptedExtensions.join(', ')}`)
-            }
+        
+        if (file){//si hay file
+            if(file.length <= 3){ //maximo 3 archivos
+                file.forEach(element => {//validando que sean formato '.jpg', '.png', '.gif', '.jpeg'
+                    let fileExtension = path.extname(element.originalname);
+                    if (!aceptedExtensions.includes(fileExtension)){
+                        throw new Error(`Las extensiones de archivo permitidos son ${aceptedExtensions.join(', ')}`)
+                    }
+            });
+        }else{
+            throw new Error(`maximo 3 imagenes`)
         }
+    }
         return true
     }),
 ];
