@@ -11824,7 +11824,30 @@ textarea.form-control-lg {
   background-color: var(--bs-secondary);
 }
 
+.profile-lg {
+  display: none;
+}
+
+.header-profile__container .dropdown-toggle::after {
+  display: none;
+}
+.header-profile__container .header__image-profile {
+  height: 55px;
+  width: 55px;
+}
+.header-profile__container .header__image-profile img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+.header-profile__container ul {
+  top: 55px !important;
+}
+
 @media (min-width: 768px) {
+  .profile-lg {
+    display: block;
+  }
   .navbar-nav {
     align-items: center !important;
   }

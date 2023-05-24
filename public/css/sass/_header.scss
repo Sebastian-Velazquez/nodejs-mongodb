@@ -72,7 +72,32 @@
 #add-product__container:hover{
     background-color: var(--bs-secondary);
 }
+.profile-lg{
+    display: none;
+}
+.header-profile__container{
+    
+    .dropdown-toggle::after{
+        display: none;
+    }
+    .header__image-profile{
+        height: 55px;
+        width: 55px;
+        img{
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+    ul{
+        top: 55px!important;
+    }
+    
+}
+
 @media (min-width: 768px) {
+    .profile-lg{
+        display: block;
+    }
     .navbar-nav{
         align-items: center!important;
         .search__container{

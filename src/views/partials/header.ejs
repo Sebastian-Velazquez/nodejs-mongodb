@@ -11,10 +11,27 @@
       
       
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
+        <div class="offcanvas-header"> 
+          <%if (locals.userLogged){%>
+            <div class="offcanvas-title dropdown header-profile__container">
+                <a class=" dropdown-toggle d-flex align-items-center text-decoration-none " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <p class="text-black m-0 me-2 fs-1">¡Hola <%=locals.userLogged.first_name%>!</p>
+                  <div class="header__image-profile"><img class="w-100 h-100" src="/img/other/perfil-ejemplo.jpg" alt=""></div>
+                </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/user/profile">PERFIL</a></li>
+                <li><a class="dropdown-item" href="">MI CARRITO</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/user/logout">CERRAR SESION</a></li>
+              </ul>
+            </div>
+          
+          <%}else{%>
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">MENÚ</h5>
+          <%}%>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+       
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <div class="dropdown">
@@ -57,14 +74,33 @@
           </ul>
         </div>
       </div>
-        <ul class="navbar-nav flex-row justify-content-around pe-0.5">
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="/user/login"><i class="fa-regular fa-user"></i></a>
-          </li>
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-          </li>
-        </ul>
+        
+         <%if (locals.userLogged){%>
+              <div class="dropdown header-profile__container profile-lg">
+                  <a class=" dropdown-toggle d-flex align-items-center text-decoration-none " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <p class="text-black m-0 me-1">¡Hola <%=locals.userLogged.first_name%>!</p>
+                    <div class="header__image-profile"><img class="w-100 h-100" src="/img/other/perfil-ejemplo.jpg" alt=""></div>
+                  </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/user/profile">PERFIL</a></li>
+                  <li><a class="dropdown-item" href="#">MI CARRITO</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/user/logout">CERRAR SESION</a></li>
+                </ul>
+              </div>
+            
+         <%}else{%>
+          <ul class="navbar-nav flex-row justify-content-around pe-0.5">
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="/user/login"><i class="fa-regular fa-user"></i></a>
+            </li>
+          
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+          </ul>
+          <%}%>
+        
     </div>
   </nav>
   <div id="add-product__container">
