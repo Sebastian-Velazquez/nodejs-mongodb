@@ -138,10 +138,9 @@ const controlador ={
         if (resultValidation.errors.length > 0){
             res.send(resultValidation)
             }else{
-            const Product = require('../database/models/Products');
-
-            try {
-                // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
+                
+                try {
+                    // Guardar cada archivo en MongoDB y almacenar los objetos de archivo en el array
                 const fileObjects = [];
                 for (let i = 0; i < 3; i++) {
                     if(req.files[i]){
@@ -150,7 +149,7 @@ const controlador ={
                         fileObjects.push('default.png');
                     }
                 }
-
+                const Product = require('../database/models/Products');
                 let producto= Product.findOne({_id: req.params.id});
                 await Product.findByIdAndUpdate( {_id: req.params.id}, 
                 {
@@ -162,7 +161,7 @@ const controlador ={
                         description:req.body.description,
                         offer: req.body.offer,
                         top_seller: req.body.top_seller,
-                        image: req.file ? req.file.filename : producto.image
+                        image: req.files ? fileObjects : producto.image
                     },
                     { useFindAndModify: false});//viene del documento oficial de mogoose
                 res.redirect("/product/list")

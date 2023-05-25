@@ -49,10 +49,10 @@ const controlador ={
                 if(userToLogin){
                     let isOkThePassword = bcryptjs.compareSync(req.body.password, userToLogin.password);
                     if(isOkThePassword){
-                        userToLogin.password = null; // Borrra el password para que no quede guardado.
+                        //userToLogin.unset('password');// Borrra el password para que no quede guardado.
+                        userToLogin.password = undefined; 
                         //Guardar el user logeado
                         req.session.userLogged =  userToLogin
-
                         //mantener session
                         if(req.body.remember) {
                             res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 2})
