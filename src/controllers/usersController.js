@@ -80,7 +80,7 @@ const controlador ={
 
     },
     profile:(req,res)=>{
-        console.log(req.session.userLogged)
+        console.log(req.session.userLogged.perfil.rol)
         return res.render('./users/userProfile',{
             user: req.session.userLogged
         })

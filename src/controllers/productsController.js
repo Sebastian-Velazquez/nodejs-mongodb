@@ -150,7 +150,8 @@ const controlador ={
                     }
                 }
                 const Product = require('../database/models/Products');
-                let producto= Product.findOne({_id: req.params.id});
+                let producto= await Product.findOne({_id: req.params.id});
+                
                 await Product.findByIdAndUpdate( {_id: req.params.id}, 
                 {
                         name: req.body.name,
@@ -161,7 +162,7 @@ const controlador ={
                         description:req.body.description,
                         offer: req.body.offer,
                         top_seller: req.body.top_seller,
-                        image: req.files ? fileObjects : producto.image
+                        image: req.files.length > 0 ? fileObjects : producto.image
                     },
                     { useFindAndModify: false});//viene del documento oficial de mogoose
                 res.redirect("/product/list")

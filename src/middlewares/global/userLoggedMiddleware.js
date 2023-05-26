@@ -6,7 +6,7 @@ function userLoggedMiddleware(req, res, next) {
     res.locals.isLogged = false;//res.locals en es variable local.. se puede compartir en todas las vistas
 
     if (req.cookies.userEmail){
-        console.log(req.cookies.userEmail)
+        //console.log(req.cookies.userEmail)
         db.findOne(
             {
                 email: req.cookies.userEmail

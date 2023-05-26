@@ -4,20 +4,22 @@ const router = express.Router();
 
 // llamamos a la ruta de controlador
 const usersController = require("../controllers/usersController.js");
+const authMiddlewares = require("../middlewares/userMiddlewares/authMiddlewares.js");//si no tengo a nadie en session
+const guestMiddlewares = require("../middlewares/userMiddlewares/guestMiddlewares.js"); //si tengo alguein es session
 
-router.get("/register", usersController.register);
-router.post("/register", usersController.processRegister);
+router.get("/register", guestMiddlewares, usersController.register);
+router.post("/register", guestMiddlewares, usersController.processRegister);
 
-router.get("/login", usersController.login);
-router.post("/login", usersController.processLogin);
+router.get("/login", guestMiddlewares, usersController.login);
+router.post("/login", guestMiddlewares,  usersController.processLogin);
 
-router.get("/profile", usersController.profile);
+router.get("/profile", authMiddlewares, usersController.profile);
 
-router.get("/logout", usersController.logout);
+router.get("/logout", authMiddlewares, usersController.logout);
 
-router.put("/favoritePush/:id", usersController.favoritePush);
+router.put("/favoritePush/:id", authMiddlewares, usersController.favoritePush);
 
-router.put("/favoritePull/:id", usersController.favoritePull);
+router.put("/favoritePull/:id", authMiddlewares, usersController.favoritePull);
 
 
 module.exports = router;
