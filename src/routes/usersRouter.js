@@ -17,9 +17,9 @@ router.get("/profile", authMiddlewares, usersController.profile);
 
 router.get("/logout", authMiddlewares, usersController.logout);
 
-router.put("/favoritePush/:id", authMiddlewares, usersController.favoritePush);
+router.put("/favorite/:id", authMiddlewares, usersController.favorite);
 
-router.put("/favoritePull/:id", authMiddlewares, usersController.favoritePull);
+//router.put("/favoritePull/:id", authMiddlewares, usersController.favoritePull);
 
 
 module.exports = router;

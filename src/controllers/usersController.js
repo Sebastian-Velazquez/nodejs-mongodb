@@ -91,19 +91,29 @@ const controlador ={
         //req.session = null;//para destruir la session, osea salir del login del perfil
         return res.redirect('/')
     },
-    favoritePush:async(req,res)=>{
+    favorite:async(req,res)=>{
         let userId= req.params.id //traer el id user
         const Customers =  require('../database/models/Customers');
+        const usuario = await Customer.findOne({_id: userId});
+        const agregado = usuario.perfil.favorite.indexOf(req.body.favorite)
         try {
-        let cliente = await Customers.findByIdAndUpdate({_id: userId}, { $push: { 'perfil.favorite': req.body.favorite } }, { new: true })
+            if(agregado == -1){
+                await Customers.findByIdAndUpdate({_id: userId}, { $push: { 'perfil.favorite': req.body.favorite } }, { new: true })
+                //console.log("paso por push")
+
+            }else{
+                await Customers.findByIdAndUpdate({_id: userId}, { $pull: { 'perfil.favorite': req.body.favorite } }, { new: true })
+                //console.log("paso por pull")
+
+            }
+        res.render('./products/productFavorite')
         //console.log(cliente)
-        res.send(cliente)
         } catch (error) {
             console.log(error)
             res.send('error')
         }
     },
-    favoritePull:async(req,res)=>{
+    /* favoritePull:async(req,res)=>{
         let userId= req.params.id //traer el id user
         const Customers =  require('../database/models/Customers');
         try {
@@ -114,7 +124,7 @@ const controlador ={
             console.log(error)
             res.send('error')
         }
-    }
+    } */
 }
 
 module.exports = controlador;
