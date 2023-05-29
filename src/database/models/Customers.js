@@ -30,7 +30,7 @@ const customerSchema = new Schema({
     },
     image: {
       type: String,
-      default: ''
+      default: 'user-default.jpg'
     },
     favorite:{
       type: [{

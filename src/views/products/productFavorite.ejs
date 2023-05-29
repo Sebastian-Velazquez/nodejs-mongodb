@@ -5,8 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <h1>favoritos</h1>
+    <%- include("../partials/header") %>
+    <main>
+        <h2 class="py-3">Mis favoritos</h2>
+        <% let productosFavoritos= [];
+        locals.userLogged.perfil.favorite.forEach(fav=>{
+            productosFavoritos.push(productos.find(prod=> prod.id == fav)) 
+        }) %>
+
+        <% productosFavoritos.forEach(producto=>{ %> 
+            <div class="card list__card-container my-2 mx-auto" >
+              <img src="/img/product/<%=producto.image[0]%>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%=producto.name%></h5>
+                    <% if (producto.offer > 0) {%> 
+                        <div class="card-text text-light-emphasis d-flex" ><p class="me-1" style="text-decoration: line-through;"><%=producto.price%> </p> <span class="text-success">  <%=producto.offer%> %</span></div>
+                        <p class="card-text"><%= producto.price - (producto.price  * producto.offer/100) %></p>
+                    <%}else{%>  
+                        <p class="card-text"><%=producto.price%></p>
+                    <%}%>
+                <a href="/product/detail/<%=producto.id%>" class="btn btn-primary text-info">ver</a>
+                </div>
+            </div>
+            <%})%>
+    </main>
+    <%- include("../partials/footer") %>
+    
 </body>
 </html>

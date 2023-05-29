@@ -64,7 +64,11 @@
                     <%if (locals.userLogged){%>
                         <form action="/user/favorite/<%=locals.userLogged._id%>?_method=PUT" method="POST">
                             <input type="text" value="<%= product._id %>" readonly style="display: none;" name="favorite">
-                            <button class="add-favorites btn btn-outline-success shadow">Agregar a favoritos <i class="fa-regular fa-heart"></i></button>
+                            <% if (locals.userLogged.perfil.favorite.indexOf(product.id) == -1) {%>
+                            <button class="add-favorites btn btn-outline-success shadow">Agregar a favoritos <i class="fa-regular fa-heart fs-3"></i></button>
+                            <%}else{%>
+                            <button class="add-favorites btn btn-success shadow">Agregado a favoritos <i class="fa-solid fa-heart-circle-check fs-3"></i></button>
+                            <%}%>
                         </form>
                     <%}%>
                     </div>

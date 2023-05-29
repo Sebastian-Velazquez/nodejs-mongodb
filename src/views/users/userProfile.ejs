@@ -9,12 +9,20 @@
 </head>
 <body>
     <%- include("../partials/header") %>
-    <main>
-        <section class="datosUsuario">
-            <h2> <b>Datos Personales</b> </h2> <br>
-            <h3> Nombre:</h3> <%= user.first_name +' '+  user.last_name %> 
-            <h3> Correo Electrónico:</h3> <%= user.email %>  
-
+    <main class="py-5">
+        <section class="d-flex justify-content-start align-items-center shadow m-5 py-3 px-4" style="height: 140px;">
+            <div class="h-100 p-2 rounded-circle border border-info position-relative"> <p class="position-absolute top-50 start-50 translate-middle text-secondary text-center">Subir foto</p><img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= user.perfil.image %>" alt=""></div><h2 class="ms-3"><%= user.first_name +' '+  user.last_name %> </h2>
+        </section>
+        <section class="d-flex flex-column m-5 datosUsuario">
+            <div class="shadow d-flex justify-content-between align-items-center p-4 my-3">
+                <h3> Correo Electrónico:</h3><p class="m-0"><%= user.email %></p> 
+            </div>
+            <div class="shadow d-flex justify-content-between align-items-center p-4 my-3">
+                <h3> Direccion:</h3><p class="m-0"><%= user.perfil.direccion %></p> 
+                <p><%= user.perfil.cp %></p> 
+            </div>
+                      
+            
         </section>
     </main>
     <%- include("../partials/footer") %>

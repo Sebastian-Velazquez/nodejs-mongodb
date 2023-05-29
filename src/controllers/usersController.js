@@ -27,7 +27,7 @@ const controlador ={
                         perfil: {
                             direccion: "",
                             cp: "",
-                            image: 'avatar.png'
+                            image: 'user-default.jpg'
                         }
                     }
                 )
@@ -80,7 +80,7 @@ const controlador ={
 
     },
     profile:(req,res)=>{
-        console.log(req.session.userLogged.perfil.rol)
+        console.log(req.session.userLogged)
         return res.render('./users/userProfile',{
             user: req.session.userLogged
         })
@@ -90,6 +90,17 @@ const controlador ={
         res.clearCookie('userEmail',);//destruir la cookie
         //req.session = null;//para destruir la session, osea salir del login del perfil
         return res.redirect('/')
+    },
+    favorites:async(req,res)=>{
+        const Product = require('../database/models/Products');
+        //const category = require('../database/models/Category');//llamar para hacer la relacion 
+        try {
+            const productos = await Product.find()//.populate('category');
+            res.render("./products/productFavorite",{
+                productos:productos})
+        } catch (error) {
+            res.send('error')
+        }
     },
     favorite:async(req,res)=>{
         let userId= req.params.id //traer el id user
@@ -106,7 +117,7 @@ const controlador ={
                 //console.log("paso por pull")
 
             }
-        res.render('./products/productFavorite')
+            res.redirect(`/product/detail/${req.body.favorite}`)
         //console.log(cliente)
         } catch (error) {
             console.log(error)

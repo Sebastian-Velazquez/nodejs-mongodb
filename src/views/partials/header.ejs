@@ -16,11 +16,12 @@
             <div class="offcanvas-title dropdown header-profile__container">
                 <a class=" dropdown-toggle d-flex align-items-center text-decoration-none " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <p class="text-black m-0 me-2 fs-1">¡Hola <%=locals.userLogged.first_name%>!</p>
-                  <div class="header__image-profile"><img class="w-100 h-100" src="/img/other/perfil-ejemplo.jpg" alt=""></div>
+                  <div class="header__image-profile"><img class="w-100 h-100" src="/img/user/<%=locals.userLogged.perfil.image%>" alt=""></div>
                 </a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/user/profile">PERFIL</a></li>
                 <li><a class="dropdown-item" href="">MI CARRITO</a></li>
+                <li><a class="dropdown-item" href="/user/favorites">MIS FAVORITOS</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/user/logout">CERRAR SESION</a></li>
               </ul>
@@ -79,11 +80,12 @@
               <div class="dropdown header-profile__container profile-lg">
                   <a class=" dropdown-toggle d-flex align-items-center text-decoration-none " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <p class="text-black m-0 me-1">¡Hola <%=locals.userLogged.first_name%>!</p>
-                    <div class="header__image-profile"><img class="w-100 h-100" src="/img/other/perfil-ejemplo.jpg" alt=""></div>
+                    <div class="header__image-profile"><img class="w-100 h-100" src="/img/user/<%=locals.userLogged.perfil.image%>" alt=""></div>
                   </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/user/profile">PERFIL</a></li>
                   <li><a class="dropdown-item" href="#">MI CARRITO</a></li>
+                  <li><a class="dropdown-item" href="/user/favorites">MIS FAVORITOS</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="/user/logout">CERRAR SESION</a></li>
                 </ul>
@@ -92,11 +94,11 @@
          <%}else{%>
           <ul class="navbar-nav flex-row justify-content-around pe-0.5">
             <li class="nav-item mx-2">
-              <a class="nav-link" href="/user/login"><i class="fa-regular fa-user"></i></a>
+              <a class="nav-link text-black" href="/user/login"><i class="fa-regular fa-user"></i></a>
             </li>
           
             <li class="nav-item mx-2">
-              <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+              <a class="nav-link text-black" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
             </li>
           </ul>
           <%}%>
