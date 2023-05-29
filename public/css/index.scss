@@ -188,25 +188,37 @@ main{
             width: 100%;
             .marcas__container{
                 display: flex;
-                
-                animation: carruselMarcas 20s  infinite;
+                width: max-content;
+                align-items: center;
+                animation: carruselMarcas 30s ease-in-out infinite;
                 .marcas__element{
                     margin: 5px;
+                    width: 120px;
+                    
+                    img{
+                        width: 100%;
+                    }
                 }
             }
           }
           @keyframes carruselMarcas {
-            from{
-                transform: translateX(80%)
+            0%{
+                transform: translateX(0%)
             }
-            to{
-                transform: translateX(-285%)
+            100%{
+                transform: translateX(-50%)
             } 
           }
     
 
 
 @media (min-width: 768px) {
+    .section__marcas{ 
+        .marcas__container{
+            .marcas__element{
+                margin: 8px;
+                width: 200px;
+                            }}}
     .carrusel-banner{
         height: 700px !important;
     }
