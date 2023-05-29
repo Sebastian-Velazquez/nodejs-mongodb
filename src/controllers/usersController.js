@@ -111,11 +111,15 @@ const controlador ={
             if(agregado == -1){
                 await Customers.findByIdAndUpdate({_id: userId}, { $push: { 'perfil.favorite': req.body.favorite } }, { new: true })
                 //console.log("paso por push")
+                req.session.userLogged.perfil.favorite.push(req.body.favorite)
 
             }else{
                 await Customers.findByIdAndUpdate({_id: userId}, { $pull: { 'perfil.favorite': req.body.favorite } }, { new: true })
                 //console.log("paso por pull")
-
+                let filtro = req.session.userLogged.perfil.favorite.filter(fav=> fav != req.body.favorite);
+                console.log(filtro)
+                req.session.userLogged.perfil.favorite.push(filtro)
+                console.log(req.session.userLogged.perfil.favorite.push(filtro))
             }
             res.redirect(`/product/detail/${req.body.favorite}`)
         //console.log(cliente)

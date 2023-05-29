@@ -65,7 +65,7 @@
         <div class="py-5 nuevos-productos__container">
           <% ultimosPoducts.forEach((prod,i)=>{ %> 
             
-            <div class="card p-2 nuevos-productos__card">
+            <div class="card p-2  nuevos-productos__card">
               <img src="/img/product/<%= prod.image[0]%>" class=" card-img-top p-3" alt="...">
               <div class="card-body">
                 <h5 class="card-title"><%= prod.name%></h5>
@@ -79,6 +79,16 @@
               <%}%>
                 <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info w-100">ver</a>
               </div>
+              <%if (locals.userLogged){%>
+                <form class="position-absolute" action="/user/favorite/<%=locals.userLogged._id%>?_method=PUT" method="POST">
+                    <input type="text" value="<%= prod._id %>" readonly style="display: none;" name="favorite">
+                    <% if (locals.userLogged.perfil.favorite.indexOf(prod.id) == -1) {%>
+                    <button class="add-favorites btn bg-transparent "><i class="fa-regular fa-heart fs-2 text-info"></i></button>
+                    <%}else{%>
+                    <button class="add-favorites btn bg-transparent "><i class="fa-solid fa-heart-circle-check fs-2 text-info"></i></button>
+                    <%}%>
+                </form>
+            <%}%>
             </div>
          
            <% }) %>
@@ -106,6 +116,16 @@
             <%}%>
               <a href="/product/detail/<%=prod.id%>" class="btn btn-primary text-info">ver</a>
             </div>
+            <%if (locals.userLogged){%>
+              <form class="position-absolute" action="/user/favorite/<%=locals.userLogged._id%>?_method=PUT" method="POST">
+                  <input type="text" value="<%= prod._id %>" readonly style="display: none;" name="favorite">
+                  <% if (locals.userLogged.perfil.favorite.indexOf(prod.id) == -1) {%>
+                  <button class="add-favorites btn bg-transparent "><i class="fa-regular fa-heart fs-2 text-info"></i></button>
+                  <%}else{%>
+                  <button class="add-favorites btn bg-transparent "><i class="fa-solid fa-heart-circle-check fs-2 text-info"></i></button>
+                  <%}%>
+              </form>
+          <%}%>
           </div>
           <% }) %>
         </div>
