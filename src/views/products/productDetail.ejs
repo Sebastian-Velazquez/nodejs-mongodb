@@ -72,10 +72,12 @@
                         </form>
                     <%}%>
                     </div>
+                    <% if (locals.loggedAdmin == true) {%>
                     <div class="editar-eliminar__container d-flex justify-content-around">
                         <a href="/product/edit/<%=product.id%>" class="btn btn-info w-25 shadow">Editar</a>
                         <form class="w-25" action="/product/delete/<%=product.id%>?_method=DELETE" method="POST"><button type="submit" class="btn btn-danger w-100 shadow">Eliminar</button></form>
                     </div>
+                    <%}%>
                 </div>
             </section>
         </article>
@@ -88,7 +90,7 @@
                 <div class="producto-relacionado__container py-3 d-flex flex-row;">
                 
                     <% productsSimil.forEach(prod=>{ %> 
-                     <div class="card m-2" style="width: 20rem;">
+                     <div  class="card m-2 producto-relacionado__card">
                        <img src="/img/product/<%= prod.image[0]%>" class="card-img-top p-2" alt="...">
                        <div class="card-body">
                          <h5 class="card-title"><%= prod.name%></h5>

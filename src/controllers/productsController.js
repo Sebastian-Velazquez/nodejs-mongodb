@@ -48,8 +48,8 @@ const controlador ={
         //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
         try {
             const product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
-            const productsSimil = await Product.find({category: product.category}).populate(['category','marca']); //productos relacionados por marca y cat
-            
+            const productsCat = await Product.find({category: product.category}).populate(['category','marca']); //productos relacionados por marca y cat
+            const productsSimil = productsCat.splice(productsCat.length -4)
             //console.log(product)
             //res.send(productoDetail)
             res.render("./products/productDetail",{
