@@ -35,6 +35,16 @@
                 <%}%>
             <a href="http://localhost:3030/product/detail/<%=producto.id%>" class="btn btn-primary text-info">ver</a>
             </div>
+            <%if (locals.userLogged){%>
+                <form class="position-absolute" action="/user/favorite/<%=locals.userLogged._id%>?_method=PUT" method="POST">
+                    <input type="text" value="<%= producto._id %>" readonly style="display: none;" name="favorite">
+                    <% if (locals.userLogged.perfil.favorite.indexOf(producto.id) == -1) {%>
+                    <button class="add-favorites btn bg-transparent "><i class="fa-regular fa-heart fs-2 text-info"></i></button>
+                    <%}else{%>
+                    <button class="add-favorites btn bg-transparent "><i class="fa-solid fa-heart-circle-check fs-2 text-info"></i></button>
+                    <%}%>
+                </form>
+            <%}%>
         </div>
         <%})%>
     </div>
