@@ -1,43 +1,49 @@
 const Customer = require('../database/models/Customers');
 const bcryptjs = require("bcryptjs");
+const {validationResult} = require('express-validator');
 
 const controlador ={
     register: (req, res)=>{
         res.render("./users/userRegister")
     },
     processRegister:async (req, res)=>{ 
-        try {
-            let User = await Customer.findOne({email: req.body.email});
-            if (User){
-                return res.render('./users/userRegister', {
-                    errors: {
-                        email: {msg:'Este email ya esta registrado'}
-                    }, 
-                    oldData: req.body 
-                    }) ;
-                /* console.log(User)
-                res.send('el email ya existe') */
-            }else{
-                await Customer.create(
-                    {
-                        first_name: req.body.firt_name,
-                        last_name: "",
-                        email: req.body.email,
-                        password: bcryptjs.hashSync(req.body.password, 10),
-                        perfil: {
-                            direccion: "",
-                            cp: "",
-                            image: 'user-default.jpg'
+        //Validacion de Middlewares
+        const resultValidation = validationResult(req);
+        if (resultValidation.errors.length > 0){
+        return res.render('./users/userRegister', {
+            errors: resultValidation.mapped(), //mapped: pasa la variable resultValidation a literiario 
+            oldData: req.body 
+            });
+        }else{
+            try {
+                let User = await Customer.findOne({email: req.body.email});
+                if (User){
+                    return res.render('./users/userRegister', {
+                        errors: {
+                            email: {msg:'Este email ya esta registrado'}
+                        }, 
+                        oldData: req.body 
+                        }) ;
+                }else{
+                    await Customer.create(
+                        {
+                            first_name: req.body.firt_name,
+                            last_name: "",
+                            email: req.body.email,
+                            password: bcryptjs.hashSync(req.body.password, 10),
+                            perfil: {
+                                direccion: "",
+                                cp: "",
+                                image: 'user-default.jpg'
+                            }
                         }
-                    }
-                )
-                return res.redirect('/user/login')
+                    )
+                    return res.redirect('/user/login')
+                }
+            } catch (error) {
+                console.log(error)
             }
-        } catch (error) {
-            console.log(error)
         }
-
-        //res.send("Te Registraste")
     },
     login:(req, res)=>{
         res.render("./users/userLogin")
