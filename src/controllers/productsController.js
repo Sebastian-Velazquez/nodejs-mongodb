@@ -79,7 +79,10 @@ const controlador ={
         //validacion
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length > 0){
-            res.send(resultValidation)
+            res.render(("./products/productCreate"), { 
+				errors : resultValidation.mapped(),
+				oldData : req.body
+			})
         }else{
             const Product = require('../database/models/Products');
             //console.log(req.body);
