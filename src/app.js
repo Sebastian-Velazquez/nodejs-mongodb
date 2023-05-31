@@ -39,10 +39,12 @@ app.use(userLoggedMiddleware);
 const homeRouter = require('./routes/homeRouter.js')
 const productsRouter = require('./routes/productsRouter.js')
 const usersRouter = require('./routes/usersRouter.js')
+const payRouter = require('./routes/payRouter.js') 
 
 app.use("/", /* categoryHeader, */ homeRouter);
 app.use("/product", productsRouter);
 app.use("/user", usersRouter);
+app.use("/pay", payRouter);
 
 /***Morgan ***/
 const morgan = require('morgan');
