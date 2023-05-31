@@ -118,8 +118,8 @@ const controlador ={
                 //console.log("paso por pull")
                 let filtro = req.session.userLogged.perfil.favorite.filter(fav=> fav != req.body.favorite);
                 console.log(filtro)
-                req.session.userLogged.perfil.favorite.push(filtro)
-                console.log(req.session.userLogged.perfil.favorite.push(filtro))
+                req.session.userLogged.perfil.favorite = filtro
+                console.log(req.session.userLogged.perfil.favorite)
             }
             res.redirect(`/product/detail/${req.body.favorite}`)
         //console.log(cliente)
