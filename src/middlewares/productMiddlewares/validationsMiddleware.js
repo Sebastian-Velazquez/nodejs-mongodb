@@ -48,10 +48,11 @@ const validations =[
     body('top_seller').isIn(['1', '2', 1, 2]).withMessage('Tenes que elegir un opción'),
     body('offer').isNumeric().withMessage('Tienes que escribir un numero correcto').bail()
         .isInt({ min: 0 }).withMessage('El descuento debe ser mayor o igual a 0'),
-    body('description').isLength({ max: 500 }).withMessage('La descripción del producto no puede tener más de 500 caracteres'),
+    body('description').notEmpty().withMessage('Tienes que escribir una descripcion').bail()
+    .isLength({ max: 500 }).withMessage('La descripción del producto no puede tener más de 500 caracteres'),
 
     body('image').custom((value, {req})=> {
-        let file = req.files;
+        let file = req.file;
         let aceptedExtensions = ['.jpg', '.png', '.gif', '.jpeg'];
         //console.log(file)
         
@@ -67,6 +68,8 @@ const validations =[
         }else{
             throw new Error(`maximo 3 imagenes`)
         }
+    }else{
+        throw new Error("debes agregar al menos una imagen")
     }
         return true
     }),

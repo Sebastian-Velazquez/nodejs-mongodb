@@ -18,23 +18,31 @@
         
             <div class="input__container">
                 <label for="name" class="form-label">Nombre</label>
-                <input   name="firt_name" id="name" type="text" class="form-control">
-                <div class="invalid-feedback">Debes poner un nombre</div>
+                <input value="<%= locals.oldData ? oldData.firt_name : null %>"  name="firt_name" id="name" type="text" class="form-control">
+                <% if (locals.errors && errors.firt_name) { %>
+                    <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.firt_name.msg %></span>
+                    <% } %> 
             </div>
             <div class="input__container">
                 <label for="email" class="form-label">Email</label>
-                <input   name="email" id="email" type="email" class="form-control">
-                <div class="invalid-feedback">Es necesario poner un email valido</div>
+                <input  value="<%= locals.oldData ? oldData.email : null %>" name="email" id="email" type="email" class="form-control">
+                <% if (locals.errors && errors.email) { %>
+                    <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.email.msg %></span>
+                    <% } %> 
             </div>
             <div class="input__container">
                 <label for="password" class="form-label">Contraseña</label>
-                <input   name="password" id="password" type="password" class="form-control">
-                <div class="invalid-feedback">Es necesario poner una contraseña</div>
+                <input value="<%= locals.oldData ? oldData.password : null %>"  name="password" id="password" type="password" class="form-control">
+                <% if (locals.errors && errors.password) { %>
+                    <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.password.msg %></span>
+                    <% } %> 
             </div>
             <div class="input__container">
                 <label for="repassword" class="form-label">Contraseña</label>
-                <input   name="repassword" id="repassword" type="password" class="form-control">
-                <div class="invalid-feedback">Debes repetir contraseña</div>
+                <input  value="<%= locals.oldData ? oldData.repassword : null %>" name="repassword" id="repassword" type="password" class="form-control">
+                <% if (locals.errors && errors.repassword) { %>
+                    <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.repassword.msg %></span>
+                    <% } %> 
             </div>
             <button type="submit" class="btn btn-outline-success text-black my-5">Continuar</button>
             <p class="mt-3">Al continuar, aceptas las <a href="">Condiciones de uso y el Aviso de privacidad</a> de CompuI</p>
@@ -43,25 +51,6 @@
     </div>
     <p class="mb-4 pb-2 text-center">CompuInsumos SRL © 2022. Todos los Derechos Reservados.</p>    
 </main>
-
-    <script>
-                
-        (() => {
-        'use strict'
-         const forms = document.querySelectorAll('.needs-validation')
-            console.log(forms);
-            Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-            }, false)
-        })
-        })()
-    </script>
     <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

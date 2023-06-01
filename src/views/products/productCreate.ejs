@@ -14,7 +14,7 @@
             <h3 class="my-5">Agregar producto</h3>
         <form class="create__container d-flex flex-column justify-content-center align-items-center" enctype="multipart/form-data" action="/product/create" method="POST">
             <div class="form-floating mb-3">
-                <input type="text" name="name" class="form-control" id="floatingInput" placeholder="Nombre">
+                <input value="<%= locals.oldData ? oldData.name : null %>" type="text" name="name" class="form-control" id="floatingInput" placeholder="Nombre">
                 <label for="floatingInput">Nombre</label>
                 <% if (locals.errors && errors.name) { %>
                     <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.name.msg %></span>
@@ -44,14 +44,14 @@
             </article>
             <article>
                 <div class="form-floating w-50">
-                    <input type="number" name="stock" class="form-control" id="floatingInput" placeholder="stock">
+                    <input value="<%= locals.oldData ? oldData.stock : null %>" type="number" name="stock" class="form-control" id="floatingInput" placeholder="stock">
                     <label for="floatingInput">Stock</label>
                     <% if (locals.errors && errors.stock) { %>
                         <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.stock.msg %></span>
                         <% } %> 
                 </div>
                 <div class="form-floating w-50">
-                    <input type="number" name="price" class="form-control" id="floatingInput" placeholder="precio">
+                    <input type="number" value="<%= locals.oldData ? oldData.price : null %>" name="price" class="form-control" id="floatingInput" placeholder="precio">
                     <label for="floatingInput">Precio en $ ARS</label>
                     <% if (locals.errors && errors.price) { %>
                         <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.price.msg %></span>
@@ -68,7 +68,7 @@
                     <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.top_seller.msg %></span>
                     <% } %> 
                 <div class="form-floating w-50">
-                    <input type="number" name="offer" class="form-control" id="floatingInput" placeholder="oferta">
+                    <input value="<%= locals.oldData ? oldData.number : null %>" type="number" name="offer" class="form-control" id="floatingInput" placeholder="oferta">
                     <label for="floatingInput">Oferta en %</label>
                     <% if (locals.errors && errors.offer) { %>
                         <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.offer.msg %></span>
@@ -83,7 +83,7 @@
                     <% } %> 
             </article>
             <article class="form-floating">
-                <textarea class="form-control" name="description" placeholder="descripcion" id="floatingTextarea"></textarea>
+                <textarea value="<%= locals.oldData ? oldData.description : null %>" class="form-control" name="description" placeholder="descripcion" id="floatingTextarea"></textarea>
                 <label for="floatingTextarea">Descripcion</label>
                 <% if (locals.errors && errors.description) { %>
                     <span class="text-danger" style="color: #900; font-weight: 200;"><%= errors.description.msg %></span>
