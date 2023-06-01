@@ -6,23 +6,23 @@ const controlador ={
     mercadopago:(req, res)=>{
         // Agrega credenciales
         mercadopago.configure({
-            access_token: "TEST-2678067983968473-052910-dceb9cb0b0a91e6aa97d969d6ed561b8-316001877",
+            access_token: "APP_USR-7640889624539342-053118-1bd778dadef27d1292e2db2da73cd2fb-316001877",
         });
 
 
         // Crea un objeto de preferencia
         let preference = {
             back_urls:{ //aca p/ poner el link para volver a la pagina una vez realizado el pago
-                success: 'http://localhost:3030/'
+                success: 'https://compu-insumos.onrender.com/pay/success'
             },
             items: [
                 {
                     title: "Mi producto",
-                    unit_price: 100,
+                    unit_price: 0.01,
                     quantity: 1,
                 },
             ],
-            notification_url: 'urlnotificacion'
+            notification_url: 'https://compu-insumos.onrender.com/pay/notification'
         };
         
         mercadopago.preferences
@@ -36,6 +36,13 @@ const controlador ={
             console.log(error);
             });  
            // res.send(response)
+    },
+    success:(req, res)=>{
+        res.send('El pago fue un exito!!')
+    },
+    notification_url:(req,res)=>{
+        console.log('notificar')
+        res.send()
     }
 }
 
