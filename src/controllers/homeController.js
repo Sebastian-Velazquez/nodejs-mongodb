@@ -40,7 +40,8 @@ const controlador ={
         try {
             const resultado = await Product.find({ name: { $regex: req.query.search, $options: 'i' } });
             if (resultado.length > 0){
-                res.send(resultado)
+                res.render("./products/productSearch",
+                { productos:resultado})
             }else{
                 res.redirect('/')
             }

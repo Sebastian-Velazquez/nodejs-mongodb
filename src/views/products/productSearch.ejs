@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <%- include("../partials/header") %>
+    <main>
+            <nav class="main__breadcrumb-container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">TODO</li>
+                </ol>
+            </nav>
+            <div class="main__list-container d-flex flex-wrap">
+                <% productos.forEach(producto=>{ %> 
+                <div class="card list__card-container m-2" >
+                  <img src="/img/product/<%=producto.image[0]%>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%=producto.name%></h5>
+                        <% if (producto.offer > 0) {%> 
+                            <div class="card-text text-light-emphasis d-flex" ><p class="me-1" style="text-decoration: line-through;"><%=producto.price%> </p> <span class="text-success">  <%=producto.offer%> %</span></div>
+                            <p class="card-text"><%= producto.price - (producto.price  * producto.offer/100) %></p>
+                        <%}else{%>  
+                            <p class="card-text"><%=producto.price%></p>
+                        <%}%>
+                    <a href="/product/detail/<%=producto.id%>" class="btn btn-primary text-info">ver</a>
+                    </div>
+                    <%if (locals.userLogged){%>
+                        <form class="position-absolute" action="/user/favorite/<%=locals.userLogged._id%>?_method=PUT" method="POST">
+                            <input type="text" value="<%= producto._id %>" readonly style="display: none;" name="favorite">
+                            <% if (locals.userLogged.perfil.favorite.indexOf(producto.id) == -1) {%>
+                            <button class="add-favorites btn bg-transparent "><i class="fa-regular fa-heart fs-2 text-info"></i></button>
+                            <%}else{%>
+                            <button class="add-favorites btn bg-transparent "><i class="fa-solid fa-heart-circle-check fs-2 text-info"></i></button>
+                            <%}%>
+                        </form>
+                    <%}%>
+                </div>
+                <%})%>
+            </div>
+            
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>
