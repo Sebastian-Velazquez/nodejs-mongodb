@@ -7,7 +7,7 @@ const controlador ={
         res.render('./users/userCart')
     },
     createOrden: async(req, res)=>{
-        //console.log(req.body)
+        console.log(req.body)
         // Agrega credenciales
         mercadopago.configure({
             access_token: "TEST-4388668567724591-060212-c44af7b3de68e54d180b4d6b506b153b-1385641118",
@@ -16,7 +16,7 @@ const controlador ={
             items: [
                 {
                     title: req.body.title,
-                    unit_price: 1, 
+                    unit_price: parseInt(req.body.number), 
                     currency_id: "ARS" ,
                     quantity: 1,
                 },
@@ -29,7 +29,8 @@ const controlador ={
             notification_url: 'https://compu-insumos.onrender.com/pay/notification'
         })
         console.log(result)
-        res.send(result.body)
+        res.redirect(result.body.init_point)
+        //res.redirect(result.body)
     },
     success:(req, res)=>{
         res.send('El pago fue un exito!!')
