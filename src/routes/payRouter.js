@@ -14,5 +14,7 @@ router.get("/pending", payController.pending);
 
 router.post("/notification", payController.notification_url);
 
+router.get("/carrito", payController.carrito);
+
 
 module.exports = router;
