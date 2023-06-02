@@ -147,7 +147,7 @@ main{
         width: 90%;
         margin: auto;
         .carousel-indicators{
-            bottom: -10px;
+            bottom: -52px;
             button{
                 background-color:#c7ff8f!important;
             }
@@ -155,16 +155,21 @@ main{
         article{
             a{
                 text-decoration: none;
+                height: 300px;
+                margin: 25px;
             }
                 img{
                     padding: 30px;
                 margin: auto;
-                width: 98%;
+                max-width: 98%;
+                height: 100%;
+                object-fit: cover;
                 }
                 .ofertas__body{
                     justify-content: space-between;
                     flex-direction: column!important;
-                    top:1.2rem!important;
+                    top: -1.3rem !important;
+                    bottom: -1.7rem!important;
                     h5{
                         font-size: 1.5rem!important;
                         text-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.90);
@@ -182,6 +187,10 @@ main{
         .button__ofertas-iconos{
             background-color: #000;
             border-radius: 20px;
+        }
+        .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+            display: flex!important;
+            flex-direction: column;
         }
         }
         .section__marcas{
@@ -246,8 +255,9 @@ main{
     }
     .section__carrusel-container{
         article{
-            img{
-                width: 60%;
+            .carousel-item.active, .carousel-item-next, .carousel-item-prev {
+                justify-content: center!important;
+                flex-direction: row!important;
             }
         }
         .button__ofertas-iconos{
@@ -257,4 +267,5 @@ main{
             border-radius: 50px;
         }
     }
+   
 }

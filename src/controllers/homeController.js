@@ -39,12 +39,10 @@ const controlador ={
         const Product = require('../database/models/Products');
         try {
             const resultado = await Product.find({ name: { $regex: req.query.search, $options: 'i' } });
-            if (resultado.length > 0){
-                res.render("./products/productSearch",
-                { productos:resultado})
-            }else{
-                res.redirect('/')
-            }
+           
+            res.render("./products/productSearch",
+                { productos:resultado,
+                search:req.query.search})
         } catch (error) {
             res.send('error')
         }

@@ -152,8 +152,8 @@
 
       </section>
 
-      <section class="py-5 my-4">
-       <h2 class="mt-4 p-3 fw-semibold text-primary  fs-1">NUESTRAS MEJORES OFERTAS</h2>
+      <section class="py-2 mt-5 pb-5 bg-primary">
+       <h2 class="mt-1 p-3 fw-semibold text-white  fs-1">NUESTRAS MEJORES OFERTAS</h2>
 
        <div id="carouselofertas" class="carousel slide section__carrusel-container">
         <div class="carousel-indicators">
@@ -167,23 +167,40 @@
         </div>
         <article class="carousel-inner">
           <% ofertas.forEach((prod,id)=>{ %> 
-            <a href="/product/detail/<%=prod.id%>">
-            <% if (id==0) { %>
-            <div class="carousel-item active"><%}else{%><div class="carousel-item"><%} %>
-            <img src="/img/product/<%= prod.image[0]%>" class="d-block" alt="ofertas">
-            <div class="carousel-caption d-flex ofertas__body">
-              <h5><%= prod.name%></h5>
-              <% if (prod.offer > 0) {%> 
-                <div class="card-text text-light-emphasis d-flex justify-content-center flex-wrap" >
-                  <p class="me-1" style="text-decoration: line-through;"><%=prod.price%> </p> <span class="fs-4 text-success">  <%=prod.offer%> %</span>
-                  <p class="ms-3 card-text fs-1 text-white card-body__precio ">$ <%= prod.price - (prod.price  * prod.offer/100) %></p>
-                </div>
-                
-            <%}else{%>  
-                <p class="card-text fs-1 text-white card-body__precio">$ <%=prod.price%></p>
-            <%}%>
-            </div>
-          </div></a>
+            
+            <% if (id % 2 == 0) { %>
+              <a class="position-relative bg-white mx-2" href="/product/detail/<%=prod.id%>">
+              <% if (id==0) { %><div class="carousel-item active"><%}else{%><div class="carousel-item"><%} %>
+              <img src="/img/product/<%= prod.image[0]%>" class="d-block" alt="ofertas">
+              <div class="carousel-caption d-flex ofertas__body">
+                <h5><%= prod.name%></h5>
+                <% if (prod.offer > 0) {%> 
+                  <div class="card-text text-light-emphasis d-flex justify-content-center flex-wrap" >
+                    <p class="me-1" style="text-decoration: line-through;"><%=prod.price%> </p> <span class="fs-4 text-success">  <%=prod.offer%> %</span>
+                    <p class="ms-3 card-text fs-1 text-white card-body__precio ">$ <%= prod.price - (prod.price  * prod.offer/100) %></p>
+                  </div>
+                <%}else{%>  
+                    <p class="card-text fs-1 text-white card-body__precio">$ <%=prod.price%></p>
+                <%}%>
+              </div>
+              </a>
+              <% } else if (id % 2 != 0) { %>
+                <a class="position-relative bg-white mx-2" href="/product/detail/<%=prod.id%>">
+                  <img src="/img/product/<%= prod.image[0]%>" class="d-block" alt="ofertas">
+                  <div class="carousel-caption d-flex ofertas__body">
+                    <h5><%= prod.name%></h5>
+                    <% if (prod.offer > 0) {%> 
+                      <div class="card-text text-light-emphasis d-flex justify-content-center flex-wrap" >
+                        <p class="me-1" style="text-decoration: line-through;"><%=prod.price%> </p> <span class="fs-4 text-success">  <%=prod.offer%> %</span>
+                        <p class="ms-3 card-text fs-1 text-white card-body__precio ">$ <%= prod.price - (prod.price  * prod.offer/100) %></p>
+                      </div>
+                    <%}else{%>  
+                        <p class="card-text fs-1 text-white card-body__precio">$ <%=prod.price%></p>
+                    <%}%>
+                  </div>
+                  </a>
+              </div>
+                <%}%>
           <% }) %>
         </article>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselofertas" data-bs-slide="prev">
@@ -196,7 +213,7 @@
         </button>
       </div>
   </section>
-  <section class="py-5 my-4">
+  <section class="my-4">
     <article class="section__marcas">
       <div class="marcas__container">
        <% for (let i = 0; i < 8; i++) { %>

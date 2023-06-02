@@ -12384,23 +12384,29 @@ main {
   margin: auto;
 }
 .section__carrusel-container .carousel-indicators {
-  bottom: -10px;
+  bottom: -52px;
 }
 .section__carrusel-container .carousel-indicators button {
   background-color: #c7ff8f !important;
 }
 .section__carrusel-container article a {
   text-decoration: none;
+  height: 300px;
+  margin: 25px;
 }
 .section__carrusel-container article img {
   padding: 30px;
   margin: auto;
-  width: 98%;
+  max-width: 98%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .section__carrusel-container article .ofertas__body {
   justify-content: space-between;
   flex-direction: column !important;
-  top: 1.2rem !important;
+  top: -1.3rem !important;
+  bottom: -1.7rem !important;
 }
 .section__carrusel-container article .ofertas__body h5, .section__carrusel-container article .ofertas__body .h5 {
   font-size: 1.5rem !important;
@@ -12415,6 +12421,10 @@ main {
 .section__carrusel-container .button__ofertas-iconos {
   background-color: #000;
   border-radius: 20px;
+}
+.section__carrusel-container .carousel-item.active, .section__carrusel-container .carousel-item-next, .section__carrusel-container .carousel-item-prev {
+  display: flex !important;
+  flex-direction: column;
 }
 
 .section__marcas {
@@ -12473,8 +12483,9 @@ main {
     margin: 10px;
     min-width: 25%;
   }
-  .section__carrusel-container article img {
-    width: 60%;
+  .section__carrusel-container article .carousel-item.active, .section__carrusel-container article .carousel-item-next, .section__carrusel-container article .carousel-item-prev {
+    justify-content: center !important;
+    flex-direction: row !important;
   }
   .section__carrusel-container .button__ofertas-iconos {
     width: 60px;

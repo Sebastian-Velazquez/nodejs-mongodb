@@ -10,12 +10,14 @@
 <body>
     <%- include("../partials/header") %>
     <main>
+        
             <nav class="main__breadcrumb-container" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">TODO</li>
+                <li class="breadcrumb-item active" aria-current="page"><%=search.toUpperCase()%></li>
                 </ol>
             </nav>
+            <% if (productos.length > 0){%> 
             <div class="main__list-container d-flex flex-wrap">
                 <% productos.forEach(producto=>{ %> 
                 <div class="card list__card-container m-2" >
@@ -43,7 +45,9 @@
                 </div>
                 <%})%>
             </div>
-            
+            <%}else{%>
+                <h2 class="text-secondary fs-1 m-5 p-5 text-center">No se encuentran coincidencias con la busqueda</h2>
+                <%}%>
     </main>
     <%- include("../partials/footer") %>
 </body>
