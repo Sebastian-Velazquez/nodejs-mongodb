@@ -7,8 +7,11 @@ const payController = require("../controllers/payController.js");
 
 
 // procesa pedido de get. Ahora usamos router en MVC. son tutas 
-router.get("/mercadopago", payController.mercadopago);
+router.post("/create-orden", payController.createOrden);
 router.get("/success", payController.success);
+router.get("/failure", payController.failure);
+router.get("/pending", payController.pending);
+
 router.post("/notification", payController.notification_url);
 
 

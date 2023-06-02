@@ -3,29 +3,52 @@ const mercadopago = require("mercadopago");
 
 
 const controlador ={
-    mercadopago:(req, res)=>{
+    createOrden: async(req, res)=>{
         // Agrega credenciales
         mercadopago.configure({
-            access_token: "APP_USR-7640889624539342-053118-1bd778dadef27d1292e2db2da73cd2fb-316001877",
+            access_token: "TEST-4388668567724591-060212-c44af7b3de68e54d180b4d6b506b153b-1385641118",
         });
-
-
-        // Crea un objeto de preferencia
-        let preference = {
-            back_urls:{ //aca p/ poner el link para volver a la pagina una vez realizado el pago
-                success: 'https://compu-insumos.onrender.com/pay/success'
-            },
+        const result = await mercadopago.preferences.create({
             items: [
                 {
                     title: "Mi producto",
-                    unit_price: 0.01,
+                    unit_price: 100, 
+                    currency_id: "ARS" ,
                     quantity: 1,
                 },
             ],
+            back_urls:{ //aca p/ poner el link para volver a la pagina una vez realizado el pago
+                success: 'https://compu-insumos.onrender.com/pay/success', //si se realizo e pago
+                failure: 'https://compu-insumos.onrender.com/pay/failure' , //si fallo el pago
+            },
             notification_url: 'https://compu-insumos.onrender.com/pay/notification'
-        };
-        
-        mercadopago.preferences
+        })
+        console.log(result)
+        res.send("Orden Creada")
+    },
+    success:(req, res)=>{
+        res.send('El pago fue un exito!!')
+    },
+    failure: (req,res)=>{
+        res.send('Pago rexhazado!')
+    },
+    notification_url:(req,res)=>{
+        console.log('notificar')
+        res.send()
+    }
+}
+
+module.exports = controlador;
+
+
+        // Crea un objeto de preferencia
+        /* let preference = {
+               back_urls:{ //aca p/ poner el link para volver a la pagina una vez realizado el pago
+                success: 'https://compu-insumos.onrender.com/pay/success'
+            }, 
+        }; */
+
+        /* mercadopago.preferences
             .create(preference)
             .then(function (response) {
                 console.log(response.body.init_point)
@@ -35,15 +58,6 @@ const controlador ={
             .catch(function (error) {
             console.log(error);
             });  
-           // res.send(response)
-    },
-    success:(req, res)=>{
-        res.send('El pago fue un exito!!')
-    },
-    notification_url:(req,res)=>{
-        console.log('notificar')
-        res.send()
-    }
-}
+           // res.send(response) */
 
-module.exports = controlador;
+           /* notification_url: 'https://compu-insumos.onrender.com/pay/notification' */
