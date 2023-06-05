@@ -186,6 +186,17 @@ const controlador ={
         }
     },
     /*** Controladores para Adminisración */
+    createCategorMarca:async (req, res)=>{ 
+        const category = require('../database/models/Category');
+        const marca = require('../database/models/Marca');
+        let categorias = await Category.find();//noombre del campo
+        let marcas = await Marca.find();
+        res.render('./products/categoryMarcaEdit',{
+            categorias, marcas
+        })
+
+    },
+    
     ProcessCreateCategory: async (req, res)=>{
         const Product = require('../database/models/Category');
         try {
@@ -193,7 +204,7 @@ const controlador ={
                 name: req.body.name,
                 description: req.body.description,
             })
-            res.send('creado')
+            res.redirect('/product/categorymarca')
         } catch (error) {
             res.send('error')
         }
@@ -202,7 +213,7 @@ const controlador ={
         const Category = require('../database/models/Category');
         try {
             await Category.findByIdAndDelete({_id: req.params.id})
-            res.send('eliminado')
+            res.redirect('/product/categorymarca')
         } catch (error) {
             res.send('error')
         }
@@ -214,9 +225,7 @@ const controlador ={
                 name: req.body.name,
                 description: req.body.description,
             })
-            res.render("./",{
-                oldData: req.body
-            })
+            res.redirect('/product/categorymarca')
         } catch (error) {
             res.send('error')
         }
@@ -225,7 +234,7 @@ const controlador ={
         const Category = require('../database/models/Marca');
         try {
             await Category.findByIdAndDelete({_id: req.params.id})
-            res.render('./products/list')
+            res.redirect('/product/categorymarca')
         } catch (error) {
             res.send('error')
         }

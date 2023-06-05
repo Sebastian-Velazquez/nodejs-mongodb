@@ -25,6 +25,9 @@ router.get("/marca/:id", productsController.marc)
 
 router.get("/detail/:id", productsController.detail);
 
+
+router.get("/categorymarca", userAdmin, productsController.createCategorMarca);
+
 router.post("/createcategory", userAdmin, productsController.ProcessCreateCategory);
 router.delete("/deletecategory/:id", userAdmin, productsController.deleteCategory);
 

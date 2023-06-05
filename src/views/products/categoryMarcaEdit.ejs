@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="d-flex flex-column justify-content-center align-items-center mt-5" >
+        <h4 class="text-secondary">Administración</h4>
+        <a class=""  href="/"> <img src="/img/other/LogoSample.jpg" alt="logo" width="120" height="120"></a>
+    </div>
+    <main>
+        <h2 class="m-4 text-primary">Categorias</h2>
+        <section class="m-4 overflow-auto">
+            <table class="table table-striped w-75 m-auto">
+                <thead>
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">DESCRIPCION</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% categorias.forEach((cat,id)=>{ %>       
+                <tr>
+                    <th scope="row"><%=id+1%></th>
+                    <td><%= cat.name%></td>
+                    <td><%= cat.id%></td>
+                    <td><%= cat.description%></td>
+                    <td><form class="form-eliminar" action="/product/deletecategory/<%= cat.id%>?_method=DELETE" method="POST"><button type="submit" class="btn btn-secondary"><i class="fa-solid fa-trash-can text-info"></i></button></form></td>
+                </tr>
+                <%})%>
+                <tr>
+                    <form action="/product/createcategory" method="POST">
+                    <th scope="row"></th>
+                    <td><input class="form-control" name="name" type="text" placeholder="Nombre"></td>
+                    <td><input class="form-control" name="description" type="text" placeholder="Descripcion"></td>
+                    <td colspan="2" class="text-center"><button type="submit" class="btn btn-secondary m-auto">Agregar categoria</button></td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+          <h2 class="m-4 text-primary">Marcas</h2>
+        <section class="m-4 overflow-auto">
+            <table class="table table-striped w-75 m-auto">
+            <thead>
+              <tr class="table-dark">
+                <th scope="col">#</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">ID</th>
+                <th scope="col">DESCRIPCION</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <% marcas.forEach((marc,id)=>{ %>       
+              <tr>
+                <th scope="row"><%=id+1%></th>
+                <td><%= marc.name%></td>
+                <td><%= marc.id%></td>
+                <td><%= marc.description%></td>
+                <td><form class="form-eliminar" action="/product/deletemarca/<%= marc.id%>?_method=DELETE" method="POST"><button type="submit" class="btn btn-secondary"><i class="fa-solid fa-trash-can text-info"></i></button></form></td>
+              </tr>
+              <%})%>
+              <tr>
+                <form action="/product/createmarca" method="POST">
+                <th scope="row"></th>
+                <td><input class="form-control" name="name" type="text" placeholder="Nombre"></td>
+                <td><input class="form-control" name="description" type="text" placeholder="Descripcion"></td>
+                <td colspan="2" class="text-center"><button type="submit" class="btn btn-secondary m-auto">Agregar marca</button></td>
+                </form>
+            </tr>
+            </tbody>
+          </table>
+        </section>
+    </main>
+    <p class="my-5 pt-2 text-center">CompuInsumos SRL © 2022. Todos los Derechos Reservados.</p>
+    <script src="https://kit.fontawesome.com/e073821f55.js" crossorigin="anonymous"></script> 
+    <script src="/js/marcaCat.js"></script>   
+</body>
+</html>
