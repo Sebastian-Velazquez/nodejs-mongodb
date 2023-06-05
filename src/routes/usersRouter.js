@@ -15,6 +15,7 @@ router.get("/login", guestMiddlewares, usersController.login);
 router.post("/login", guestMiddlewares,  usersController.processLogin);
 
 router.get("/profile", authMiddlewares, usersController.profile);
+router.put('/image', usersController.image)
 
 router.get("/logout", authMiddlewares, usersController.logout);
 

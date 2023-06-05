@@ -27,6 +27,7 @@ $container-max-widths: (
 @import './sass/create';
 @import './sass/productList';
 @import './sass/detail';
+@import './sass/profile';
 body{
     font-family: 'Franklin Gothic Medium'!important;
 }
@@ -100,7 +101,7 @@ main{
     }   
 }
 .categorias__container{
-    width: 95%;
+    width: 90%;
     margin: auto;
     grid-template-columns: auto auto auto;
     grid-template-rows: auto auto auto auto auto;
@@ -184,6 +185,7 @@ main{
                     }
             
         }
+
         .button__ofertas-iconos{
             background-color: #000;
             border-radius: 20px;
@@ -193,6 +195,7 @@ main{
             flex-direction: column;
         }
         }
+        
         .section__marcas{
             overflow: hidden;
             width: 100%;
@@ -236,7 +239,7 @@ main{
         display: none!important;
     }
     .nuevos-productos__container{
-        width: 85%;
+        width: 90%;
         height: max-content;
         height: max-content;
         margin: auto;

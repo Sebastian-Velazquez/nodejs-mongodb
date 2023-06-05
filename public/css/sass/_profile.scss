@@ -1,0 +1,25 @@
+.subir-foto__container:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    transition: all 0.1s;
+}
+.form-foto__container:hover{
+    border: 9px solid $verde!important;
+    padding: 0!important;
+    transition: all 0.2s;
+}
+.direccion__container{
+ height: 80px;
+}
+.direccion-edit__form{
+    display: none;
+}
+.direccion-edit__button{
+    transform: content("");
+}
+.email__container{
+    display: flex;
+}
+.direccion__container{
+    display: flex;
+}

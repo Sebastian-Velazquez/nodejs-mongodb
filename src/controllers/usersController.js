@@ -91,6 +91,9 @@ const controlador ={
             user: req.session.userLogged
         })
     },
+    image:(req,res)=>{
+        
+    },
     logout:(req,res)=>{
         req.session.userLogged = null;//para destruir la session, osea salir del login del perfil
         res.clearCookie('userEmail',);//destruir la cookie

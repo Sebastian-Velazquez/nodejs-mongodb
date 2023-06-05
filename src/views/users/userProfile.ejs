@@ -11,20 +11,41 @@
     <%- include("../partials/header") %>
     <main class="py-5">
         <section class="d-flex justify-content-start align-items-center shadow m-5 py-3 px-4" style="height: 140px;">
-            <div class="h-100 p-2 rounded-circle border border-info position-relative"> <p class="position-absolute top-50 start-50 translate-middle text-secondary text-center">Subir foto</p><img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= user.perfil.image %>" alt=""></div><h2 class="ms-3"><%= user.first_name +' '+  user.last_name %> </h2>
+            <div class="h-100 p-2 rounded-circle border border-success position-relative form-foto__container"> 
+                <form class="position-absolute top-50 start-50 translate-middle text-secondary text-center" enctype="multipart/form-data" action="./user/image?_method=PUT" method="POST">
+                    <input name="image" id="image" class="d-none" type="file">
+                    <label class="subir-foto__container" for="image">Subir foto</label>
+                </form>
+                <img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= user.perfil.image %>" alt="">
+            </div>
+            <h2 class="ms-3"><%= user.first_name +' '+  user.last_name %> </h2>
         </section>
-        <section class="d-flex flex-column m-5 datosUsuario">
-            <div class="shadow d-flex justify-content-between align-items-center p-4 my-3">
+        
+        <section class="d-flex flex-column m-5 pt-5 datosUsuario position-relative">
+            <button class="text-end mt-4 mb-0 direccion-edit__button position-absolute top-0 end-0 btn btn-outline-info border-0 p-0"> editar </button>
+            <div class="shadow  justify-content-between align-items-center p-4 my-3 email__container">
                 <h3> Correo Electrónico:</h3><p class="m-0"><%= user.email %></p> 
             </div>
-            <div class="shadow d-flex justify-content-between align-items-center p-4 my-3">
-                <h3> Direccion:</h3><p class="m-0"><%= user.perfil.direccion %></p> 
-                <p><%= user.perfil.cp %></p> 
+            <div class="shadow direccion__container justify-content-between align-items-center p-4 my-3">
+                <div class=" d-flex justify-content-between w-100 position-relative">
+                    <h3> Direccion:</h3><p class="m-0 position-relative"><%= user.perfil.direccion %> <span class="position-absolute text-success top-50 end-0">CP <%= user.perfil.cp %></span></p> 
+                </div>
             </div>
+            <form class="justify-content-between w-100 direccion-edit__form" action="./user/direction?_method=PUT" method="POST">
+                <div class="shadow p-4 my-3">
+                    <label class="" for="email">E-mail:</label><input class="form-control" type="email" name="email" id="email">
+                </div>
+                <div class="shadow p-4 my-3">
+                    <label  class="mt-4" for="direction">Direccion:</label><input class="form-control" type="text" name="direction" id="direction">
+                    <label class="mt-4" for="cp">Codigo postal:</label><input class="form-control" type="number" name="cp" id="cp">
+                </div>
+                <button class="btn btn-secondary mt-4 w-100 rounded-0" type="submit">Aceptar</button>
+            </form>
                       
             
         </section>
     </main>
+    <script src="/js/profile.js"></script>
     <%- include("../partials/footer") %>
 </body>
 

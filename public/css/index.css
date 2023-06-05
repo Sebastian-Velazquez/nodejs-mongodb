@@ -12265,6 +12265,38 @@ textarea.form-control-lg {
     background-color: #000;
   }
 }
+.subir-foto__container:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+  transition: all 0.1s;
+}
+
+.form-foto__container:hover {
+  border: 9px solid #6fa33b !important;
+  padding: 0 !important;
+  transition: all 0.2s;
+}
+
+.direccion__container {
+  height: 80px;
+}
+
+.direccion-edit__form {
+  display: none;
+}
+
+.direccion-edit__button {
+  transform: content("");
+}
+
+.email__container {
+  display: flex;
+}
+
+.direccion__container {
+  display: flex;
+}
+
 body {
   font-family: "Franklin Gothic Medium" !important;
 }
@@ -12336,7 +12368,7 @@ main {
 }
 
 .categorias__container {
-  width: 95%;
+  width: 90%;
   margin: auto;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto auto auto;
@@ -12466,7 +12498,7 @@ main {
     display: none !important;
   }
   .nuevos-productos__container {
-    width: 85%;
+    width: 90%;
     height: -moz-max-content;
     height: max-content;
     height: max-content;
