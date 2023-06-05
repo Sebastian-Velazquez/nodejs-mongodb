@@ -13,4 +13,6 @@ router.get("/", homeController.index);
 //hacer busqueda    
 router.get("/search", validations, homeController.search);
 
+router.get("/carrito", homeController.carrito);
+
 module.exports = router;

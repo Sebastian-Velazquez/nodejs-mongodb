@@ -3,9 +3,6 @@ const mercadopago = require("mercadopago");
 
 
 const controlador ={
-    carrito:(req, res)=>{
-        res.render('./users/userCart')
-    },
     createOrden: async(req, res)=>{
         console.log(req.body)
         // Agrega credenciales

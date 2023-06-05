@@ -47,6 +47,9 @@ const controlador ={
             res.send('error')
         }
         }
+    },
+    carrito:(req, res)=>{
+        res.render('./users/userCart')
     }
 }
 module.exports = controlador;
