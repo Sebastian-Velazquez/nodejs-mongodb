@@ -21,4 +21,9 @@ window.addEventListener("load", ()=>{
             }
     }
     boton.addEventListener("click",cambio, true)
-})
+});
+
+
+document.getElementById('image').addEventListener('change', function(event) {
+    document.getElementById('submitId').submit();
+});

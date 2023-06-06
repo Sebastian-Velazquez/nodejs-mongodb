@@ -138,17 +138,33 @@ const controlador ={
         }
     },
     editProfile:async(req,res)=>{
+        const Customers =  require('../database/models/Customers');
         if(req.file){
-            const Customers =  require('../database/models/Customers');
-            let userId= req.params.id 
-            //console.log(req.file.filename)
-             await Customers.findByIdAndUpdate({_id: userId},{ $set: { 'perfil.image': req.file.filename }});
-             let guardar = await Customers.findByIdAndUpdate({_id: userId})
-                req.session.userLogged.perfil.image = guardar.perfil.image
-
-            res.redirect('/user/profile')
+            try {
+                await Customers.findByIdAndUpdate({_id: req.params.id },{ $set: { 'perfil.image': req.file.filename }});
+                let guardar = await Customers.findByIdAndUpdate({_id: req.params.id})
+                    req.session.userLogged.perfil.image = guardar.perfil.image
+                res.redirect('/user/profile')
+            } catch (error) {
+                console.log(error)
+                res.send('error')
+            }
         }else{
-            res.send('no se cargo imagen')
+            let user  = await Customers.findByIdAndUpdate({_id: req.params.id})
+            let isOkThePassword = bcryptjs.compareSync(req.body.password, user.password);
+            console.log(user + '=='+isOkThePassword )
+            if  (isOkThePassword){
+
+                await Customers.findByIdAndUpdate({_id: req.params.id },
+                        { $set: {'perfil.direccion': req.body.email ,
+                                'perfil.direccion': req.body.direction,
+                                'perfil.direccion': req.body.cp,
+                            }});
+                res.send('valido')
+            }else{
+                res.send('no valido')
+            }
+            
         }
     }
 }

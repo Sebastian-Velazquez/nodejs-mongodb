@@ -17,11 +17,6 @@
                     <label class="subir-foto__container" for="image">Subir foto</label>
                     <input type="submit"  style="display: none;">
                 </form>
-                <script>
-                    document.getElementById('image').addEventListener('change', function(event) {
-                      document.getElementById('submitId').submit();
-                    });
-                  </script>
                 <img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= locals.userLogged.perfil.image %>" alt="">
             </div>
             <h2 class="ms-3"><%= user.first_name +' '+  user.last_name %> </h2>
@@ -44,6 +39,9 @@
                 <div class="shadow p-4 my-3">
                     <label  class="mt-4" for="direction">Direccion:</label><input class="form-control" type="text" name="direction" id="direction">
                     <label class="mt-4" for="cp">Codigo postal:</label><input class="form-control" type="number" name="cp" id="cp">
+                </div>
+                <div class="shadow p-4 my-3">
+                    <label class="" for="email">Contraseña Actual:</label><input class="form-control" type="password" name="password" id="password">
                 </div>
                 <button class="btn btn-secondary mt-4 w-100 rounded-0" type="submit">Aceptar</button>
             </form>
