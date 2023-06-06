@@ -12,11 +12,17 @@
     <main class="py-5">
         <section class="d-flex justify-content-start align-items-center shadow m-5 py-3 px-4" style="height: 140px;">
             <div class="h-100 p-2 rounded-circle border border-success position-relative form-foto__container"> 
-                <form class="position-absolute top-50 start-50 translate-middle text-secondary text-center" enctype="multipart/form-data" action="./user/image?_method=PUT" method="POST">
+                <form  id="submitId" class="position-absolute top-50 start-50 translate-middle text-secondary text-center" enctype="multipart/form-data" action="/user/editProfile/<%= user._id  %>?_method=PUT" method="POST">
                     <input name="image" id="image" class="d-none" type="file">
                     <label class="subir-foto__container" for="image">Subir foto</label>
+                    <input type="submit"  style="display: none;">
                 </form>
-                <img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= user.perfil.image %>" alt="">
+                <script>
+                    document.getElementById('image').addEventListener('change', function(event) {
+                      document.getElementById('submitId').submit();
+                    });
+                  </script>
+                <img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= locals.userLogged.perfil.image %>" alt="">
             </div>
             <h2 class="ms-3"><%= user.first_name +' '+  user.last_name %> </h2>
         </section>
@@ -31,7 +37,7 @@
                     <h3> Direccion:</h3><p class="m-0 position-relative"><%= user.perfil.direccion %> <span class="position-absolute text-success top-50 end-0">CP <%= user.perfil.cp %></span></p> 
                 </div>
             </div>
-            <form class="justify-content-between w-100 direccion-edit__form" action="./user/direction?_method=PUT" method="POST">
+            <form class="justify-content-between w-100 direccion-edit__form" action="/user/editProfile/<%= user._id  %>?_method=PUT" method="POST">
                 <div class="shadow p-4 my-3">
                     <label class="" for="email">E-mail:</label><input class="form-control" type="email" name="email" id="email">
                 </div>

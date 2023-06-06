@@ -3,6 +3,7 @@ const router = express.Router();
 
 
 // llamamos a la ruta de controlador
+const upload = require("../middlewares/userMiddlewares/multerUser");
 const usersController = require("../controllers/usersController.js");
 const validations = require("../middlewares/userMiddlewares/validationsRegisterMiddlewares.js");
 const authMiddlewares = require("../middlewares/userMiddlewares/authMiddlewares.js");//si no tengo a nadie en session
@@ -22,7 +23,7 @@ router.get("/logout", authMiddlewares, usersController.logout);
 router.get('/favorites', usersController.favorites)
 router.put("/favorite/:id", authMiddlewares, usersController.favorite);
 
-//router.put("/favoritePull/:id", authMiddlewares, usersController.favoritePull);
+router.put("/editProfile/:id", upload.single('image'), usersController.editProfile);
 
 
 module.exports = router;

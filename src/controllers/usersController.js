@@ -137,18 +137,20 @@ const controlador ={
             res.send('error')
         }
     },
-    /* favoritePull:async(req,res)=>{
-        let userId= req.params.id //traer el id user
-        const Customers =  require('../database/models/Customers');
-        try {
-        let cliente = await Customers.findByIdAndUpdate({_id: userId}, { $pull: { 'perfil.favorite': req.body.favorite } }, { new: true })
-        //console.log(cliente)
-        res.send(cliente)
-        } catch (error) {
-            console.log(error)
-            res.send('error')
+    editProfile:async(req,res)=>{
+        if(req.file){
+            const Customers =  require('../database/models/Customers');
+            let userId= req.params.id 
+            //console.log(req.file.filename)
+             await Customers.findByIdAndUpdate({_id: userId},{ $set: { 'perfil.image': req.file.filename }});
+             let guardar = await Customers.findByIdAndUpdate({_id: userId})
+                req.session.userLogged.perfil.image = guardar.perfil.image
+
+            res.redirect('/user/profile')
+        }else{
+            res.send('no se cargo imagen')
         }
-    } */
+    }
 }
 
 module.exports = controlador;
