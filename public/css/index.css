@@ -11894,17 +11894,35 @@ textarea.form-control-lg {
 #add-product__container {
   position: fixed;
   top: 70px;
-  right: 20%;
+  right: 188px;
   height: 38px;
   width: -moz-max-content;
   width: max-content;
-  z-index: 2;
+  z-index: 1;
   background-color: var(--bs-primary);
-  padding: 2px 10px 0;
+  padding: 3px 10px 5px 7px;
   box-shadow: 2px 1px 7px rgba(199, 255, 143, 0.7803921569);
   border-radius: 0 0 10px 10px;
 }
 #add-product__container a {
+  text-decoration: none;
+  color: #fff;
+}
+
+#add-category__container {
+  position: fixed;
+  top: 70px;
+  right: 0%;
+  height: 38px;
+  width: -moz-max-content;
+  width: max-content;
+  z-index: 1;
+  background-color: var(--bs-primary);
+  padding: 4px 11px 7px 6px;
+  box-shadow: 2px 1px 7px rgba(199, 255, 143, 0.7803921569);
+  border-radius: 0 0 10px 10px;
+}
+#add-category__container a {
   text-decoration: none;
   color: #fff;
 }
