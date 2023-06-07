@@ -139,32 +139,52 @@ const controlador ={
     },
     editProfile:async(req,res)=>{
         const Customers =  require('../database/models/Customers');
-        if(req.file){
-            try {
-                await Customers.findByIdAndUpdate({_id: req.params.id },{ $set: { 'perfil.image': req.file.filename }});
-                let guardar = await Customers.findByIdAndUpdate({_id: req.params.id})
-                    req.session.userLogged.perfil.image = guardar.perfil.image
-                res.redirect('/user/profile')
-            } catch (error) {
-                console.log(error)
-                res.send('error')
-            }
-        }else{
-            let user  = await Customers.findByIdAndUpdate({_id: req.params.id})
-            let isOkThePassword = bcryptjs.compareSync(req.body.password, user.password);
-            console.log(user + '=='+isOkThePassword )
-            if  (isOkThePassword){
-
-                await Customers.findByIdAndUpdate({_id: req.params.id },
-                        { $set: {'perfil.direccion': req.body.email ,
-                                'perfil.direccion': req.body.direction,
-                                'perfil.direccion': req.body.cp,
-                            }});
-                res.send('valido')
+        try {
+            if(req.file){ /**Guardar Imagen de Perfil */
+                    await Customers.findByIdAndUpdate({_id: req.params.id },{ $set: { 'perfil.image': req.file.filename }});
+                    let guardar = await Customers.findByIdAndUpdate({_id: req.params.id})
+                        req.session.userLogged.perfil.image = guardar.perfil.image
+                    res.redirect('/user/profile')
+                
             }else{
-                res.send('no valido')
+                /**Si ta existe em Email */
+                let User = await Customer.findOne({email: req.body.email});
+                if (User){
+                    return res.render('./users/userProfile', {
+                        user: req.session.userLogged,
+                        errors: {
+                            email: {msg:'Este email ya esta registrado'}
+                        }, 
+                        oldData: req.body 
+                    })
+                }else{
+                    /**Guardar Detalles */
+                    let user  = await Customers.findByIdAndUpdate({_id: req.params.id});
+                    let isOkThePassword = bcryptjs.compareSync(req.body.password, user.password);
+                    if  (isOkThePassword){/**Validar contraseña */
+                        await Customers.findByIdAndUpdate({_id: req.params.id },/**Guar en DB */
+                                { $set: {email: req.body.email ?  req.body.email : user.email, 
+                                    'perfil.direccion': req.body.direction ? req.body.direction : user.perfil.direccion,
+                                    'perfil.cp': req.body.cp ? req.body.cp : user.perfil.cp}});
+                        let guardarSession = await Customers.findByIdAndUpdate({_id: req.params.id});
+                        //Guardar los cambios en session
+                        req.session.userLogged.email = guardarSession.email;
+                        req.session.userLogged.perfil.direccion = guardarSession.perfil.direccion;
+                        req.session.userLogged.perfil.cp = guardarSession.perfil.cp;
+                        res.redirect('/user/profile')
+                    }else{/**Constraseña invalida */
+                        return res.render('./users/userProfile',{
+                            user: req.session.userLogged,
+                            errors: {
+                                email: {msg:'Las credenciales no son validas'}
+                            }
+                        })
+                    }
+                }
             }
-            
+        } catch (error) {
+            console.log(error)
+            res.send('error')
         }
     }
 }

@@ -34,7 +34,7 @@ const controlador ={
     search:async (req, res)=>{
         const resultValidation = validationResult(req);//validacion
         if (resultValidation.errors.length != 0){
-            res.send(resultValidation.mapped())
+            res.redirect('/')
         }else{
         const Product = require('../database/models/Products');
         try {
