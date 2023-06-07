@@ -88,7 +88,10 @@
     }
 }
 #add-product__container:hover{
-    background-color: var(--bs-secondary);
+    background-color: var(--bs-secondary);transform:translateY(2px);
+}
+#add-category__container:hover{
+    background-color: var(--bs-secondary);transform:translateY(2px);
 }
 .profile-lg{
     display: none;

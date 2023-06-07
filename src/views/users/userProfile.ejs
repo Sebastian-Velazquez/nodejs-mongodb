@@ -10,7 +10,9 @@
 <body>
     <%- include("../partials/header") %>
     <main class="py-5">
-        <section class="d-flex justify-content-start align-items-center shadow m-5 py-3 px-4" style="height: 140px;">
+        
+        <section class="d-flex justify-content-start align-items-center shadow m-5 py-3 px-4" style="height: 150px;">
+            <% if (user.perfil.image == "user-default.jpg"){ %>
             <div class="h-100 p-2 rounded-circle border border-success position-relative form-foto__container"> 
                 <form  id="submitId" class="position-absolute top-50 start-50 translate-middle text-secondary text-center" enctype="multipart/form-data" action="/user/editProfile/<%= user._id  %>?_method=PUT" method="POST">
                     <input name="image" id="image" class="d-none" type="file">
@@ -19,6 +21,16 @@
                 </form>
                 <img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= locals.userLogged.perfil.image %>" alt="">
             </div>
+            <% }else{%>  
+                <div class="h-100 p-2 rounded-circle border border-success position-relative form-foto__container"> 
+                    <form  id="submitId" class="position-absolute top-50 start-50 translate-middle text-secondary text-center" enctype="multipart/form-data" action="/user/editProfile/<%= user._id  %>?_method=PUT" method="POST">
+                        <input name="image" id="image" class="d-none" type="file">
+                        <label class="subir-foto__container cambiar text-white" for="image">Cambiar foto</label>
+                        <input type="submit"  style="display: none;">
+                    </form>
+                    <img class="object-fit-cover border-20 border  rounded-circle w-100 h-100" src="/img/user/<%= locals.userLogged.perfil.image %>" alt="">
+                </div>
+                <% }%>
             <h2 class="ms-3"><%= user.first_name +' '+  user.last_name %> </h2>
         </section>
         
