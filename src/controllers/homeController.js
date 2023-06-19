@@ -49,7 +49,7 @@ const controlador ={
         }
     },
     carrito:(req, res)=>{
-        res.render('./users/userCart')
+        res.render('./users/userPay')
     }
 }
 module.exports = controlador;

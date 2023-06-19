@@ -24,7 +24,7 @@ router.get("/category/:id",  productsController.category)
 router.get("/marca/:id", productsController.marc)
 
 router.get("/detail/:id", productsController.detail);
-
+router.get("/apidetail/:id", productsController.apiDetail)
 
 router.get("/categorymarca", userAdmin, productsController.createCategorMarca);
 

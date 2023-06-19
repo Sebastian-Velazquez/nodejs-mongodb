@@ -59,8 +59,18 @@
                         <p style="font-size: 1.7rem;" class="text-secondary">$ <%=product.price%></p>
                     <%}%>
                     <p class="text-success mt-3">¡Stock disponible! <span class="text-light-emphasis"> <%= product.stock %> unidades</span></p>
-                    <div class="mx-auto">
-                    <button class="add-cart btn btn-secondary w-100 shadow">AGREGAR AL CARRITO</button>
+                    <div class="mt-4 mx-auto">
+                    <select class="cantidad form-select mt-4">
+                            <%for (i=1; i<=product.stock;i++){%>
+                                <% if (i==1){%>
+                                    <option value="<%=i%>" selected><%=i%></option>
+                                    <%}else{%>
+                                    <option value="<%=i%>"><%=i%></option>
+                                    <%}%>
+                                
+                            <%}%>
+                    </select>
+                    <button class="add-cart btn btn-secondary w-100 shadow" data-id="<%=product.id%>">AGREGAR AL CARRITO</button>
                     <%if (locals.userLogged){%>
                         <form action="/user/favorite/<%=locals.userLogged._id%>?_method=PUT" method="POST">
                             <input type="text" value="<%= product._id %>" readonly style="display: none;" name="favorite">

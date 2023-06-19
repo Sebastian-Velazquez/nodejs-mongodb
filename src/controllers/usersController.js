@@ -137,6 +137,9 @@ const controlador ={
             res.send('error')
         }
     },
+    userCart: (req,res)=>{
+        res.render('./users/userCart')
+    },
     editProfile:async(req,res)=>{
         const Customers =  require('../database/models/Customers');
         try {

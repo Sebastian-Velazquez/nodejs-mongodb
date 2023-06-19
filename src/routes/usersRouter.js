@@ -21,6 +21,7 @@ router.put('/image', usersController.image)
 router.get("/logout", authMiddlewares, usersController.logout);
 
 router.get('/favorites', usersController.favorites)
+router.get("/cart", usersController.userCart)
 router.put("/favorite/:id", authMiddlewares, usersController.favorite);
 
 router.put("/editProfile/:id", upload.single('image'), usersController.editProfile);

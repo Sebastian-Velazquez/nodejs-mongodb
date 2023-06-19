@@ -60,6 +60,19 @@ const controlador ={
             res.send('error')
             }
     },
+    apiDetail: async(req,res)=>{
+        const Product = require('../database/models/Products');
+        //const category = require('../database/models/Category');//llamar para hacer la relacion 
+        //const marca = require('../database/models/Marca');//llamar para hacer la relacion 
+        try {
+            const product = await Product.findOne({_id: req.params.id}).populate(['category','marca']);//noombre del campo
+            //console.log(product)
+            //res.send(productoDetail)
+            res.send(product)
+        } catch (error) {
+            res.send('error')
+            }
+    },
     create:async (req, res)=>{ 
         const category = require('../database/models/Category');
         const marca = require('../database/models/Marca');

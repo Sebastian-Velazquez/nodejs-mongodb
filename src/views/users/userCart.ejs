@@ -5,15 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    
-    <form action="/pay/create-orden" method="post">
-        <label>Nombre</label>
-        <input type="text" name="title">
-        <label>Precio</label>
-        <input type="number" name="number">
-        <input type="submit" value="pagar">
-    </form>
+    <%- include("../partials/header") %>
+    <main class="">
+        <h2 class="pt-5 m-4 text-primary">Mi carrito</h2>
+            <table class="table table-striped w-75 m-auto">
+                <thead>
+                <tr class="table-dark">
+                    <th scope="col">#</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">CANTIDAD</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">TOTAL</th>
+                </tr>
+                </thead>
+                <tbody class="carrito-body">
+                 
+                </tbody>
+            </table>
+        <a class="btn btn-primary m-5" href="/carrito">Pagar</a>
+    </main>
+    <script src="/js/miCarrito.js"></script>
+    <%- include("../partials/footer") %>
 </body>
 </html>
